@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-11 17:49+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/core/mixins.py:40
+#, python-brace-format
+msgid "Model string '{model_config}' must be in format 'app_name.ModelName'"
+msgstr ""
+
+#: apps/core/models.py:22
+msgid "Title"
+msgstr "ຫົວຂໍ້"
+
+#: apps/core/models.py:23
+msgid "Main headline text on the slider"
+msgstr "ຂໍ້ຄວາມຫົວຂໍ້ໃນສະໄລ້ເດີ"
+
+#: apps/core/models.py:28
+msgid "Subtitle"
+msgstr "ຄຳອະທິບາຍ"
+
+#: apps/core/models.py:29
+msgid "Short description or sub-headline"
+msgstr "ຄຳອະທິບາຍສັ້ນໆ ຫຼື ຫົວຂໍ້ຍ່ອຍ"
+
+#: apps/core/models.py:33
+msgid "Hero Image"
+msgstr "ຮູບສະໄລ້"
+
+#: apps/core/models.py:34
+msgid "Recommended size: 1920x800px"
+msgstr "ຂະຫນາດ 1920x800px"
+
+#: apps/core/models.py:40
+msgid "Button Text"
+msgstr ""
+
+#: apps/core/models.py:41
+msgid "e.g. Shop Now, Learn More"
+msgstr "ເພີ່ມເຕີ່ມ"
+
+#: apps/core/models.py:47
+msgid "Button Link URL"
+msgstr ""
+
+#: apps/core/models.py:48
+msgid "e.g. /products/ or https://example.com"
+msgstr ""
+
+#: apps/core/models.py:52
+msgid "Display Order"
+msgstr "ລຳດັບການສະແດງ"
+
+#: apps/core/models.py:53
+msgid "Ordering sequence (e.g. 0, 1, 2)"
+msgstr "ຮູບແບບເລກລຳດັບ"
+
+#: apps/core/models.py:57
+msgid "Is Active"
+msgstr "ໃຊ້ງານ"
+
+#: apps/core/models.py:58
+msgid "Toggle to show/hide this slide on the frontend"
+msgstr "ເປີດ / ປິດ ການສະແດງຮູບໃນຫນ້າຫລັກ"
+
+#: apps/core/models.py:65 apps/sales/templates/sales/sale_product.html:37
+msgid "Hero Slide"
+msgstr "ພາບສະໄລ້"
+
+#: apps/core/models.py:66
+msgid "Hero Slides"
+msgstr "ພາບສະໄລ້"
+
+#: apps/core/models.py:73
+msgid "Village"
+msgstr "ບ້ານ"
+
+#: apps/core/models.py:74
+msgid "Street"
+msgstr "ຖະຫນົນ"
+
+#: apps/core/models.py:75
+msgid "District"
+msgstr "ເມືອງ"
+
+#: apps/core/models.py:76
+msgid "Province"
+msgstr "ແຂວງ"
+
+#: apps/core/models.py:77
+msgid "Country"
+msgstr "ປະເທດ"
+
+#: apps/core/models.py:84 apps/products/models.py:34
+msgid "Name"
+msgstr "ຊື່"
+
+#: apps/core/models.py:85
+msgid "Surname"
+msgstr "ນາມສະກຸນ"
+
+#: apps/core/models.py:86
+msgid "Phone"
+msgstr "ໂທລະສັບ"
+
+#: apps/core/models.py:87
+msgid "Email"
+msgstr "ອີເທວ"
+
+#: apps/core/models.py:93 apps/core/models.py:94
+msgid "Personal Information"
+msgstr ""
+
+#: apps/core/models.py:100
+msgid "Created At"
+msgstr ""
+
+#: apps/core/models.py:104
+msgid "Updated At"
+msgstr ""
+
+#: apps/core/models.py:111
+msgid "Created By"
+msgstr ""
+
+#: apps/core/models.py:118
+msgid "Updated By"
+msgstr ""
+
+#: apps/core/models.py:134
+msgid "Code"
+msgstr "ລະຫັດ"
+
+#: apps/products/models.py:8 apps/products/models.py:36
+#: apps/sales/templates/sales/sale_product.html:16
+msgid "Category"
+msgstr "ຄຳອະທິບາຍ"
+
+#: apps/products/models.py:9 apps/products/models.py:35
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+#: apps/products/models.py:16
+msgid "Products Category"
+msgstr "ຫມວດຫມູ່ສິນຄ້າ"
+
+#: apps/products/models.py:17
+msgid "Products Categories"
+msgstr "ຫມວດຫມູ່ສິນຄ້າ"
+
+#: apps/products/models.py:22 apps/products/models.py:37
+msgid "Unit"
+msgstr "ຫົວຫນ່ວຍ"
+
+#: apps/products/models.py:28
+msgid "Products Unit"
+msgstr "ຫົວຫນ່ວຍສິນຄ້າ"
+
+#: apps/products/models.py:29
+msgid "Products Units"
+msgstr "ຫົວຫນ່ວຍສິນຄ້າ"
+
+#: apps/products/models.py:38
+msgid "Start Price"
+msgstr "ລາຄາເລີ່ມຕົ້ນ"
+
+#: apps/products/models.py:39
+msgid "End Price"
+msgstr "ລາຄາເຕັ່ມ"
+
+#: apps/products/models.py:40
+msgid "Is Sellable"
+msgstr "ເປີດໃຫ້ຂາຍ"
+
+#: apps/products/models.py:45 apps/sales/templates/sales/sale_product.html:65
+msgid "Product Image"
+msgstr "ຮູບສິນຄ້າ"
+
+#: apps/products/models.py:54 apps/products/models.py:55 apps/sales/views.py:17
+msgid "Products"
+msgstr "ສິນຄ້າ"
+
+#: apps/products/models.py:69
+msgid "Product"
+msgstr "ສິນຄ້າ"
+
+#: apps/products/models.py:73
+msgid "Quantity"
+msgstr "ຈຳນວນ"
+
+#: apps/products/models.py:81
+msgid "Stock"
+msgstr "ສາງ"
+
+#: apps/products/models.py:82
+msgid "Stocks"
+msgstr "ສາງ"
+
+#: apps/sales/templates/sales/sale_product.html:19
+msgid "All Category"
+msgstr "ຫມວດຫມູ່ທັ່ງຫມົດ"
+
+#: apps/sales/templates/sales/sale_product.html:73
+msgid "General"
+msgstr ""
+
+#: apps/sales/templates/sales/sale_product.html:83
+msgid "Decrease Quantity"
+msgstr "ຫລຸດຈຳນວນ"
+
+#: apps/sales/templates/sales/sale_product.html:85
+msgid "Increase Quantity"
+msgstr "ເພີ່ມຈຳນວນ"
+
+#: apps/sales/templates/sales/sale_product.html:90
+msgid "Add to Cart"
+msgstr "ເພີ່ມເຂົ້າກະຕ່າ"
+
+#: apps/sales/templates/sales/sale_product.html:96
+msgid "Not found."
+msgstr "ບໍ່ມີຂໍ້ມູນ"
+
+#: apps/users/templates/login.html:22 apps/users/templates/login.html:55
+msgid "LAO PRODUCT"
+msgstr ""
+
+#: apps/users/templates/login.html:25
+msgid "Please login to your account"
+msgstr "ກະລຸນາເຂົ້າສູ່ລະບົບດ້ວຍບັນຊີຂອງທ່ານ"
+
+#: apps/users/templates/login.html:30
+msgid "Username"
+msgstr "ຊືຜູ້ໃຊ້"
+
+#: apps/users/templates/login.html:37
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
+
+#: apps/users/templates/login.html:46
+msgid "Sign In"
+msgstr "ເຂົ້າສູ່ລະບົບ"
+
+#: templates/components/saerch_template.html:154
+msgid "Find what you're looking for."
+msgstr "ຄົ້າຫາສິນຄ້າທີ່ທ່ານຕ້ອງການ"
+
+#: templates/components/saerch_template.html:165
+msgid "Show All"
+msgstr "ສະແດງທັ່ງຫມົດ"
+
+#: templates/general-nav.html:12
+#, fuzzy
+#| msgid "Product"
+msgid "Lao Product"
+msgstr "ສິນຄ້າ"
+
+#: templates/general-nav.html:26
+msgid "Home"
+msgstr "ຫນ້າຫລັກ"
+
+#: templates/general-nav.html:30
+msgid "Demand Center"
+msgstr "ສູນລວມຄວາມຕ້ອງການ"
+
+#: templates/general-nav.html:34
+msgid "Supply Center"
+msgstr "ຜູ້ສະຫນອງ"
+
+#: templates/general-nav.html:38
+msgid "Store Imformation"
+msgstr "ຂໍ້ມູນຮ້ານຄ້າ"
+
+#: templates/general-nav.html:42
+msgid "News"
+msgstr "ຂ່າວສານ"
+
+#: templates/general-nav.html:46
+msgid "Talent Center"
+msgstr "ສູນບຸຄະລາກອນ"
+
+#: templates/general-nav.html:50
+msgid "Market Updates"
+msgstr "ຂໍ້ມູນການຕະຫລາດ"
+
+#: templates/general-nav.html:75
+msgid "Login"
+msgstr "ເຂົ້າສູ່ລະບົບ"
+
+#: templates/navigation_top_loged-in.html:12
+msgid "BACKEND STATE"
+msgstr "ລະບົບຫລັງບ້ານ"

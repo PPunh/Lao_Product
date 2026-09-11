@@ -1,0 +1,40 @@
+{% load custom_tags %}
+
+<div class="w3-dropdown-hover w3-transparent">
+  <button class="w3-button w3-round-large lao-noto" style="padding: 8px 8px;">
+    {% if request.LANGUAGE_CODE == 'en' %}
+      <span>🇬🇧 EN</span>
+    {% elif request.LANGUAGE_CODE == 'lo' %}
+      <span>🇱🇦 ລາວ</span>
+    {% else %}
+      <span>🇨🇳 ZH</span>
+    {% endif %}
+    <i class="fa fa-caret-down w3-margin-left"></i>
+  </button>
+
+  <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-round-large" style="min-width: 120px; right: 0;">
+
+    <a href="{% change_lang 'en' %}"
+       class="w3-bar-item w3-button {% if request.LANGUAGE_CODE == 'en' %}w3-light-grey w3-disabled{% endif %}">
+       🇬🇧 English
+    </a>
+
+    <a href="{% change_lang 'lo' %}"
+       class="w3-bar-item w3-button {% if request.LANGUAGE_CODE == 'lo' %}w3-light-grey w3-disabled{% endif %}">
+       🇱🇦 ລາວ
+    </a>
+
+    <a href="{% change_lang 'zh-hans' %}"
+       class="w3-bar-item w3-button {% if request.LANGUAGE_CODE == 'zh-hans' %}w3-light-grey w3-disabled{% endif %}">
+       🇨🇳 Chinese
+    </a>
+
+  </div>
+</div>
+
+<script>
+function changeLanguage(lang) {
+  document.getElementById('lang-input').value = lang;
+  document.getElementById('lang-form').submit();
+}
+</script>

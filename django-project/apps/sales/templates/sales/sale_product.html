@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% load humanize %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<div class="wrap">
+  <div class="layout">
+    <!-- Category Rail -->
+    <div class="rail">
+      <h4 class="lao-noto">{% translate "Category" %}</h4>
+      <a href="{% url 'sales:sale_page' %}" class="{% if not selected_category %}active{% endif %}">
+        <i class="bi bi-grid-fill"></i>
+        {% translate "All Category" %}
+      </a>
+      {% for cat in product_category %}
+        <a href="?category={{ cat.id }}" class="{% if selected_category|add:'0' == cat.id %}active{% endif %}">
+          <i class="bi bi-tag"></i>
+          {{ cat.name }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div>
+      <!-- Hero Slider Container -->
+      {% if hero_sliders %}
+      <div class="hero-container">
+        {% for slide in hero_sliders %}
+          <div class="mySlides" style="display:{% if forloop.first %}block{% else %}none{% endif %}; height:100%;">
+            <div class="hero">
+              {% if slide.image %}
+                <img src="{{ slide.image.url }}" class="hero-img" alt="{{ slide.title|default:_('Hero Slide') }}">
+                <div class="hero-overlay"></div>
+              {% endif %}
+              <div class="hero-content">
+                {% if slide.title %}<h2 class="lao">{{ slide.title }}</h2>{% endif %}
+                {% if slide.subtitle %}<p class="lao">{{ slide.subtitle }}</p>{% endif %}
+                {% if slide.button_url and slide.button_text %}
+                  <a href="{{ slide.button_url }}" class="hero-btn lao">{{ slide.button_text }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% else %}
+        -
+      {% endif %}
+
+      {% include 'components/saerch_template.html' %}
+
+      <!-- Product Grid (5 Items Per Row) -->
+      <div class="grid">
+        {% for product in products %}
+          <div class="card">
+            <div class="imgbox">
+              {% if product.product_img %}
+                <img src="{{ product.product_img.url }}" alt="{{ product.name }}">
+              {% else %}
+                <i class="bi bi-box-seam" title="{% translate 'Product Image' %}"></i>
+              {% endif %}
+            </div>
+            <div class="cardbody">
+              <p class="cat">
+                {% if product.category %}
+                  {{ product.category.name }}
+                {% else %}
+                  {% translate "General" %}
+                {% endif %}
+              </p>
+              <p class="title lao">{{ product.name }}</p>
+              <div class="price-box">
+                <span class="price"> {{ product.currency.symbol }} {{ product.price|floatformat:0|intcomma }}</span>
+              </div>
+
+              <!-- Quantity Selector -->
+              <div class="qty-control">
+                <button type="button" class="qty-btn" onclick="decreaseQty(this)" aria-label="{% translate 'Decrease Quantity' %}">-</button>
+                <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
+                <button type="button" class="qty-btn" onclick="increaseQty(this)" aria-label="{% translate 'Increase Quantity' %}">+</button>
+              </div>
+
+              <button type="button" class="btn-add-cart lao">
+                <i class="bi bi-cart-plus"></i>
+                {% translate "Add to Cart" %}
+              </button>
+            </div>
+          </div>
+        {% empty %}
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 0; color: var(--muted);">
+            <p class="lao">{% translate "Not found." %}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% include 'components/pagination.html' %}
+    </div>
+  </div>
+</div>
+{% endblock %}

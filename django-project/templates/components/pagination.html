@@ -1,0 +1,67 @@
+{% load static %}
+{% load i18n %}
+
+<div class="w3-center" style="padding: 16px 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+        <div style="display: flex; gap: 6px; align-items: center; justify-content: center;">
+
+            {# Previous Button #}
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}"
+                   class="w3-button w3-circle w3-hover-blue"
+                   style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25); flex-shrink: 0;"
+                   onmouseover="this.style.transform='scale(1.08)';"
+                   onmouseout="this.style.transform='scale(1)';">
+                    <i class="fa fa-chevron-left" style="font-size: 12px;"></i>
+                </a>
+            {% else %}
+                <button class="w3-button w3-circle w3-disabled"
+                        style="background: #f1f5f9; color: #cbd5e1; border: none; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: not-allowed; flex-shrink: 0;">
+                    <i class="fa fa-chevron-left" style="font-size: 12px;"></i>
+                </button>
+            {% endif %}
+
+            {# Page Numbers #}
+            {% for page_num in page_obj.paginator.page_range %}
+                {% if page_num == page_obj.number %}
+                    <span class="w3-button w3-circle"
+                          style="background: linear-gradient(135deg, #2563eb, #1e40af); color: white; border: 1.5px solid #2563eb; font-weight: 700; font-size: 13px; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35); flex-shrink: 0;">
+                        {{ page_num }}
+                    </span>
+                {% else %}
+                    <a href="?page={{ page_num }}"
+                       class="w3-button w3-circle w3-hover-blue"
+                       style="background: #ffffff; color: #2563eb; border: 1px solid #e2e8f0; font-weight: 500; font-size: 13px; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0;"
+                       onmouseover="this.style.background='#dbeafe'; this.style.borderColor='#2563eb';"
+                       onmouseout="this.style.background='#ffffff'; this.style.borderColor='#e2e8f0';">
+                        {{ page_num }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+            {# Next Button #}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"
+                   class="w3-button w3-circle w3-hover-blue"
+                   style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25); flex-shrink: 0;"
+                   onmouseover="this.style.transform='scale(1.08)';"
+                   onmouseout="this.style.transform='scale(1)';">
+                    <i class="fa fa-chevron-right" style="font-size: 12px;"></i>
+                </a>
+            {% else %}
+                <button class="w3-button w3-circle w3-disabled"
+                        style="background: #f1f5f9; color: #cbd5e1; border: none; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: not-allowed; flex-shrink: 0;">
+                    <i class="fa fa-chevron-right" style="font-size: 12px;"></i>
+                </button>
+            {% endif %}
+
+        </div>
+
+        {# Page Info #}
+        {% if page_obj %}
+        <div style="color: #64748b; font-size: 12px; font-weight: 500; text-align: center;">
+            Page <b style="color: #2563eb;">{{ page_obj.number }}</b> of <b>{{ page_obj.paginator.num_pages }}</b>
+        </div>
+        {% endif %}
+    </div>
+</div>

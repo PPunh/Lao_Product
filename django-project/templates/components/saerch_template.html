@@ -1,0 +1,195 @@
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+
+<style>
+  :root {
+    --orange: #FF6B00;
+    --orange-hover: #E05E00;
+    --orange-soft: #FFF4ED;
+    --orange-line: #FFD4B8;
+    --gold: #B8862E;
+    --bg: #F9F8F6;
+    --surface: #FFFFFF;
+    --text: #232131;
+    --muted: #726F82;
+    --border: #E4E1EC;
+    --radius: 14px;
+  }
+
+  .header-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px rgba(255, 107, 0, 0.05);
+  }
+
+  .header-title-box {
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .header-title-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--orange);
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+  }
+
+  .header-title-box p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .header-form-box {
+    flex: 1.5;
+    min-width: 300px;
+  }
+
+  .header-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .custom-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13.5px;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    height: 40px;
+  }
+
+  .custom-select:focus {
+    border-color: var(--orange);
+  }
+
+  .custom-search-input-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-search-input-wrap i {
+    position: absolute;
+    left: 14px;
+    color: var(--muted);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  .custom-search-input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 16px 8px 38px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 13.5px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .custom-search-input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px var(--orange-soft);
+  }
+
+  .btn-search-submit {
+    height: 40px;
+    padding: 0 20px;
+    background: var(--orange);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .btn-search-submit:hover {
+    background: var(--orange-hover);
+  }
+
+  .btn-search-submit:active {
+    transform: scale(0.98);
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════
+        HEADER & STATS SECTION
+    ═══════════════════════════════════════════ -->
+<div class="header-card">
+    <!-- Title & Meta -->
+    <div class="header-title-box">
+        <h3 class="lao-noto">
+            {{ title|upper }}
+        </h3>
+        <p class="lao-noto">
+            {% translate "Find what you're looking for." %}
+        </p>
+    </div>
+
+    <!-- Filter & Search Form -->
+    <div class="header-form-box">
+        <form method="get" class="header-form">
+            <!-- Status Filter -->
+            {% if status_choices %}
+            <div style="flex: 1; min-width: 150px;">
+                <select name="status" class="custom-select lao-noto" style="width: 100%;" onchange="this.form.submit()">
+                    <option value="">{% translate "Show All" %}</option>
+                    {% for value, label in status_choices %}
+                    <option value="{{ value }}" {% if value == current_status %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+
+            <!-- Search Input -->
+            <div class="custom-search-input-wrap">
+                <i class="fa fa-search"></i>
+                <input type="text" 
+                       name="{{ search_param }}"
+                       class="custom-search-input lao-noto"
+                       placeholder="{{ search_placeholder }}"
+                       value="{{ search_query }}">
+            </div>
+
+            <!-- Action Button -->
+            <button type="submit" class="btn-search-submit lao-noto">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+
+        {% if summary_stats %}
+            <div style="margin-top: 12px;">
+                {% include "components/count_item_as_status.html" %}
+            </div>
+        {% endif %}
+    </div>
+</div>

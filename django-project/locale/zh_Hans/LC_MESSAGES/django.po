@@ -1,0 +1,335 @@
+# Chinese translation file for Django project
+# Copyright (C) 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-11 19:15+0700\n"
+"PO-Revision-Date: 2026-09-11 17:30+0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese <zh@li.org>\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/core/mixins.py:40
+#, python-brace-format
+msgid "Model string '{model_config}' must be in format 'app_name.ModelName'"
+msgstr "模型字符串 '{model_config}' 必须符合 'app_name.ModelName' 的格式"
+
+#: apps/core/models.py:22
+msgid "Title"
+msgstr "标题"
+
+#: apps/core/models.py:23
+msgid "Main headline text on the slider"
+msgstr "轮播图上的主标题文本"
+
+#: apps/core/models.py:28
+msgid "Subtitle"
+msgstr "副标题"
+
+#: apps/core/models.py:29
+msgid "Short description or sub-headline"
+msgstr "简短描述或副标题"
+
+#: apps/core/models.py:33
+msgid "Hero Image"
+msgstr "轮播大图"
+
+#: apps/core/models.py:34
+msgid "Recommended size: 1920x800px"
+msgstr "建议尺寸：1920x800 像素"
+
+#: apps/core/models.py:40
+msgid "Button Text"
+msgstr "按钮文本"
+
+#: apps/core/models.py:41
+msgid "e.g. Shop Now, Learn More"
+msgstr "例如：立即选购、了解更多"
+
+#: apps/core/models.py:47
+msgid "Button Link URL"
+msgstr "按钮链接 URL"
+
+#: apps/core/models.py:48
+msgid "e.g. /products/ or https://example.com"
+msgstr "例如：/products/ 或 https://example.com"
+
+#: apps/core/models.py:52
+msgid "Display Order"
+msgstr "显示顺序"
+
+#: apps/core/models.py:53
+msgid "Ordering sequence (e.g. 0, 1, 2)"
+msgstr "排序顺序（例如：0, 1, 2）"
+
+#: apps/core/models.py:57
+msgid "Is Active"
+msgstr "是否启用"
+
+#: apps/core/models.py:58
+msgid "Toggle to show/hide this slide on the frontend"
+msgstr "切换在前端显示或隐藏此幻灯片"
+
+#: apps/core/models.py:65 apps/sales/templates/sales/sale_product.html:37
+msgid "Hero Slide"
+msgstr "轮播幻灯片"
+
+#: apps/core/models.py:66
+msgid "Hero Slides"
+msgstr "轮播幻灯片列表"
+
+#: apps/core/models.py:73
+msgid "Village"
+msgstr "村/社区"
+
+#: apps/core/models.py:74
+msgid "Street"
+msgstr "街道"
+
+#: apps/core/models.py:75
+msgid "District"
+msgstr "县/区"
+
+#: apps/core/models.py:76
+msgid "Province"
+msgstr "省/州"
+
+#: apps/core/models.py:77
+msgid "Country"
+msgstr "国家"
+
+#: apps/core/models.py:84 apps/products/models.py:64
+msgid "Name"
+msgstr "名称"
+
+#: apps/core/models.py:85
+msgid "Surname"
+msgstr "姓氏"
+
+#: apps/core/models.py:86
+msgid "Phone"
+msgstr "电话"
+
+#: apps/core/models.py:87
+msgid "Email"
+msgstr "电子邮箱"
+
+#: apps/core/models.py:93 apps/core/models.py:94
+msgid "Personal Information"
+msgstr "个人信息"
+
+#: apps/core/models.py:100
+msgid "Created At"
+msgstr "创建时间"
+
+#: apps/core/models.py:104
+msgid "Updated At"
+msgstr "更新时间"
+
+#: apps/core/models.py:111
+msgid "Created By"
+msgstr "创建人"
+
+#: apps/core/models.py:118
+msgid "Updated By"
+msgstr "更新人"
+
+#: apps/core/models.py:134
+msgid "Code"
+msgstr "编码/代码"
+
+#: apps/products/models.py:8 apps/products/models.py:66
+#: apps/sales/templates/sales/sale_product.html:16
+msgid "Category"
+msgstr "分类"
+
+#: apps/products/models.py:9 apps/products/models.py:65
+msgid "Description"
+msgstr "描述"
+
+#: apps/products/models.py:16
+msgid "Products Category"
+msgstr "产品分类"
+
+#: apps/products/models.py:17
+msgid "Products Categories"
+msgstr "产品分类列表"
+
+#: apps/products/models.py:22 apps/products/models.py:67
+msgid "Unit"
+msgstr "单位"
+
+#: apps/products/models.py:28
+msgid "Products Unit"
+msgstr "产品单位"
+
+#: apps/products/models.py:29
+msgid "Products Units"
+msgstr "产品单位列表"
+
+#: apps/products/models.py:36
+msgid "Currency Code"
+msgstr ""
+
+#: apps/products/models.py:37
+msgid "e.g. LAK, USD, CNY, THB"
+msgstr ""
+
+#: apps/products/models.py:42
+msgid "Currency Name"
+msgstr ""
+
+#: apps/products/models.py:47
+msgid "Symbol / Icon"
+msgstr ""
+
+#: apps/products/models.py:48
+msgid "e.g. ₭, $, ¥, ฿"
+msgstr ""
+
+#: apps/products/models.py:52
+msgid "Is Default Currency"
+msgstr ""
+
+#: apps/products/models.py:59 apps/products/models.py:73
+msgid "Currency"
+msgstr ""
+
+#: apps/products/models.py:60
+msgid "Currencies"
+msgstr ""
+
+#: apps/products/models.py:79
+#, fuzzy
+#| msgid "End Price"
+msgid "Price"
+msgstr "最高价格"
+
+#: apps/products/models.py:81
+msgid "Is Sellable"
+msgstr "是否可售"
+
+#: apps/products/models.py:86 apps/sales/templates/sales/sale_product.html:65
+msgid "Product Image"
+msgstr "产品图片"
+
+#: apps/products/models.py:95 apps/products/models.py:96 apps/sales/views.py:17
+msgid "Products"
+msgstr "产品"
+
+#: apps/products/models.py:110
+msgid "Product"
+msgstr "产品"
+
+#: apps/products/models.py:114
+msgid "Quantity"
+msgstr "数量"
+
+#: apps/products/models.py:122
+msgid "Stock"
+msgstr "库存"
+
+#: apps/products/models.py:123
+msgid "Stocks"
+msgstr "库存列表"
+
+#: apps/sales/templates/sales/sale_product.html:19
+msgid "All Category"
+msgstr "全部分类"
+
+#: apps/sales/templates/sales/sale_product.html:73
+msgid "General"
+msgstr "通用"
+
+#: apps/sales/templates/sales/sale_product.html:83
+msgid "Decrease Quantity"
+msgstr "减少数量"
+
+#: apps/sales/templates/sales/sale_product.html:85
+msgid "Increase Quantity"
+msgstr "增加数量"
+
+#: apps/sales/templates/sales/sale_product.html:90
+msgid "Add to Cart"
+msgstr "加入购物车"
+
+#: apps/sales/templates/sales/sale_product.html:96
+msgid "Not found."
+msgstr "未找到内容。"
+
+#: apps/users/templates/login.html:22 apps/users/templates/login.html:55
+msgid "LAO PRODUCT"
+msgstr "老挝特产"
+
+#: apps/users/templates/login.html:25
+msgid "Please login to your account"
+msgstr "请登录您的账号"
+
+#: apps/users/templates/login.html:30
+msgid "Username"
+msgstr "用户名"
+
+#: apps/users/templates/login.html:37
+msgid "Password"
+msgstr "密码"
+
+#: apps/users/templates/login.html:46
+msgid "Sign In"
+msgstr "登录"
+
+#: templates/components/saerch_template.html:154
+msgid "Find what you're looking for."
+msgstr "查找您想要的内容。"
+
+#: templates/components/saerch_template.html:165
+msgid "Show All"
+msgstr "显示全部"
+
+#: templates/general-nav.html:12
+msgid "Lao Product"
+msgstr "老挝特产"
+
+#: templates/general-nav.html:26
+msgid "Home"
+msgstr "首页"
+
+#: templates/general-nav.html:30
+msgid "Demand Center"
+msgstr "需求中心"
+
+#: templates/general-nav.html:34
+msgid "Supply Center"
+msgstr "供应中心"
+
+#: templates/general-nav.html:38
+msgid "Store Imformation"
+msgstr "店铺信息"
+
+#: templates/general-nav.html:42
+msgid "News"
+msgstr "新闻动态"
+
+#: templates/general-nav.html:46
+msgid "Talent Center"
+msgstr "人才中心"
+
+#: templates/general-nav.html:50
+msgid "Market Updates"
+msgstr "市场动态"
+
+#: templates/general-nav.html:75
+msgid "Login"
+msgstr "登录"
+
+#: templates/navigation_top_loged-in.html:12
+msgid "BACKEND STATE"
+msgstr "后台管理状态"
+
+#~ msgid "Start Price"
+#~ msgstr "起始价格"
