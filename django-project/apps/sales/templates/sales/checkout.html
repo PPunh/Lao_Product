@@ -51,8 +51,77 @@
                     </div>
                     <div>
                         <label>{{ form.payment_method.label }}</label>
-                        {{ form.payment_method }}
-                            <small class="field-help">{% trans "Payment processing is not connected yet. Select your preferred payment method." %}</small>
+                        <div class="payment-method-grid" role="radiogroup" aria-label="{{ form.payment_method.label }}">
+                            {% for value, label in form.payment_method.field.choices %}
+                                <label class="payment-method-option" data-payment-method="{{ value }}">
+                                    <input type="radio" name="payment_method" value="{{ value }}"{% if form.payment_method.value == value %} checked{% endif %}>
+                                    <span class="payment-method-icon">
+                                        {% if value == 'cash' or value == 'cod' %}<i class="fa-solid fa-wallet"></i>
+                                        {% elif value == 'promptpay' %}<i class="fa-solid fa-qrcode"></i>
+                                        {% elif value == 'visa' or value == 'mastercard' %}<i class="fa-solid fa-credit-card"></i>
+                                        {% elif value == 'swift_transfer' %}<i class="fa-solid fa-globe"></i>
+                                        {% else %}<i class="fa-solid fa-building-columns"></i>{% endif %}
+                                    </span>
+                                    <span>{{ label }}</span>
+                                </label>
+                            {% endfor %}
+                        </div>
+                        {% if form.payment_method.errors %}<small class="form-error">{{ form.payment_method.errors|striptags }}</small>{% endif %}
+                        <small class="field-help">{% trans "Payment processing is not connected yet. Select your preferred payment method." %}</small>
+                    </div>
+
+                    <div class="payment-information" data-payment-information>
+                        <div class="payment-information-heading">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <div>
+                                <label data-payment-information-label>{% trans "Payment Information" %}</label>
+                                <small class="field-help" data-payment-information-help>{% trans "Enter the details required for this payment method." %}</small>
+                            </div>
+                        </div>
+                        <div class="payment-fields-grid">
+                            <div class="payment-field" data-payment-field="account_name">
+                                <label for="payment-account-name">{% trans "Account Name" %}</label>
+                                <input id="payment-account-name" type="text" data-payment-input="account_name" autocomplete="off">
+                            </div>
+                            <div class="payment-field" data-payment-field="account_number">
+                                <label for="payment-account-number">{% trans "Account Number" %}</label>
+                                <input id="payment-account-number" type="text" data-payment-input="account_number" inputmode="numeric" autocomplete="off">
+                            </div>
+                            <div class="payment-field" data-payment-field="bank_name">
+                                <label for="payment-bank-name">{% trans "Bank Name" %}</label>
+                                <input id="payment-bank-name" type="text" data-payment-input="bank_name" autocomplete="off">
+                            </div>
+                            <div class="payment-field" data-payment-field="branch">
+                                <label for="payment-branch">{% trans "Branch" %}</label>
+                                <input id="payment-branch" type="text" data-payment-input="branch" autocomplete="off">
+                            </div>
+                            <div class="payment-field" data-payment-field="cardholder">
+                                <label for="payment-cardholder">{% trans "Cardholder Name" %}</label>
+                                <input id="payment-cardholder" type="text" data-payment-input="cardholder" autocomplete="cc-name">
+                            </div>
+                            <div class="payment-field" data-payment-field="card_number">
+                                <label for="payment-card-number">{% trans "Card Number" %}</label>
+                                <input id="payment-card-number" type="text" data-payment-input="card_number" inputmode="numeric" autocomplete="cc-number">
+                            </div>
+                            <div class="payment-field" data-payment-field="expiry">
+                                <label for="payment-expiry">{% trans "Expiry Date" %}</label>
+                                <input id="payment-expiry" type="text" data-payment-input="expiry" placeholder="MM/YY" autocomplete="cc-exp">
+                            </div>
+                            <div class="payment-field" data-payment-field="cvv">
+                                <label for="payment-cvv">{% trans "CVV" %}</label>
+                                <input id="payment-cvv" type="password" data-payment-input="cvv" inputmode="numeric" autocomplete="cc-csc">
+                            </div>
+                            <div class="payment-field" data-payment-field="swift_code">
+                                <label for="payment-swift-code">{% trans "SWIFT/BIC Code" %}</label>
+                                <input id="payment-swift-code" type="text" data-payment-input="swift_code" autocomplete="off">
+                            </div>
+                            <div class="payment-field payment-field-wide" data-payment-field="reference">
+                                <label for="payment-reference">{% trans "Payment Reference" %}</label>
+                                <input id="payment-reference" type="text" data-payment-input="reference" autocomplete="off">
+                            </div>
+                        </div>
+                        {{ form.notes.as_hidden }}
+                        {% if form.notes.errors %}<small class="form-error">{{ form.notes.errors|striptags }}</small>{% endif %}
                     </div>
                 </div>
 
@@ -106,4 +175,57 @@
         </aside>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    (function () {
+        var options = document.querySelectorAll('[data-payment-method]');
+        var information = document.querySelector('[data-payment-information]');
+        var informationLabel = document.querySelector('[data-payment-information-label]');
+        var informationHelp = document.querySelector('[data-payment-information-help]');
+        var notes = document.getElementById('id_notes');
+        var paymentForm = document.querySelector('form');
+        var fields = document.querySelectorAll('[data-payment-field]');
+        var configurations = {
+            promptpay: { label: '{% translate "PromptPay Information" %}', fields: ['account_name', 'account_number', 'reference'] },
+            icbc_laos: { label: '{% translate "ICBC Account Information" %}', fields: ['account_name', 'account_number', 'branch'] },
+            bcel_laos: { label: '{% translate "BCEL Account Information" %}', fields: ['account_name', 'account_number', 'branch'] },
+            visa: { label: '{% translate "Card Information" %}', fields: ['cardholder', 'card_number', 'expiry', 'cvv'] },
+            mastercard: { label: '{% translate "Card Information" %}', fields: ['cardholder', 'card_number', 'expiry', 'cvv'] },
+            swift_transfer: { label: '{% translate "Transfer Information" %}', fields: ['account_name', 'account_number', 'bank_name', 'swift_code'] }
+        };
+
+        function updatePaymentInformation() {
+            var selected = document.querySelector('input[name="payment_method"]:checked');
+            var configuration = selected && configurations[selected.value];
+            var needsInformation = Boolean(configuration);
+            information.hidden = !needsInformation;
+            fields.forEach(function (field) {
+                var visible = configuration && configuration.fields.indexOf(field.dataset.paymentField) !== -1;
+                field.hidden = !visible;
+                field.querySelector('input').required = visible;
+            });
+            if (needsInformation) {
+                informationLabel.textContent = configuration.label;
+                informationHelp.textContent = '{% translate "Enter the details required for this payment method." %}';
+            }
+        }
+
+        paymentForm.addEventListener('submit', function () {
+            var values = [];
+            document.querySelectorAll('[data-payment-field]:not([hidden]) input').forEach(function (input) {
+                if (input.value.trim()) {
+                    values.push(input.previousElementSibling.textContent.trim() + ': ' + input.value.trim());
+                }
+            });
+            notes.value = values.join('\n');
+        });
+
+        options.forEach(function (option) {
+            option.addEventListener('click', updatePaymentInformation);
+        });
+        updatePaymentInformation();
+    }());
+</script>
 {% endblock %}

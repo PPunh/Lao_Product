@@ -32,3 +32,11 @@ class CheckoutForm(forms.Form):
         initial='cash',
     )
     notes = forms.CharField(widget=forms.Textarea, required=False, label='Notes')
+
+    def clean(self):
+        cleaned_data = super().clean()
+        payment_method = cleaned_data.get('payment_method')
+        notes = (cleaned_data.get('notes') or '').strip()
+        if payment_method not in {'cash', 'cod'} and not notes:
+            self.add_error('notes', 'Please provide the payment information.')
+        return cleaned_data
