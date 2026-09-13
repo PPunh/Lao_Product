@@ -54,6 +54,15 @@
 
       {% include 'components/saerch_template.html' %}
 
+      {% if cart_count %}
+        <div class="sale-cart-bar">
+          <span><i class="bi bi-bag-check"></i> {{ cart_count }} {% translate "item(s) in your cart" %}</span>
+          <a href="{% url 'sales:cart' %}" class="go-cart-btn lao">
+            {% translate "Go to Cart" %} <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      {% endif %}
+
       <!-- Product Grid (5 Items Per Row) -->
       <div class="grid">
         {% for product in products %}
@@ -82,11 +91,11 @@
                 {% csrf_token %}
                 <input type="hidden" name="product_id" value="{{ product.id }}">
 
-                {% comment %} <div class="qty-control">
-                  <button type="button" class="qty-btn" onclick="decreaseQty(this)" aria-label="{% translate 'Decrease Quantity' %}">-</button>
-                  <input type="number" class="qty-input" name="quantity" value="1" min="1" max="99" readonly>
-                  <button type="button" class="qty-btn" onclick="increaseQty(this)" aria-label="{% translate 'Increase Quantity' %}">+</button>
-                </div> {% endcomment %}
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" data-quantity-action="decrease" aria-label="{% translate 'Decrease Quantity' %}">-</button>
+                  <input type="number" class="qty-input" name="quantity" value="1" min="1" max="99" aria-label="{% translate 'Quantity' %}">
+                  <button type="button" class="qty-btn" data-quantity-action="increase" aria-label="{% translate 'Increase Quantity' %}">+</button>
+                </div>
 
                 <button type="submit" class="btn-add-cart lao">
                   <i class="bi bi-cart-plus"></i>
@@ -107,4 +116,16 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+  document.querySelectorAll('[data-quantity-action]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var input = button.closest('.qty-control').querySelector('.qty-input');
+      var nextQuantity = Number(input.value) + (button.dataset.quantityAction === 'increase' ? 1 : -1);
+      input.value = Math.min(Math.max(nextQuantity, Number(input.min)), Number(input.max));
+    });
+  });
+</script>
 {% endblock %}

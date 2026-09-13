@@ -98,7 +98,7 @@ body{
 }
 .qty-btn:hover{background:var(--orange); color:#fff;}
 .qty-input{
-  width:32px; border:none; background:transparent; text-align:center;
+  width:38px; border:none; background:transparent; text-align:center;
   font-size:12px; font-weight:600; color:var(--text); outline:none;
 }
 /* Disable chrome spinner */
@@ -113,6 +113,11 @@ body{
   gap:6px; cursor:pointer; transition:background .2s, color .2s; margin-top:auto;
 }
 .btn-add-cart:hover{background:var(--orange); color:#fff;}
+.sale-cart-bar{display:flex; align-items:center; justify-content:space-between; gap:14px; margin:18px 0 12px; padding:10px 12px 10px 16px; border:1px solid var(--orange-line); border-radius:10px; background:var(--orange-soft); color:var(--text); font-size:13px;}
+.sale-cart-bar > span{display:flex; align-items:center; gap:8px;}
+.sale-cart-bar > span i{color:var(--orange); font-size:16px;}
+.go-cart-btn{display:inline-flex; align-items:center; gap:7px; padding:8px 13px; border-radius:7px; background:var(--orange); color:#fff; font-size:12px; font-weight:600; text-decoration:none;}
+.go-cart-btn:hover{background:var(--orange-hover); color:#fff;}
 
 /* Pagination */
 .pager{display:flex; align-items:center; justify-content:space-between; margin-top:22px; font-size:13px; color:var(--muted);}
@@ -206,6 +211,8 @@ body{
   .line-total{grid-column:2; grid-row:1; min-width:0;}
 }
 @media (max-width:520px){
+  .sale-cart-bar{align-items:flex-start; flex-direction:column;}
+  .go-cart-btn{width:100%; justify-content:center;}
   .form-row,.order-details{grid-template-columns:1fr;}
   .form-panel,.summary-panel,.success-panel{padding:18px;}
   .coupon-input{align-items:stretch; flex-direction:column;}

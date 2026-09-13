@@ -56,7 +56,7 @@ def add_to_cart(request):
     cart.recalculate()
 
     messages.success(request, _('%(product)s added to cart.') % {'product': product.name})
-    return redirect('sales:cart')
+    return redirect('sales:sale_page')
 
 
 @require_POST
