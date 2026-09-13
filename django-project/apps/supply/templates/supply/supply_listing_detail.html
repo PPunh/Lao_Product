@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page portal-page">
+    <a class="text-link news-back-link" href="{% url 'supply:center' %}"><i class="fa-solid fa-arrow-left"></i> {% translate "Back to supply center" %}</a>
+    <article class="portal-detail">
+        <p class="eyebrow">{{ listing.get_listing_type_display }}</p>
+        <h1 class="lao-noto">{{ listing.title }}</h1>
+        <p class="portal-detail-owner">{{ listing.supplier.business_name }}</p>
+        <div class="portal-detail-copy">{{ listing.description|linebreaks }}</div>
+        <div class="product-meta">
+            {% if listing.price %}<span><i class="fa-solid fa-tag"></i> {{ listing.price }}{% if listing.unit %} / {{ listing.unit }}{% endif %}</span>{% endif %}
+            <span><i class="fa-solid fa-boxes-stacked"></i> {% translate "Minimum" %}: {{ listing.minimum_quantity }}</span>
+        </div>
+        <div class="portal-contact"><strong>{% translate "Contact supplier" %}</strong><span>{{ listing.supplier.email }}</span><span>{{ listing.supplier.phone }}</span><span>{{ listing.supplier.address }}</span></div>
+    </article>
+</main>
+{% endblock %}

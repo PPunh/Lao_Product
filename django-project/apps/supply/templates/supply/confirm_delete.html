@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% load i18n %}
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+{% block main-content %}<main class="wrap commerce-page portal-page form-page"><div class="form-panel portal-form"><p class="eyebrow">{% translate "Supply Center" %}</p><h1 class="lao-noto">{% translate "Delete listing?" %}</h1><p>{% translate "This action cannot be undone." %}</p><form method="post">{% csrf_token %}<button class="primary-button" type="submit">{% translate "Delete listing" %}</button></form></div></main>{% endblock %}

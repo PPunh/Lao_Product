@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+{% block main-content %}
+<main class="wrap commerce-page portal-page"><a class="text-link news-back-link" href="{% url 'talent:center' %}"><i class="fa-solid fa-arrow-left"></i> {% translate "Back to Talent Center" %}</a><article class="portal-detail"><p class="eyebrow">{{ opportunity.get_opportunity_type_display }}</p><h1 class="lao-noto">{{ opportunity.title }}</h1><p class="portal-detail-owner">{{ opportunity.organization_name }}{% if opportunity.location %} · {{ opportunity.location }}{% endif %}</p><div class="portal-detail-copy">{{ opportunity.description|linebreaks }}</div><div class="product-meta">{% if opportunity.deadline %}<span><i class="fa-solid fa-calendar"></i> {% translate "Apply by" %}: {{ opportunity.deadline }}</span>{% endif %}<span><i class="fa-solid fa-envelope"></i> {{ opportunity.contact_email }}</span></div>{% if user.is_authenticated and has_applied %}<p class="news-date">{% translate "You have already applied to this opportunity." %}</p>{% elif user.is_authenticated and not has_profile %}<a class="primary-button" href="{% url 'talent:profile-create' %}">{% translate "Create profile to apply" %}</a>{% elif user.is_authenticated %}<a class="primary-button" href="{% url 'talent:application-create' opportunity.pk %}">{% translate "Apply now" %}</a>{% else %}<a class="primary-button" href="{% url 'users:login' %}">{% translate "Login to apply" %}</a>{% endif %}</article></main>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+{% block main-content %}
+<main class="wrap commerce-page portal-page"><a class="text-link news-back-link" href="{% url 'market:updates' %}"><i class="fa-solid fa-arrow-left"></i> {% translate "Back to market updates" %}</a><article class="portal-detail">{% if update.is_featured %}<p class="eyebrow">{% translate "Featured update" %}</p>{% elif update.category %}<p class="eyebrow">{{ update.category.name }}</p>{% endif %}<h1 class="lao-noto">{{ update.title }}</h1>{% if update.published_at %}<p class="news-date">{{ update.published_at|date:"d M Y" }}</p>{% endif %}{% if update.image %}<img class="market-detail-image" src="{{ update.image.url }}" alt="{{ update.title }}">{% endif %}<p class="news-detail-subject">{{ update.summary }}</p><div class="portal-detail-copy">{{ update.content|linebreaks }}</div>{% if update.product or update.demand_center %}<div class="product-meta">{% if update.product %}<span><i class="fa-solid fa-box"></i> {{ update.product.name }}</span>{% endif %}{% if update.demand_center %}<span><i class="fa-solid fa-users"></i> {{ update.demand_center.name }}</span>{% endif %}</div>{% endif %}{% if update.source_url %}<a class="text-link" href="{{ update.source_url }}" target="_blank" rel="noopener">{% translate "View source" %} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>{% endif %}</article></main>
+{% endblock %}
