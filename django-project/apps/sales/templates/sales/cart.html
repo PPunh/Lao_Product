@@ -3,6 +3,7 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% load humanize %}
+{% load sales_tags %}
 
 {% block navigation_top %}
     {% include 'general-nav.html' %}
@@ -27,7 +28,7 @@
                             <p class="item-category">{% trans "Product" %}</p>
                             <h3 class="lao-noto">{{ item.product.name }}</h3>
                             {% if item.variant_name %}<p class="item-variant">{{ item.variant_name }}</p>{% endif %}
-                            <p class="item-price">{% trans "Unit Price" %}: {{ item.unit_price|floatformat:2|intcomma }}</p>
+                            <p class="item-price">{% trans "Unit Price" %}: {{ item.unit_price|money_format:2 }}</p>
                         </div>
                         <div class="cart-item-actions">
                             <div class="quantity-control">
@@ -47,7 +48,7 @@
                             </form>
                         </div>
                         <strong class="line-total">
-                                {{ item.line_total|floatformat:2|intcomma }}
+                                {{ item.line_total|money_format:2 }}
                         </strong>
                     </article>
                 {% endfor %}
@@ -57,23 +58,23 @@
                     <div class="summary-heading"><span class="section-icon"><i class="bi bi-receipt"></i></span><h2>{% trans "Order Summary" %}</h2></div>
                     <div class="summary-row">
                         <span>{% trans "Subtotal" %}</span>
-                        <strong>{{ cart.subtotal|floatformat:2|intcomma }}</strong>
+                        <strong>{{ cart.subtotal|money_format:2 }}</strong>
                     </div>
                     <div class="summary-row">
                         <span>{% trans "Discount" %}</span>
-                        <strong>{{ cart.discount|floatformat:2|intcomma }}</strong>
+                        <strong>{{ cart.discount|money_format:2 }}</strong>
                     </div>
                     <div class="summary-row">
                         <span>{% trans "Shipping" %}</span>
-                        <strong>{{ cart.shipping_fee|floatformat:2|intcomma }}</strong>
+                        <strong>{{ cart.shipping_fee|money_format:2 }}</strong>
                     </div>
                     <div class="summary-row">
                         <span>{% trans "Tax" %}</span>
-                        <strong>{{ cart.tax_amount|floatformat:2|intcomma }}</strong>
+                        <strong>{{ cart.tax_amount|money_format:2 }}</strong>
                     </div>
                     <div class="summary-total">
                         <span>{% trans "Grand Total" %}</span>
-                        <strong>{{ cart.grand_total|floatformat:2|intcomma }}</strong>
+                        <strong>{{ cart.grand_total|money_format:2 }}</strong>
                     </div>
 
                     <form method="post" action="{% url 'sales:apply_coupon' %}" class="coupon-form">

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/custom.css' %}">
+{% endblock %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page news-page">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">{% translate "Connect with local needs" %}</p>
+            <h1 class="lao-noto">{% translate "Demand Center" %}</h1>
+        </div>
+        <p class="news-count">{{ page_obj.paginator.count }} {% translate "centers" %}</p>
+    </div>
+
+    <div class="demand-grid">
+        {% for center in demand_centers %}
+        <article class="demand-card">
+            <div class="demand-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+            <div class="demand-card-body">
+                <h2 class="lao"><a href="{% url 'news:demand-center-detail' center.pk %}">{{ center.name }}</a></h2>
+                <p class="demand-address"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ center.address|truncatewords:18 }}</p>
+                <a class="text-link news-read-more" href="{% url 'news:demand-center-detail' center.pk %}">{% translate "View center" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">
+            <div class="empty-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+            <h2>{% translate "No demand centers found" %}</h2>
+            <p>{% translate "Active demand centers will appear here." %}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% include 'components/pagination.html' %}
+</main>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load sales_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'sales/css/custom.css' %}">
+{% endblock %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page product-detail-page">
+    <a class="text-link news-back-link" href="{% url 'sales:sale_page' %}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {% translate "Back to products" %}</a>
+    <article class="product-detail">
+        <div class="product-detail-image">
+            {% if product.product_img %}
+                <img src="{{ product.product_img.url }}" alt="{{ product.name }}">
+            {% else %}
+                <i class="bi bi-box-seam" aria-hidden="true"></i>
+            {% endif %}
+        </div>
+        <div class="product-detail-content">
+            <p class="eyebrow">{% if product.category %}{{ product.category.name }}{% else %}{% translate "Product" %}{% endif %}</p>
+            <h1 class="lao-noto">{{ product.name }}</h1>
+            {% if product.code %}<p class="product-code">{{ product.code }}</p>{% endif %}
+            <div class="product-detail-price">{% if product.currency %}{{ product.currency.symbol }} {% endif %}{{ product.price|money_format:0 }}</div>
+            {% if product.description %}<div class="product-description">{{ product.description|linebreaks }}</div>{% endif %}
+            <div class="product-meta">
+                {% if product.unit %}<span><i class="fa-solid fa-box" aria-hidden="true"></i> {{ product.unit.name }}</span>{% endif %}
+                {% if product.stocks.first %}<span><i class="fa-solid fa-cubes" aria-hidden="true"></i> {{ product.stocks.first.quantity }} {% translate "available" %}</span>{% endif %}
+            </div>
+            <form method="post" action="{% url 'sales:add_to_cart' %}" class="product-detail-form">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <div class="qty-control">
+                    <button type="button" class="qty-btn" data-quantity-action="decrease" aria-label="{% translate 'Decrease Quantity' %}">-</button>
+                    <input type="number" class="qty-input" name="quantity" value="1" min="1" max="99" aria-label="{% translate 'Quantity' %}">
+                    <button type="button" class="qty-btn" data-quantity-action="increase" aria-label="{% translate 'Increase Quantity' %}">+</button>
+                </div>
+                <button type="submit" class="primary-button"><i class="bi bi-cart-plus" aria-hidden="true"></i> {% translate "Add to Cart" %}</button>
+            </form>
+            {% if cart_count %}<a class="text-link" href="{% url 'sales:cart' %}">{{ cart_count }} {% translate "item(s) in your cart" %}</a>{% endif %}
+        </div>
+    </article>
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+  document.querySelectorAll('[data-quantity-action]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var input = button.closest('.qty-control').querySelector('.qty-input');
+      var nextQuantity = Number(input.value) + (button.dataset.quantityAction === 'increase' ? 1 : -1);
+      input.value = Math.min(Math.max(nextQuantity, Number(input.min)), Number(input.max));
+    });
+  });
+</script>
+{% endblock %}

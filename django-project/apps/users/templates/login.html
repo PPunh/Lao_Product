@@ -2,14 +2,13 @@
 {% load static %}
 {% load widget_tweaks %}
 {% load i18n %}
-{% block navigation_top %}
-{% endblock %}
+
 
 {% block main-content %}
 <div class="w3-container w3-row" style="height: 60vh;">
     <div class="w3-col l4 m6 s12 w3-display-center w3-margin-top" style="position: relative; float: none; margin: 0 auto;">
 
-        <div class="w3-padding-32 w3-white">
+        <div class="w3-padding-32 w3-white w3-round-large w3-padding">
 
             <form method="post" class="w3-container w3-center">
                 {% csrf_token %}
@@ -40,9 +39,15 @@
                         placeholder="{% trans 'Password' %}" required id="id_password">
                 </div>
 
-                <div class="w3-section">
+                <div class="w3-section w3-cell-row">
+                    <a type="submit" href="{% url 'sales:sale_page' %}"
+                    class="w3-button w3-block w3-half  w3-red w3-round w3-padding-large w3-hover-black w3-hover-text-white w3-hover-shadow" style="font-weight: bold;">
+                    <i class="fa-solid fa-arrow-left"></i>
+                        <span>{% trans "Back" %}</span> &nbsp;
+                    </a>
+
                     <button type="submit"
-                    class="w3-button w3-block w3-blue w3-round w3-padding-large w3-hover-black w3-hover-text-white w3-hover-shadow" style="font-weight: bold;">
+                    class="w3-button w3-block w3-half w3-blue w3-round w3-padding-large w3-hover-black w3-hover-text-white w3-hover-shadow" style="font-weight: bold;">
                         <span>{% trans "Sign In" %}</span> &nbsp;
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
@@ -59,4 +64,6 @@
 
     </div>
 </div>
+{% endblock %}
+{% block footer %}
 {% endblock %}

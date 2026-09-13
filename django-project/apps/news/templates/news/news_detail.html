@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/custom.css' %}">
+{% endblock %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page news-page">
+    <a class="text-link news-back-link" href="{% url 'news:news-list' %}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {% translate "Back to news" %}</a>
+    <article class="news-detail">
+        <p class="eyebrow">{% translate "News" %}</p>
+        <h1 class="lao-noto">{{ news.title }}</h1>
+        <p class="news-date">{{ news.created_at|date:"d M Y" }}</p>
+        {% if news.images %}
+            <img class="news-detail-image" src="{{ news.images.url }}" alt="{{ news.title }}">
+        {% endif %}
+        {% if news.subject %}<p class="news-detail-subject">{{ news.subject }}</p>{% endif %}
+        <div class="news-detail-content">{{ news.content|linebreaks }}</div>
+    </article>
+</main>
+{% endblock %}

@@ -3,6 +3,7 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% load humanize %}
+{% load sales_tags %}
 
 {% block navigation_top %}
     {% include 'general-nav.html' %}
@@ -68,11 +69,13 @@
         {% for product in products %}
           <div class="card">
             <div class="imgbox">
-              {% if product.product_img %}
-                <img src="{{ product.product_img.url }}" alt="{{ product.name }}">
-              {% else %}
-                <i class="bi bi-box-seam" title="{% translate 'Product Image' %}"></i>
-              {% endif %}
+              <a class="product-image-link" href="{% url 'sales:product-detail' product.pk %}">
+                {% if product.product_img %}
+                  <img src="{{ product.product_img.url }}" alt="{{ product.name }}">
+                {% else %}
+                  <i class="bi bi-box-seam" title="{% translate 'Product Image' %}"></i>
+                {% endif %}
+              </a>
             </div>
             <div class="cardbody">
               <p class="cat">
@@ -85,7 +88,7 @@
               </p>
               <p class="title lao">{{ product.name }}</p>
               <div class="price-box">
-                <span class="price"> {{ product.currency.symbol }} {{ product.price|floatformat:0|intcomma }}</span>
+                <span class="price"> {{ product.currency.symbol }} {{ product.price|money_format:0 }}</span>
               </div>
 
               <form method="post" action="{% url 'sales:add_to_cart' %}">

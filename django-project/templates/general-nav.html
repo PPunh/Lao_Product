@@ -25,7 +25,7 @@
           <i class="fa-solid fa-home"></i>
           <span>{% trans "Home" %}</span>
       </a>
-      <a href="#" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+        <a href="{% url 'news:demand-center' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-users"></i>
           <span>{% trans "Demand Center" %}</span>
       </a>
@@ -37,7 +37,7 @@
           <i class="fa-solid fa-shopping-cart"></i>
           <span>{% trans "Cart" %}</span>
       </a>
-      <a href="#" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+        <a href="{% url 'news:news-list' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-info"></i>
           <span>{% trans "News" %}</span>
       </a>

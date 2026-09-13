@@ -3,7 +3,6 @@ from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin
 from .models import (
         HeroModel,
-        PersonalInfoModel,
     )
 
 
@@ -12,8 +11,3 @@ class HeroAdmin(TabbedTranslationAdmin):
     list_display = ('title', 'is_active', 'order')
     search_fields = ('title', )
     list_filter = ('is_active', )
-
-
-@admin.register(PersonalInfoModel)
-class PersonalInfoAdmin(TabbedTranslationAdmin):
-    list_display = ('name', 'surname', 'phone', 'email')

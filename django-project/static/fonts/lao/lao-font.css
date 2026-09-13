@@ -9,9 +9,6 @@ src: url(NotoSansLao-Regular.woff) format('woff');
 	font-family: 'Noto Sans Lao',  sans-serif  !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: "Noto Sans Lao", sans-serif !important;
-}
 /* Noto Sans Lao Looped */
 @font-face {
 font-family: 'Noto Sans Lao Looped';
@@ -51,7 +48,6 @@ font-family: 'Lao Hand Writing 11';
 font-style: normal;
 font-weight: 400;
 src: url(Lao_Handwriting11.woff) format('woff');
-}
 }
 .lao-hand11 {
 	font-family: 'Lao Hand Writing 11',  sans-serif  !important;
@@ -129,7 +125,6 @@ font-family: 'Lao Luangpouchan 2';
 font-style: normal;
 font-weight: 400;
 src: url(Lao_Luangpouchan2.woff) format('woff');
-}
 }
 .lao-luangpouchan2 {
 	font-family: 'Lao Luangpouchan 2',  sans-serif  !important;

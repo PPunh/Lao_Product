@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% load humanize %}
+{% load sales_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/custom.css' %}">
+{% endblock %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<div class="wrap commerce-page news-page">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">{% translate "Lao Product updates" %}</p>
+            <h1 class="lao-noto">{% translate "News" %}</h1>
+        </div>
+        <p class="news-count">{{ page_obj.paginator.count }} {% translate "articles" %}</p>
+    </div>
+
+    <form class="news-search" method="get">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" name="search" value="{{ search_query }}" placeholder="{% translate 'Search news' %}" aria-label="{% translate 'Search news' %}">
+        <button type="submit" class="soft-button">{% translate "Search" %}</button>
+    </form>
+
+    <div class="news-grid">
+        {% for article in news_list %}
+        <article class="news-card">
+            <a class="news-card-image" href="{% url 'news:news-detail' article.pk %}">
+                {% if article.images %}
+                    <img src="{{ article.images.url }}" alt="{{ article.title }}">
+                {% else %}
+                    <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
+                {% endif %}
+            </a>
+            <div class="news-card-body">
+                <p class="news-date">{{ article.created_at|date:"d M Y" }}</p>
+                <h2 class="lao"><a href="{% url 'news:news-detail' article.pk %}">{{ article.title }}</a></h2>
+                <p class="news-subject">{{ article.subject|truncatewords:24 }}</p>
+                <a class="text-link news-read-more" href="{% url 'news:news-detail' article.pk %}">{% translate "Read article" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">
+            <div class="empty-icon"><i class="fa-regular fa-newspaper" aria-hidden="true"></i></div>
+            <h2>{% translate "No news found" %}</h2>
+            <p>{% translate "Try another search or check back later for new updates." %}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% include 'components/pagination.html' %}
+</div>
+{% endblock %}

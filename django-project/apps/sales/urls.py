@@ -10,6 +10,7 @@ router = DefaultRouter()
 urlpatterns = [
     path('api/', include(router.urls)),
     path('', views.SalePage.as_view(), name='sale_page'),
+    path('product/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
     path('cart/', views.CartPage.as_view(), name='cart'),
     path('cart/add/', views.add_to_cart, name='add_to_cart'),
     path('cart/apply-coupon/', views.apply_coupon, name='apply_coupon'),

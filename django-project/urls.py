@@ -32,7 +32,7 @@ urlpatterns += i18n_patterns(
     path('core/', include('apps.core.urls', namespace='core')),
     path('', include('apps.sales.urls', namespace='sales')),
     path('products/', include('apps.products.urls', namespace='products')),
-
+    path('news/', include('apps.news.urls', namespace='news')),
     # SET PREFIX_DEFAULT_LANG
     prefix_default_language=True,
 )

@@ -3,6 +3,7 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% load humanize %}
+{% load sales_tags %}
 
 {% block navigation_top %}
     {% include 'general-nav.html' %}
@@ -18,7 +19,7 @@
 
         <div class="order-details">
             <div><span>{% trans "Order Code" %}</span><strong>{{ order.code }}</strong></div>
-            <div><span>{% trans "Total" %}</span><strong>{{ order.grand_total|floatformat:2|intcomma }}</strong></div>
+            <div><span>{% trans "Total" %}</span><strong>{{ order.grand_total|money_format:2 }}</strong></div>
         </div>
 
         <a href="{% url 'sales:sale_page' %}" class="primary-button">{% trans "Continue Shopping" %} <i class="bi bi-arrow-right"></i></a>

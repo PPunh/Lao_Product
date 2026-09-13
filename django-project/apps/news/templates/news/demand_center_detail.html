@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/custom.css' %}">
+{% endblock %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page news-page">
+    <a class="text-link news-back-link" href="{% url 'news:demand-center' %}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {% translate "Back to demand centers" %}</a>
+    <article class="demand-detail">
+        <div class="demand-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+        <p class="eyebrow">{% translate "Demand Center" %}</p>
+        <h1 class="lao-noto">{{ demand_center.name }}</h1>
+        <div class="demand-contact-list">
+            <a href="https://www.google.com/maps/search/?api=1&query={{ demand_center.address|urlencode }}"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{{ demand_center.address }}</span></a>
+            <a href="tel:{{ demand_center.contact_number }}"><i class="fa-solid fa-phone" aria-hidden="true"></i><span>{{ demand_center.contact_number }}</span></a>
+            <a href="mailto:{{ demand_center.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>{{ demand_center.email }}</span></a>
+        </div>
+    </article>
+</main>
+{% endblock %}

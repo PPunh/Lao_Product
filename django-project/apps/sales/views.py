@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_POST
-from django.views.generic import TemplateView
+from django.views.generic import DetailView, TemplateView
 from django.views.generic.edit import FormView
 
 from apps.core.mixins import SearchFilterMixin
@@ -117,6 +117,21 @@ class SalePage(SearchFilterMixin, TemplateView):
         context['selected_category'] = selected_category
         cart = get_or_create_cart(self.request)
         context['cart_count'] = cart.item_count
+        return context
+
+
+class ProductDetailView(DetailView):
+    model = ProductsModel
+    template_name = 'sales/product_detail.html'
+    context_object_name = 'product'
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_sellable=True).select_related('category', 'unit', 'currency')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.object.name
+        context['cart_count'] = get_or_create_cart(self.request).item_count
         return context
 
 

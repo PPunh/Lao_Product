@@ -3,6 +3,7 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% load humanize %}
+{% load sales_tags %}
 
 {% block navigation_top %}
     {% include 'general-nav.html' %}
@@ -159,18 +160,18 @@
                 <div class="summary-item">
                     <div>
                         <div>{{ item.product.name }}</div>
-                        <small>{{ item.quantity }} x {{ item.unit_price|floatformat:2|intcomma }}</small>
+                        <small>{{ item.quantity }} x {{ item.unit_price|money_format:2 }}</small>
                     </div>
-                    <strong>{{ item.line_total|floatformat:2|intcomma }}</strong>
+                    <strong>{{ item.line_total|money_format:2 }}</strong>
                 </div>
             {% endfor %}
 
             <div class="summary-totals">
-                <div class="summary-row"><span>{% trans "Subtotal" %}</span><strong>{{ cart.subtotal|floatformat:2|intcomma }}</strong></div>
-                <div class="summary-row"><span>{% trans "Discount" %}</span><strong>{{ cart.discount|floatformat:2|intcomma }}</strong></div>
-                <div class="summary-row"><span>{% trans "Shipping" %}</span><strong>{{ cart.shipping_fee|floatformat:2|intcomma }}</strong></div>
-                <div class="summary-row"><span>{% trans "Tax" %}</span><strong>{{ cart.tax_amount|floatformat:2|intcomma }}</strong></div>
-                <div class="summary-total"><span>{% trans "Grand Total" %}</span><strong>{{ cart.grand_total|floatformat:2|intcomma }}</strong></div>
+                <div class="summary-row"><span>{% trans "Subtotal" %}</span><strong>{{ cart.subtotal|money_format:2 }}</strong></div>
+                <div class="summary-row"><span>{% trans "Discount" %}</span><strong>{{ cart.discount|money_format:2 }}</strong></div>
+                <div class="summary-row"><span>{% trans "Shipping" %}</span><strong>{{ cart.shipping_fee|money_format:2 }}</strong></div>
+                <div class="summary-row"><span>{% trans "Tax" %}</span><strong>{{ cart.tax_amount|money_format:2 }}</strong></div>
+                <div class="summary-total"><span>{% trans "Grand Total" %}</span><strong>{{ cart.grand_total|money_format:2 }}</strong></div>
             </div>
         </aside>
     </div>
