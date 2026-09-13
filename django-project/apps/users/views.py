@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 class Login(LoginView):
     '''user login using class base view (CBV)'''
 
-    form_class = AuthenticationForm
+    form_class = forms.LoginForm
     template_name = 'login.html'
     redirect_authenticated_user = True
 

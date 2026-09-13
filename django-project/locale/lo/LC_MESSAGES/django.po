@@ -123,7 +123,7 @@ msgstr "ໂທລະສັບ"
 #: apps/sales/models.py:120 apps/supply/models.py:19 apps/talent/models.py:23
 #: apps/users/forms.py:47
 msgid "Email"
-msgstr "ອີເທວ"
+msgstr "ອີເມວ"
 
 #: apps/core/models.py:97
 msgid "Created At"

@@ -21,7 +21,7 @@ class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, request=self.request, **kwargs)
 
     def clean(self):
         """

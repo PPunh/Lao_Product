@@ -30,6 +30,11 @@
                 <i class="fa-solid fa-lock" aria-hidden="true"></i>
                 <input type="password" name="password" autocomplete="current-password" placeholder="{% trans 'Password' %}" required id="id_password">
             </div>
+            <label for="id_captcha_1">{% trans "Security check" %}</label>
+            <div class="login-captcha">
+                {{ form.captcha }}
+            </div>
+            {% for error in form.captcha.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
             <div class="login-actions">
                 <a href="{% url 'sales:sale_page' %}" class="soft-button"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {% trans "Back" %}</a>
                 <button type="submit" class="primary-button"><span>{% trans "Sign In" %}</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
