@@ -6,7 +6,7 @@
     <a href="{% url 'sales:sale_page' %}"
       class="w3-bar-item w3-button w3-hover-none w3-hover-text-primary w3-padding-small"
       style="display: flex; align-items: center; height: 50px;">
-      <img src="{% static 'images/logo-laoproduct.png' %}" alt="Logo" style="height:45px; border-radius: 8px;" class="w3-white">
+      <img src="{% static 'images/logo-laoproduct.png' %}" alt="{% trans 'Lao Product logo' %}" style="height:45px; border-radius: 8px;" class="w3-white">
       <!-- <span class="lao-noto w3-margin-left w3-hide-small"
         style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em;">
         {% trans "Lao Product" %}
@@ -49,10 +49,6 @@
           <i class="fa-solid fa-arrows-spin"></i>
           <span>{% trans "Market Updates" %}</span>
       </a>
-      <a href="{% url 'users:login' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
-          <i class="fa-solid fa-list-check"></i>
-          <span>{% trans "Admin" %}</span>
-      </a>
       <!-- <div class="w3-dropdown-hover" style="background: none;" onclick="toggleNavDropdown(event, this)">
         <button class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-layer-group w3-margin-right"></i>
@@ -69,7 +65,7 @@
       </div> -->
 
       {% include 'components/language_switcher.html' %}
-      <a href="{% url 'users:login' %}" class="w3-button w3-text-green w3-hover-green w3-hover-text-white"
+      <a href="{% url 'users:login' %}" class="w3-button w3-green w3-hover-deep-orange w3-hover-text-white"
         style="padding: 8px 16px !important; margin-left: 8px; border-radius: 8px;">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
           {% trans "Login" %}

@@ -12,7 +12,7 @@
 {% block main-content %}
 <div class="wrap commerce-page success-page">
     <div class="success-panel">
-        <div class="success-icon"><i class="bi bi-check2"></i></div>
+        <div class="success-icon"><i class="fa fa-check"></i></div>
         <p class="eyebrow">{% trans "Thank you for your order" %}</p>
         <h1 class="lao-noto">{% trans "Order Placed Successfully" %}</h1>
         <p class="success-copy">{% trans "Your order has been created." %}</p>
@@ -22,7 +22,7 @@
             <div><span>{% trans "Total" %}</span><strong>{{ order.grand_total|money_format:2 }}</strong></div>
         </div>
 
-        <a href="{% url 'sales:sale_page' %}" class="primary-button">{% trans "Continue Shopping" %} <i class="bi bi-arrow-right"></i></a>
+        <a href="{% url 'sales:sale_page' %}" class="primary-button">{% trans "Continue Shopping" %} <i class="fa fa-arrow-right"></i></a>
     </div>
 </div>
 {% endblock %}

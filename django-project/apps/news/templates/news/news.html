@@ -40,7 +40,7 @@
                 {% endif %}
             </a>
             <div class="news-card-body">
-                <p class="news-date">{{ article.created_at|date:"d M Y" }}</p>
+                <p class="news-date">{{ article.created_at|date:"d/m/Y" }}</p>
                 <h2 class="lao"><a href="{% url 'news:news-detail' article.pk %}">{{ article.title }}</a></h2>
                 <p class="news-subject">{{ article.subject|truncatewords:24 }}</p>
                 <a class="text-link news-read-more" href="{% url 'news:news-detail' article.pk %}">{% translate "Read article" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>

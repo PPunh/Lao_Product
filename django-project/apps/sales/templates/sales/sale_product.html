@@ -16,12 +16,12 @@
     <div class="rail">
       <h4 class="lao-noto">{% translate "Category" %}</h4>
       <a href="{% url 'sales:sale_page' %}" class="{% if not selected_category %}active{% endif %}">
-        <i class="bi bi-grid-fill"></i>
+        <i class="fa fa-th"></i>
         {% translate "All Category" %}
       </a>
       {% for cat in product_category %}
         <a href="?category={{ cat.id }}" class="{% if selected_category|add:'0' == cat.id %}active{% endif %}">
-          <i class="bi bi-tag"></i>
+          <i class="fa fa-tag"></i>
           {{ cat.name }}
         </a>
       {% endfor %}
@@ -57,9 +57,9 @@
 
       {% if cart_count %}
         <div class="sale-cart-bar">
-          <span><i class="bi bi-bag-check"></i> {{ cart_count }} {% translate "item(s) in your cart" %}</span>
+          <span><i class="fa fa-shopping-bag"></i> {{ cart_count }} {% translate "item(s) in your cart" %}</span>
           <a href="{% url 'sales:cart' %}" class="go-cart-btn lao">
-            {% translate "Go to Cart" %} <i class="bi bi-arrow-right"></i>
+            {% translate "Go to Cart" %} <i class="fa fa-arrow-right"></i>
           </a>
         </div>
       {% endif %}
@@ -73,7 +73,7 @@
                 {% if product.product_img %}
                   <img src="{{ product.product_img.url }}" alt="{{ product.name }}">
                 {% else %}
-                  <i class="bi bi-box-seam" title="{% translate 'Product Image' %}"></i>
+                  <i class="fa fa-cube" title="{% translate 'Product Image' %}"></i>
                 {% endif %}
               </a>
             </div>
@@ -102,7 +102,7 @@
                 </div>
 
                 <button type="submit" class="btn-add-cart lao">
-                  <i class="bi bi-cart-plus"></i>
+                  <i class="fa fa-cart-plus"></i>
                   {% translate "Add to Cart" %}
                 </button>
               </form>

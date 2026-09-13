@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-13 11:53+0700\n"
+"POT-Creation-Date: 2026-09-13 14:46+0700\n"
 "PO-Revision-Date: 2026-09-13 11:14+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese <zh@li.org>\n"
@@ -20,139 +20,343 @@ msgstr ""
 msgid "Model string '{model_config}' must be in format 'app_name.ModelName'"
 msgstr "模型字符串 '{model_config}' 必须符合 'app_name.ModelName' 的格式"
 
-#: apps/core/models.py:22
+#: apps/core/models.py:24 apps/market/models.py:64 apps/news/models.py:9
+#: apps/supply/models.py:59 apps/talent/models.py:57
 msgid "Title"
 msgstr "标题"
 
-#: apps/core/models.py:23
+#: apps/core/models.py:25
 msgid "Main headline text on the slider"
 msgstr "轮播图上的主标题文本"
 
-#: apps/core/models.py:28
+#: apps/core/models.py:30
 msgid "Subtitle"
 msgstr "副标题"
 
-#: apps/core/models.py:29
+#: apps/core/models.py:31
 msgid "Short description or sub-headline"
 msgstr "简短描述或副标题"
 
-#: apps/core/models.py:33
+#: apps/core/models.py:35
 msgid "Hero Image"
 msgstr "轮播大图"
 
-#: apps/core/models.py:34
+#: apps/core/models.py:36
 msgid "Recommended size: 1920x800px"
 msgstr "建议尺寸：1920x800 像素"
 
-#: apps/core/models.py:40
+#: apps/core/models.py:42
 msgid "Button Text"
 msgstr "按钮文本"
 
-#: apps/core/models.py:41
+#: apps/core/models.py:43
 msgid "e.g. Shop Now, Learn More"
 msgstr "例如：立即选购、了解更多"
 
-#: apps/core/models.py:47
+#: apps/core/models.py:49
 msgid "Button Link URL"
 msgstr "按钮链接 URL"
 
-#: apps/core/models.py:48
+#: apps/core/models.py:50
 msgid "e.g. /products/ or https://example.com"
 msgstr "例如：/products/ 或 https://example.com"
 
-#: apps/core/models.py:52
+#: apps/core/models.py:54
 msgid "Display Order"
 msgstr "显示顺序"
 
-#: apps/core/models.py:53
+#: apps/core/models.py:55
 msgid "Ordering sequence (e.g. 0, 1, 2)"
 msgstr "排序顺序（例如：0, 1, 2）"
 
-#: apps/core/models.py:57
+#: apps/core/models.py:59 apps/news/models.py:57
 msgid "Is Active"
 msgstr "是否启用"
 
-#: apps/core/models.py:58
+#: apps/core/models.py:60
 msgid "Toggle to show/hide this slide on the frontend"
 msgstr "切换在前端显示或隐藏此幻灯片"
 
-#: apps/core/models.py:65 apps/sales/templates/sales/sale_product.html:37
+#: apps/core/models.py:67 apps/sales/templates/sales/sale_product.html:38
 msgid "Hero Slide"
 msgstr "轮播幻灯片"
 
-#: apps/core/models.py:66
+#: apps/core/models.py:68
 msgid "Hero Slides"
 msgstr "轮播幻灯片列表"
 
-#: apps/core/models.py:73
+#: apps/core/models.py:75
 msgid "Village"
 msgstr "村/社区"
 
-#: apps/core/models.py:74
+#: apps/core/models.py:76
 msgid "Street"
 msgstr "街道"
 
-#: apps/core/models.py:75
+#: apps/core/models.py:77
 msgid "District"
 msgstr "县/区"
 
-#: apps/core/models.py:76
+#: apps/core/models.py:78 apps/supply/models.py:21
 msgid "Province"
 msgstr "省/州"
 
-#: apps/core/models.py:77
+#: apps/core/models.py:79
 msgid "Country"
 msgstr "国家"
 
-#: apps/core/models.py:84 apps/products/models.py:64
+#: apps/core/models.py:86 apps/market/models.py:12 apps/products/models.py:64
 msgid "Name"
 msgstr "名称"
 
-#: apps/core/models.py:85
+#: apps/core/models.py:87
 msgid "Surname"
 msgstr "姓氏"
 
-#: apps/core/models.py:86 apps/sales/forms.py:12 apps/sales/models.py:118
+#: apps/core/models.py:88 apps/sales/forms.py:12 apps/sales/models.py:119
+#: apps/supply/models.py:18 apps/talent/models.py:22
 msgid "Phone"
 msgstr "电话"
 
-#: apps/core/models.py:87 apps/sales/forms.py:13 apps/sales/models.py:119
+#: apps/core/models.py:89 apps/news/models.py:53 apps/sales/forms.py:13
+#: apps/sales/models.py:120 apps/supply/models.py:19 apps/talent/models.py:23
 #: apps/users/forms.py:47
 msgid "Email"
 msgstr "电子邮箱"
 
-#: apps/core/models.py:93 apps/core/models.py:94
-msgid "Personal Information"
-msgstr "个人信息"
-
-#: apps/core/models.py:100
+#: apps/core/models.py:97
 msgid "Created At"
 msgstr "创建时间"
 
-#: apps/core/models.py:104
+#: apps/core/models.py:101
 msgid "Updated At"
 msgstr "更新时间"
 
-#: apps/core/models.py:111
+#: apps/core/models.py:108
 msgid "Created By"
 msgstr "创建人"
 
-#: apps/core/models.py:118
+#: apps/core/models.py:115
 msgid "Updated By"
 msgstr "更新人"
 
-#: apps/core/models.py:134
+#: apps/core/models.py:131
 msgid "Code"
 msgstr "编码/代码"
 
-#: apps/products/models.py:8 apps/products/models.py:66
-#: apps/sales/templates/sales/sale_product.html:16
+#: apps/market/models.py:13
+msgid "Slug"
+msgstr "缩略名（Slug）"
+
+#: apps/market/models.py:14 apps/products/models.py:9
+#: apps/products/models.py:65 apps/supply/models.py:17 apps/supply/models.py:60
+#: apps/talent/models.py:59
+msgid "Description"
+msgstr "描述"
+
+#: apps/market/models.py:15 apps/sales/models.py:17 apps/sales/models.py:211
+#: apps/supply/models.py:23 apps/supply/models.py:66 apps/talent/models.py:28
+#: apps/users/forms.py:51
+msgid "Active"
+msgstr "有效"
+
+#: apps/market/models.py:19
+msgid "Market Category"
+msgstr "市场分类"
+
+#: apps/market/models.py:20
+msgid "Market Categories"
+msgstr "市场分类"
+
+#: apps/market/models.py:38
+msgid "Author"
+msgstr "作者"
+
+#: apps/market/models.py:46 apps/products/models.py:8
+#: apps/products/models.py:66 apps/sales/templates/sales/sale_product.html:17
 msgid "Category"
 msgstr "分类"
 
-#: apps/products/models.py:9 apps/products/models.py:65
-msgid "Description"
-msgstr "描述"
+#: apps/market/models.py:54
+msgid "Related Product"
+msgstr "相关产品"
+
+#: apps/market/models.py:62
+msgid "Related Demand Center"
+msgstr "相关需求中心"
+
+#: apps/market/models.py:65 apps/news/models.py:19
+msgid "Summary"
+msgstr "摘要"
+
+#: apps/market/models.py:66
+msgid "Content"
+msgstr "内容"
+
+#: apps/market/models.py:67
+msgid "Image"
+msgstr "图片"
+
+#: apps/market/models.py:68
+msgid "Source URL"
+msgstr "来源链接"
+
+#: apps/market/models.py:69 apps/market/templates/market/market_updates.html:23
+msgid "Featured"
+msgstr "推荐"
+
+#: apps/market/models.py:70 apps/supply/models.py:41
+msgid "Published"
+msgstr "已发布"
+
+#: apps/market/models.py:71
+msgid "Published At"
+msgstr "发布时间"
+
+#: apps/market/models.py:75
+msgid "Market Update"
+msgstr "市场动态"
+
+#: apps/market/models.py:76 apps/market/templates/market/market_updates.html:11
+#: apps/market/views.py:22 templates/general-nav.html:50
+msgid "Market Updates"
+msgstr "市场动态"
+
+#: apps/market/templates/market/market_update_detail.html:6
+msgid "Back to market updates"
+msgstr "返回市场动态"
+
+#: apps/market/templates/market/market_update_detail.html:6
+msgid "Featured update"
+msgstr "推荐动态"
+
+#: apps/market/templates/market/market_update_detail.html:6
+msgid "View source"
+msgstr "查看来源"
+
+#: apps/market/templates/market/market_updates.html:10
+msgid "Stay informed"
+msgstr "随时了解最新动态"
+
+#: apps/market/templates/market/market_updates.html:12
+msgid ""
+"A focused view of local signals, new opportunities, and updates from the Lao "
+"Product community."
+msgstr "聚焦本地信息、新机会以及老挝特产社区的最新动态。"
+
+#: apps/market/templates/market/market_updates.html:17
+msgid "All updates"
+msgstr "全部动态"
+
+#: apps/market/templates/market/market_updates.html:27
+msgid "Read update"
+msgstr "阅读动态"
+
+#: apps/market/templates/market/market_updates.html:29
+msgid "No market updates yet"
+msgstr "暂无市场动态"
+
+#: apps/market/templates/market/market_updates.html:29
+msgid "Published market updates will appear here."
+msgstr "已发布的市场动态将显示在此处。"
+
+#: apps/news/models.py:12
+msgid "Subject"
+msgstr "主题"
+
+#: apps/news/models.py:16
+msgid "Images"
+msgstr "图片"
+
+#: apps/news/models.py:23
+msgid "Is active"
+msgstr "是否启用"
+
+#: apps/news/models.py:28 apps/news/models.py:29
+#: apps/news/templates/news/news.html:21
+#: apps/news/templates/news/news_detail.html:17 apps/news/views.py:19
+#: templates/general-nav.html:42
+msgid "News"
+msgstr "新闻动态"
+
+#: apps/news/models.py:43
+msgid "Demand Center Name"
+msgstr "需求中心名称"
+
+#: apps/news/models.py:46 apps/sales/forms.py:14 apps/sales/models.py:121
+#: apps/supply/models.py:20
+msgid "Address"
+msgstr "地址"
+
+#: apps/news/models.py:50
+msgid "Contact Number"
+msgstr "联系电话"
+
+#: apps/news/models.py:61 apps/news/templates/news/demand_center.html:18
+#: apps/news/templates/news/demand_center_detail.html:18 apps/news/views.py:48
+#: templates/general-nav.html:30
+msgid "Demand Center"
+msgstr "需求中心"
+
+#: apps/news/models.py:62
+msgid "Demand Centers"
+msgstr "需求中心"
+
+#: apps/news/templates/news/demand_center.html:17
+msgid "Connect with local needs"
+msgstr "对接本地需求"
+
+#: apps/news/templates/news/demand_center.html:20
+msgid "centers"
+msgstr "个中心"
+
+#: apps/news/templates/news/demand_center.html:30
+msgid "View center"
+msgstr "查看中心"
+
+#: apps/news/templates/news/demand_center.html:36
+msgid "No demand centers found"
+msgstr "未找到需求中心"
+
+#: apps/news/templates/news/demand_center.html:37
+msgid "Active demand centers will appear here."
+msgstr "已启用的需求中心将显示在此处。"
+
+#: apps/news/templates/news/demand_center_detail.html:15
+msgid "Back to demand centers"
+msgstr "返回需求中心"
+
+#: apps/news/templates/news/news.html:20
+msgid "Lao Product updates"
+msgstr "老挝特产最新动态"
+
+#: apps/news/templates/news/news.html:23
+msgid "articles"
+msgstr "篇文章"
+
+#: apps/news/templates/news/news.html:28
+msgid "Search news"
+msgstr "搜索新闻"
+
+#: apps/news/templates/news/news.html:29
+msgid "Search"
+msgstr "搜索"
+
+#: apps/news/templates/news/news.html:46
+msgid "Read article"
+msgstr "阅读文章"
+
+#: apps/news/templates/news/news.html:52
+msgid "No news found"
+msgstr "未找到新闻"
+
+#: apps/news/templates/news/news.html:53
+msgid "Try another search or check back later for new updates."
+msgstr "请尝试其他搜索关键词，或稍后查看新动态。"
+
+#: apps/news/templates/news/news_detail.html:15
+msgid "Back to news"
+msgstr "返回新闻动态"
 
 #: apps/products/models.py:16
 msgid "Products Category"
@@ -163,6 +367,7 @@ msgid "Products Categories"
 msgstr "产品分类列表"
 
 #: apps/products/models.py:22 apps/products/models.py:67
+#: apps/supply/models.py:63
 msgid "Unit"
 msgstr "单位"
 
@@ -206,7 +411,7 @@ msgstr "货币"
 msgid "Currencies"
 msgstr "货币列表"
 
-#: apps/products/models.py:79
+#: apps/products/models.py:79 apps/supply/models.py:62
 msgid "Price"
 msgstr "价格"
 
@@ -214,21 +419,24 @@ msgstr "价格"
 msgid "Is Sellable"
 msgstr "是否可售"
 
-#: apps/products/models.py:86 apps/sales/templates/sales/sale_product.html:74
+#: apps/products/models.py:86 apps/sales/templates/sales/sale_product.html:76
 msgid "Product Image"
 msgstr "产品图片"
 
 #: apps/products/models.py:95 apps/products/models.py:96
-#: apps/sales/views.py:103
+#: apps/sales/views.py:115 templates/footer.html:15
 msgid "Products"
 msgstr "产品"
 
-#: apps/products/models.py:110 apps/sales/templates/sales/cart.html:27
+#: apps/products/models.py:110 apps/sales/templates/sales/cart.html:28
+#: apps/sales/templates/sales/product_detail.html:26 apps/supply/models.py:36
+#: apps/supply/models.py:56
 msgid "Product"
 msgstr "产品"
 
-#: apps/products/models.py:114 apps/sales/models.py:81 apps/sales/models.py:189
-#: apps/sales/templates/sales/sale_product.html:97
+#: apps/products/models.py:114 apps/sales/models.py:82 apps/sales/models.py:190
+#: apps/sales/templates/sales/product_detail.html:40
+#: apps/sales/templates/sales/sale_product.html:100
 msgid "Quantity"
 msgstr "数量"
 
@@ -240,15 +448,11 @@ msgstr "库存"
 msgid "Stocks"
 msgstr "库存列表"
 
-#: apps/sales/forms.py:11 apps/sales/models.py:117
+#: apps/sales/forms.py:11 apps/sales/models.py:118
 msgid "Customer Name"
 msgstr "客户姓名"
 
-#: apps/sales/forms.py:14 apps/sales/models.py:120
-msgid "Address"
-msgstr "地址"
-
-#: apps/sales/forms.py:15 apps/sales/templates/sales/cart.html:81
+#: apps/sales/forms.py:15 apps/sales/templates/sales/cart.html:82
 msgid "Coupon Code"
 msgstr "优惠券代码"
 
@@ -256,19 +460,19 @@ msgstr "优惠券代码"
 msgid "Shipping Fee"
 msgstr "运费"
 
-#: apps/sales/forms.py:17 apps/sales/models.py:121
+#: apps/sales/forms.py:17 apps/sales/models.py:122
 msgid "Request Tax Invoice"
 msgstr "申请税务发票"
 
-#: apps/sales/forms.py:18 apps/sales/models.py:122
+#: apps/sales/forms.py:18 apps/sales/models.py:123
 msgid "Tax ID"
 msgstr "税号"
 
-#: apps/sales/forms.py:19 apps/sales/models.py:123
+#: apps/sales/forms.py:19 apps/sales/models.py:124
 msgid "Company Name"
 msgstr "公司名称"
 
-#: apps/sales/forms.py:20 apps/sales/models.py:124
+#: apps/sales/forms.py:20 apps/sales/models.py:125
 msgid "Company Address"
 msgstr "公司地址"
 
@@ -276,7 +480,7 @@ msgstr "公司地址"
 msgid "Payment Method"
 msgstr "支付方式"
 
-#: apps/sales/forms.py:35 apps/sales/models.py:133
+#: apps/sales/forms.py:35 apps/sales/models.py:134
 msgid "Notes"
 msgstr "备注"
 
@@ -284,15 +488,11 @@ msgstr "备注"
 msgid "Please provide the payment information."
 msgstr "请提供支付信息。"
 
-#: apps/sales/models.py:17 apps/sales/models.py:210 apps/users/forms.py:51
-msgid "Active"
-msgstr "有效"
-
-#: apps/sales/models.py:18 apps/sales/templates/sales/checkout.html:14
+#: apps/sales/models.py:18 apps/sales/templates/sales/checkout.html:15
 msgid "Checkout"
 msgstr "结算"
 
-#: apps/sales/models.py:19 apps/sales/models.py:104
+#: apps/sales/models.py:19 apps/sales/models.py:105
 msgid "Completed"
 msgstr "已完成"
 
@@ -304,399 +504,769 @@ msgstr "购物车"
 msgid "Carts"
 msgstr "购物车列表"
 
-#: apps/sales/models.py:80 apps/sales/models.py:188
+#: apps/sales/models.py:81 apps/sales/models.py:189
 msgid "Variant"
 msgstr "规格"
 
-#: apps/sales/models.py:87
+#: apps/sales/models.py:88
 msgid "Cart Item"
 msgstr "购物车项目"
 
-#: apps/sales/models.py:88
+#: apps/sales/models.py:89
 msgid "Cart Items"
 msgstr "购物车项目列表"
 
-#: apps/sales/models.py:102
+#: apps/sales/models.py:103
 msgid "Pending"
 msgstr "待处理"
 
-#: apps/sales/models.py:103
+#: apps/sales/models.py:104
 msgid "Paid"
 msgstr "已支付"
 
-#: apps/sales/models.py:105
+#: apps/sales/models.py:106
 msgid "Cancelled"
 msgstr "已取消"
 
-#: apps/sales/models.py:108
+#: apps/sales/models.py:109
 msgid "Cash"
 msgstr "现金"
 
-#: apps/sales/models.py:109
+#: apps/sales/models.py:110
 msgid "PromptPay"
 msgstr "PromptPay"
 
-#: apps/sales/models.py:110
+#: apps/sales/models.py:111
 msgid "ICBC Bank (Laos)"
 msgstr "工商银行（老挝）"
 
-#: apps/sales/models.py:111
+#: apps/sales/models.py:112
 msgid "BCEL (Laos)"
 msgstr "老挝外贸银行（BCEL）"
 
-#: apps/sales/models.py:112
+#: apps/sales/models.py:113
 msgid "Visa"
 msgstr "Visa"
 
-#: apps/sales/models.py:113
+#: apps/sales/models.py:114
 msgid "Mastercard"
 msgstr "万事达卡"
 
-#: apps/sales/models.py:114
+#: apps/sales/models.py:115
 msgid "SWIFT Transfer"
 msgstr "SWIFT 电汇"
 
-#: apps/sales/models.py:115
+#: apps/sales/models.py:116
 msgid "Cash on Delivery"
 msgstr "货到付款"
 
-#: apps/sales/models.py:126
+#: apps/sales/models.py:127
 msgid "Payment Status"
 msgstr "支付状态"
 
-#: apps/sales/models.py:139
+#: apps/sales/models.py:140
 msgid "Order"
 msgstr "订单"
 
-#: apps/sales/models.py:140
+#: apps/sales/models.py:141
 msgid "Orders"
 msgstr "订单列表"
 
-#: apps/sales/models.py:194
+#: apps/sales/models.py:195
 msgid "Order Item"
 msgstr "订单项目"
 
-#: apps/sales/models.py:195
+#: apps/sales/models.py:196
 msgid "Order Items"
 msgstr "订单项目列表"
 
-#: apps/sales/models.py:211
+#: apps/sales/models.py:212
 msgid "Released"
 msgstr "已释放"
 
-#: apps/sales/models.py:212
+#: apps/sales/models.py:213
 msgid "Consumed"
 msgstr "已消耗"
 
-#: apps/sales/models.py:223
+#: apps/sales/models.py:224
 msgid "Inventory Reservation"
 msgstr "库存预留"
 
-#: apps/sales/models.py:224
+#: apps/sales/models.py:225
 msgid "Inventory Reservations"
 msgstr "库存预留列表"
 
-#: apps/sales/templates/sales/cart.html:15
+#: apps/sales/templates/sales/cart.html:16
 msgid "Your selection"
 msgstr "您的选择"
 
-#: apps/sales/templates/sales/cart.html:16 apps/sales/views.py:132
+#: apps/sales/templates/sales/cart.html:17 apps/sales/views.py:159
+#: templates/footer.html:16
 msgid "Shopping Cart"
 msgstr "购物车"
 
-#: apps/sales/templates/sales/cart.html:18
-#: apps/sales/templates/sales/order_success.html:24
+#: apps/sales/templates/sales/cart.html:19
+#: apps/sales/templates/sales/order_success.html:25 templates/footer.html:24
 msgid "Continue Shopping"
 msgstr "继续购物"
 
-#: apps/sales/templates/sales/cart.html:30
+#: apps/sales/templates/sales/cart.html:31
 msgid "Unit Price"
 msgstr "单价"
 
-#: apps/sales/templates/sales/cart.html:36
+#: apps/sales/templates/sales/cart.html:37
 msgid "Decrease quantity"
 msgstr "减少数量"
 
-#: apps/sales/templates/sales/cart.html:41
+#: apps/sales/templates/sales/cart.html:42
 msgid "Increase quantity"
 msgstr "增加数量"
 
-#: apps/sales/templates/sales/cart.html:46
+#: apps/sales/templates/sales/cart.html:47
 msgid "Remove"
 msgstr "移除"
 
-#: apps/sales/templates/sales/cart.html:57
-#: apps/sales/templates/sales/checkout.html:157
+#: apps/sales/templates/sales/cart.html:58
+#: apps/sales/templates/sales/checkout.html:158
 msgid "Order Summary"
 msgstr "订单摘要"
 
-#: apps/sales/templates/sales/cart.html:59
-#: apps/sales/templates/sales/checkout.html:169
+#: apps/sales/templates/sales/cart.html:60
+#: apps/sales/templates/sales/checkout.html:170
 msgid "Subtotal"
 msgstr "小计"
 
-#: apps/sales/templates/sales/cart.html:63
-#: apps/sales/templates/sales/checkout.html:170
+#: apps/sales/templates/sales/cart.html:64
+#: apps/sales/templates/sales/checkout.html:171
 msgid "Discount"
 msgstr "折扣"
 
-#: apps/sales/templates/sales/cart.html:67
-#: apps/sales/templates/sales/checkout.html:171
+#: apps/sales/templates/sales/cart.html:68
+#: apps/sales/templates/sales/checkout.html:172
 msgid "Shipping"
 msgstr "运费"
 
-#: apps/sales/templates/sales/cart.html:71
-#: apps/sales/templates/sales/checkout.html:172
+#: apps/sales/templates/sales/cart.html:72
+#: apps/sales/templates/sales/checkout.html:173
 msgid "Tax"
 msgstr "税费"
 
-#: apps/sales/templates/sales/cart.html:75
-#: apps/sales/templates/sales/checkout.html:173
+#: apps/sales/templates/sales/cart.html:76
+#: apps/sales/templates/sales/checkout.html:174
 msgid "Grand Total"
 msgstr "总计"
 
-#: apps/sales/templates/sales/cart.html:83
+#: apps/sales/templates/sales/cart.html:84
 msgid "Enter coupon code"
 msgstr "请输入优惠券代码"
 
-#: apps/sales/templates/sales/cart.html:84
+#: apps/sales/templates/sales/cart.html:85
 msgid "Apply"
 msgstr "使用"
 
-#: apps/sales/templates/sales/cart.html:88
+#: apps/sales/templates/sales/cart.html:89
 msgid "Proceed to Checkout"
 msgstr "前往结算"
 
-#: apps/sales/templates/sales/cart.html:94 apps/sales/views.py:151
+#: apps/sales/templates/sales/cart.html:95 apps/sales/views.py:180
 msgid "Your cart is empty."
 msgstr "您的购物车是空的。"
 
-#: apps/sales/templates/sales/cart.html:95
+#: apps/sales/templates/sales/cart.html:96
 msgid "Discover something useful for your next order."
 msgstr "去发现您下次订单需要的商品吧。"
 
-#: apps/sales/templates/sales/cart.html:96
+#: apps/sales/templates/sales/cart.html:97
 msgid "Browse Products"
 msgstr "浏览产品"
 
-#: apps/sales/templates/sales/checkout.html:14
+#: apps/sales/templates/sales/checkout.html:15
 msgid "Almost there"
 msgstr "即将完成"
 
-#: apps/sales/templates/sales/checkout.html:15
+#: apps/sales/templates/sales/checkout.html:16
 msgid "Back to Cart"
 msgstr "返回购物车"
 
-#: apps/sales/templates/sales/checkout.html:19
+#: apps/sales/templates/sales/checkout.html:20
 msgid "Customer Details"
 msgstr "客户信息"
 
-#: apps/sales/templates/sales/checkout.html:19
+#: apps/sales/templates/sales/checkout.html:20
 msgid "Tell us where to send your order."
 msgstr "请告知我们订单的配送地址。"
 
-#: apps/sales/templates/sales/checkout.html:70
+#: apps/sales/templates/sales/checkout.html:71
 msgid ""
 "Payment processing is not connected yet. Select your preferred payment "
 "method."
 msgstr "支付处理功能尚未接入，请选择您偏好的付款方式。"
 
-#: apps/sales/templates/sales/checkout.html:77
+#: apps/sales/templates/sales/checkout.html:78
 msgid "Payment Information"
 msgstr "支付信息"
 
-#: apps/sales/templates/sales/checkout.html:78
-#: apps/sales/templates/sales/checkout.html:211
+#: apps/sales/templates/sales/checkout.html:79
+#: apps/sales/templates/sales/checkout.html:212
 msgid "Enter the details required for this payment method."
 msgstr "请输入该付款方式所需的信息。"
 
-#: apps/sales/templates/sales/checkout.html:83
+#: apps/sales/templates/sales/checkout.html:84
 msgid "Account Name"
 msgstr "账户名称"
 
-#: apps/sales/templates/sales/checkout.html:87
+#: apps/sales/templates/sales/checkout.html:88
 msgid "Account Number"
 msgstr "账号"
 
-#: apps/sales/templates/sales/checkout.html:91
+#: apps/sales/templates/sales/checkout.html:92
 msgid "Bank Name"
 msgstr "银行名称"
 
-#: apps/sales/templates/sales/checkout.html:95
+#: apps/sales/templates/sales/checkout.html:96
 msgid "Branch"
 msgstr "支行"
 
-#: apps/sales/templates/sales/checkout.html:99
+#: apps/sales/templates/sales/checkout.html:100
 msgid "Cardholder Name"
 msgstr "持卡人姓名"
 
-#: apps/sales/templates/sales/checkout.html:103
+#: apps/sales/templates/sales/checkout.html:104
 msgid "Card Number"
 msgstr "卡号"
 
-#: apps/sales/templates/sales/checkout.html:107
+#: apps/sales/templates/sales/checkout.html:108
 msgid "Expiry Date"
 msgstr "有效期"
 
-#: apps/sales/templates/sales/checkout.html:108
+#: apps/sales/templates/sales/checkout.html:109
 msgid "MM/YY"
 msgstr "月/年"
 
-#: apps/sales/templates/sales/checkout.html:111
+#: apps/sales/templates/sales/checkout.html:112
 msgid "CVV"
 msgstr "CVV 安全码"
 
-#: apps/sales/templates/sales/checkout.html:115
+#: apps/sales/templates/sales/checkout.html:116
 msgid "SWIFT/BIC Code"
 msgstr "SWIFT/BIC 代码"
 
-#: apps/sales/templates/sales/checkout.html:119
+#: apps/sales/templates/sales/checkout.html:120
 msgid "Payment Reference"
 msgstr "付款参考号"
 
-#: apps/sales/templates/sales/checkout.html:129
+#: apps/sales/templates/sales/checkout.html:130
 msgid "Tax Invoice"
 msgstr "税务发票"
 
-#: apps/sales/templates/sales/checkout.html:132
+#: apps/sales/templates/sales/checkout.html:133
 msgid "Request tax invoice"
 msgstr "申请税务发票"
 
-#: apps/sales/templates/sales/checkout.html:151
+#: apps/sales/templates/sales/checkout.html:152
 msgid "Place Order"
 msgstr "提交订单"
 
-#: apps/sales/templates/sales/checkout.html:191
+#: apps/sales/templates/sales/checkout.html:192
 msgid "PromptPay Information"
 msgstr "PromptPay 付款信息"
 
-#: apps/sales/templates/sales/checkout.html:192
+#: apps/sales/templates/sales/checkout.html:193
 msgid "ICBC Account Information"
 msgstr "工商银行账户信息"
 
-#: apps/sales/templates/sales/checkout.html:193
+#: apps/sales/templates/sales/checkout.html:194
 msgid "BCEL Account Information"
 msgstr "BCEL 银行账户信息"
 
-#: apps/sales/templates/sales/checkout.html:194
 #: apps/sales/templates/sales/checkout.html:195
+#: apps/sales/templates/sales/checkout.html:196
 msgid "Card Information"
 msgstr "卡片信息"
 
-#: apps/sales/templates/sales/checkout.html:196
+#: apps/sales/templates/sales/checkout.html:197
 msgid "Transfer Information"
 msgstr "转账信息"
 
-#: apps/sales/templates/sales/order_success.html:15
+#: apps/sales/templates/sales/order_success.html:16
 msgid "Thank you for your order"
 msgstr "感谢您的订购"
 
-#: apps/sales/templates/sales/order_success.html:16
+#: apps/sales/templates/sales/order_success.html:17
 msgid "Order Placed Successfully"
 msgstr "订单提交成功"
 
-#: apps/sales/templates/sales/order_success.html:17
+#: apps/sales/templates/sales/order_success.html:18
 msgid "Your order has been created."
 msgstr "您的订单已创建。"
 
-#: apps/sales/templates/sales/order_success.html:20
+#: apps/sales/templates/sales/order_success.html:21
 msgid "Order Code"
 msgstr "订单编号"
 
-#: apps/sales/templates/sales/order_success.html:21
+#: apps/sales/templates/sales/order_success.html:22
 msgid "Total"
 msgstr "总计"
 
-#: apps/sales/templates/sales/sale_product.html:19
-msgid "All Category"
-msgstr "全部分类"
+#: apps/sales/templates/sales/product_detail.html:16
+msgid "Back to products"
+msgstr "返回产品列表"
 
-#: apps/sales/templates/sales/sale_product.html:52
-msgid "No featured promotions available."
-msgstr "暂无推荐促销活动。"
+#: apps/sales/templates/sales/product_detail.html:33
+msgid "available"
+msgstr "件有货"
 
-#: apps/sales/templates/sales/sale_product.html:59
-msgid "item(s) in your cart"
-msgstr "件商品在购物车中"
-
-#: apps/sales/templates/sales/sale_product.html:61
-msgid "Go to Cart"
-msgstr "前往购物车"
-
-#: apps/sales/templates/sales/sale_product.html:82
-msgid "General"
-msgstr "通用"
-
-#: apps/sales/templates/sales/sale_product.html:96
+#: apps/sales/templates/sales/product_detail.html:39
+#: apps/sales/templates/sales/sale_product.html:99
 msgid "Decrease Quantity"
 msgstr "减少数量"
 
-#: apps/sales/templates/sales/sale_product.html:98
+#: apps/sales/templates/sales/product_detail.html:41
+#: apps/sales/templates/sales/sale_product.html:101
 msgid "Increase Quantity"
 msgstr "增加数量"
 
-#: apps/sales/templates/sales/sale_product.html:103
+#: apps/sales/templates/sales/product_detail.html:43
+#: apps/sales/templates/sales/sale_product.html:106
 msgid "Add to Cart"
 msgstr "加入购物车"
 
-#: apps/sales/templates/sales/sale_product.html:110
+#: apps/sales/templates/sales/product_detail.html:45
+#: apps/sales/templates/sales/sale_product.html:60
+msgid "item(s) in your cart"
+msgstr "件商品在购物车中"
+
+#: apps/sales/templates/sales/sale_product.html:20
+msgid "All Category"
+msgstr "全部分类"
+
+#: apps/sales/templates/sales/sale_product.html:53
+msgid "No featured promotions available."
+msgstr "暂无推荐促销活动。"
+
+#: apps/sales/templates/sales/sale_product.html:62
+msgid "Go to Cart"
+msgstr "前往购物车"
+
+#: apps/sales/templates/sales/sale_product.html:85
+msgid "General"
+msgstr "通用"
+
+#: apps/sales/templates/sales/sale_product.html:113
 msgid "Not found."
 msgstr "未找到内容。"
 
-#: apps/sales/views.py:42
+#: apps/sales/views.py:51
 msgid "Product was not selected."
 msgstr "未选择产品。"
 
-#: apps/sales/views.py:58
+#: apps/sales/views.py:67
 #, python-format
 msgid "%(product)s added to cart."
 msgstr "%(product)s 已加入购物车。"
 
-#: apps/sales/views.py:68 apps/sales/views.py:80
+#: apps/sales/views.py:80 apps/sales/views.py:92
 msgid "Item removed from cart."
 msgstr "商品已从购物车中移除。"
 
-#: apps/sales/views.py:72
+#: apps/sales/views.py:84
 msgid "Cart updated."
 msgstr "购物车已更新。"
 
-#: apps/sales/views.py:90
+#: apps/sales/views.py:102
 msgid "Coupon applied successfully."
 msgstr "优惠券使用成功。"
 
-#: apps/sales/views.py:92
+#: apps/sales/views.py:104
 msgid "Coupon code was not recognized."
 msgstr "无法识别的优惠券代码。"
 
-#: apps/sales/views.py:177
+#: apps/sales/views.py:206
 msgid "Order created successfully."
 msgstr "订单创建成功。"
 
-#: apps/sales/views.py:188
+#: apps/sales/views.py:217
 msgid "Order Confirmed"
 msgstr "订单已确认"
+
+#: apps/supply/models.py:14 apps/talent/models.py:18
+msgid "Owner"
+msgstr "所有者"
+
+#: apps/supply/models.py:16
+msgid "Business Name"
+msgstr "企业名称"
+
+#: apps/supply/models.py:22
+msgid "Verified"
+msgstr "已认证"
+
+#: apps/supply/models.py:27
+msgid "Supplier Profile"
+msgstr "供应商资料"
+
+#: apps/supply/models.py:28
+msgid "Supplier Profiles"
+msgstr "供应商资料列表"
+
+#: apps/supply/models.py:37
+msgid "Service"
+msgstr "服务"
+
+#: apps/supply/models.py:40 apps/talent/models.py:47
+msgid "Draft"
+msgstr "草稿"
+
+#: apps/supply/models.py:42
+msgid "Paused"
+msgstr "已暂停"
+
+#: apps/supply/models.py:48
+msgid "Supplier"
+msgstr "供应商"
+
+#: apps/supply/models.py:57
+msgid "Optional link to an existing product in the shop."
+msgstr "可选择关联商店中已有的产品。"
+
+#: apps/supply/models.py:64
+msgid "Minimum Quantity"
+msgstr "最小数量"
+
+#: apps/supply/models.py:70
+msgid "Supply Listing"
+msgstr "供应信息"
+
+#: apps/supply/models.py:71
+msgid "Supply Listings"
+msgstr "供应信息列表"
+
+#: apps/supply/templates/supply/confirm_delete.html:3
+#: apps/supply/templates/supply/supplier_form.html:9
+#: apps/supply/templates/supply/supply_center.html:11
+#: apps/supply/templates/supply/supply_listing_form.html:9
+#: apps/supply/views.py:26 templates/general-nav.html:34
+msgid "Supply Center"
+msgstr "供应中心"
+
+#: apps/supply/templates/supply/confirm_delete.html:3
+msgid "Delete listing?"
+msgstr "删除该供应信息？"
+
+#: apps/supply/templates/supply/confirm_delete.html:3
+#: apps/talent/templates/talent/confirm_delete.html:3
+msgid "This action cannot be undone."
+msgstr "此操作无法撤销。"
+
+#: apps/supply/templates/supply/confirm_delete.html:3
+msgid "Delete listing"
+msgstr "删除供应信息"
+
+#: apps/supply/templates/supply/supplier_form.html:9
+msgid "Supplier profile"
+msgstr "供应商资料"
+
+#: apps/supply/templates/supply/supplier_form.html:10
+#: apps/talent/templates/talent/profile_form.html:2
+msgid "Save profile"
+msgstr "保存资料"
+
+#: apps/supply/templates/supply/supply_center.html:10
+msgid "For local suppliers"
+msgstr "面向本地供应商"
+
+#: apps/supply/templates/supply/supply_center.html:12
+msgid ""
+"Bring your products and services closer to the people and businesses that "
+"need them."
+msgstr "让您的产品和服务更贴近有需要的人和企业。"
+
+#: apps/supply/templates/supply/supply_center.html:16
+msgid "Add listing"
+msgstr "添加供应信息"
+
+#: apps/supply/templates/supply/supply_center.html:16
+msgid "Create supplier profile"
+msgstr "创建供应商资料"
+
+#: apps/supply/templates/supply/supply_center.html:17
+msgid "Become a supplier"
+msgstr "成为供应商"
+
+#: apps/supply/templates/supply/supply_center.html:28
+msgid "View listing"
+msgstr "查看供应信息"
+
+#: apps/supply/templates/supply/supply_center.html:31
+msgid "No published listings yet"
+msgstr "暂无已发布的供应信息"
+
+#: apps/supply/templates/supply/supply_center.html:31
+msgid "Supplier listings will appear here when they are published."
+msgstr "供应商信息发布后将显示在此处。"
+
+#: apps/supply/templates/supply/supply_listing_detail.html:8
+msgid "Back to supply center"
+msgstr "返回供应中心"
+
+#: apps/supply/templates/supply/supply_listing_detail.html:16
+msgid "Minimum"
+msgstr "最低"
+
+#: apps/supply/templates/supply/supply_listing_detail.html:18
+msgid "Contact supplier"
+msgstr "联系供应商"
+
+#: apps/supply/templates/supply/supply_listing_form.html:9
+msgid "Create listing"
+msgstr "创建供应信息"
+
+#: apps/supply/templates/supply/supply_listing_form.html:10
+#: apps/talent/templates/talent/opportunity_form.html:2
+msgid "Save changes"
+msgstr "保存更改"
+
+#: apps/supply/templates/supply/supply_listing_form.html:10
+msgid "Submit listing"
+msgstr "提交供应信息"
+
+#: apps/talent/models.py:10
+msgid "Available"
+msgstr "可接单"
+
+#: apps/talent/models.py:11 apps/talent/models.py:42
+msgid "Part time"
+msgstr "兼职"
+
+#: apps/talent/models.py:12
+msgid "Unavailable"
+msgstr "暂不可接单"
+
+#: apps/talent/models.py:20
+msgid "Headline"
+msgstr "标语"
+
+#: apps/talent/models.py:21
+msgid "Biography"
+msgstr "个人简介"
+
+#: apps/talent/models.py:24 apps/talent/models.py:61
+msgid "Location"
+msgstr "所在地"
+
+#: apps/talent/models.py:25
+msgid "Comma-separated skills."
+msgstr "技能，以英文逗号分隔。"
+
+#: apps/talent/models.py:25
+msgid "Skills"
+msgstr "技能"
+
+#: apps/talent/models.py:26
+msgid "Years of Experience"
+msgstr "工作经验（年）"
+
+#: apps/talent/models.py:32
+msgid "Talent Profile"
+msgstr "人才资料"
+
+#: apps/talent/models.py:33
+msgid "Talent Profiles"
+msgstr "人才资料列表"
+
+#: apps/talent/models.py:41
+msgid "Full time"
+msgstr "全职"
+
+#: apps/talent/models.py:43
+msgid "Contract"
+msgstr "合同工"
+
+#: apps/talent/models.py:44
+msgid "Project"
+msgstr "项目制"
+
+#: apps/talent/models.py:48
+msgid "Open"
+msgstr "招募中"
+
+#: apps/talent/models.py:49
+msgid "Closed"
+msgstr "已关闭"
+
+#: apps/talent/models.py:55
+msgid "Posted By"
+msgstr "发布人"
+
+#: apps/talent/models.py:58
+msgid "Organization Name"
+msgstr "机构名称"
+
+#: apps/talent/models.py:62
+msgid "Contact Email"
+msgstr "联系邮箱"
+
+#: apps/talent/models.py:63
+msgid "Contact Phone"
+msgstr "联系电话"
+
+#: apps/talent/models.py:64
+msgid "Application Deadline"
+msgstr "申请截止日期"
+
+#: apps/talent/models.py:69
+msgid "Talent Opportunity"
+msgstr "招聘机会"
+
+#: apps/talent/models.py:70
+msgid "Talent Opportunities"
+msgstr "招聘机会"
+
+#: apps/talent/models.py:78
+msgid "Submitted"
+msgstr "已提交"
+
+#: apps/talent/models.py:79
+msgid "Reviewing"
+msgstr "审核中"
+
+#: apps/talent/models.py:80
+msgid "Accepted"
+msgstr "已录取"
+
+#: apps/talent/models.py:81
+msgid "Rejected"
+msgstr "已拒绝"
+
+#: apps/talent/models.py:85
+msgid "Cover Note"
+msgstr "求职信"
+
+#: apps/talent/models.py:93
+msgid "Talent Application"
+msgstr "求职申请"
+
+#: apps/talent/models.py:94
+msgid "Talent Applications"
+msgstr "求职申请列表"
+
+#: apps/talent/templates/talent/application_form.html:2
+#: apps/talent/templates/talent/confirm_delete.html:3
+#: apps/talent/templates/talent/opportunity_form.html:2
+#: apps/talent/templates/talent/profile_form.html:2
+#: apps/talent/templates/talent/talent_center.html:11 apps/talent/views.py:22
+#: templates/general-nav.html:46
+msgid "Talent Center"
+msgstr "人才中心"
+
+#: apps/talent/templates/talent/application_form.html:2
+msgid "Apply to opportunity"
+msgstr "申请该机会"
+
+#: apps/talent/templates/talent/application_form.html:2
+msgid "Submit application"
+msgstr "提交申请"
+
+#: apps/talent/templates/talent/confirm_delete.html:3
+msgid "Delete opportunity?"
+msgstr "删除该招聘机会？"
+
+#: apps/talent/templates/talent/confirm_delete.html:3
+msgid "Delete opportunity"
+msgstr "删除招聘机会"
+
+#: apps/talent/templates/talent/opportunity_detail.html:6
+msgid "Back to Talent Center"
+msgstr "返回人才中心"
+
+#: apps/talent/templates/talent/opportunity_detail.html:6
+msgid "Apply by"
+msgstr "截止申请日期"
+
+#: apps/talent/templates/talent/opportunity_detail.html:6
+msgid "You have already applied to this opportunity."
+msgstr "您已申请过该机会。"
+
+#: apps/talent/templates/talent/opportunity_detail.html:6
+msgid "Create profile to apply"
+msgstr "创建资料后即可申请"
+
+#: apps/talent/templates/talent/opportunity_detail.html:6
+msgid "Apply now"
+msgstr "立即申请"
+
+#: apps/talent/templates/talent/opportunity_detail.html:6
+msgid "Login to apply"
+msgstr "登录后申请"
+
+#: apps/talent/templates/talent/opportunity_form.html:2
+msgid "Edit opportunity"
+msgstr "编辑招聘机会"
+
+#: apps/talent/templates/talent/opportunity_form.html:2
+#: apps/talent/templates/talent/talent_center.html:15
+msgid "Post opportunity"
+msgstr "发布招聘机会"
+
+#: apps/talent/templates/talent/opportunity_form.html:2
+msgid "Submit for review"
+msgstr "提交审核"
+
+#: apps/talent/templates/talent/profile_form.html:2
+msgid "Edit talent profile"
+msgstr "编辑人才资料"
+
+#: apps/talent/templates/talent/profile_form.html:2
+msgid "Create talent profile"
+msgstr "创建人才资料"
+
+#: apps/talent/templates/talent/talent_center.html:10
+msgid "For people and teams"
+msgstr "面向个人与团队"
+
+#: apps/talent/templates/talent/talent_center.html:12
+msgid ""
+"Find meaningful ways to use your skills and connect with growing local "
+"opportunities."
+msgstr "找到发挥您技能价值的方式，与不断增长的本地机会建立联系。"
+
+#: apps/talent/templates/talent/talent_center.html:15
+msgid "Join Talent Center"
+msgstr "加入人才中心"
+
+#: apps/talent/templates/talent/talent_center.html:25
+msgid "View opportunity"
+msgstr "查看招聘机会"
+
+#: apps/talent/templates/talent/talent_center.html:27
+msgid "No open opportunities yet"
+msgstr "暂无招募中的机会"
+
+#: apps/talent/templates/talent/talent_center.html:27
+msgid "New opportunities will appear here when organizations publish them."
+msgstr "机构发布新机会后将显示在此处。"
 
 #: apps/users/forms.py:16
 msgid "Username / Email / Phone number"
 msgstr "用户名 / 电子邮箱 / 电话号码"
 
-#: apps/users/forms.py:46 apps/users/templates/createsuperuser.html:28
-#: apps/users/templates/login.html:30
+#: apps/users/forms.py:46 apps/users/templates/createsuperuser.html:26
+#: apps/users/templates/login.html:23
 msgid "Username"
 msgstr "用户名"
 
-#: apps/users/forms.py:48 apps/users/templates/createsuperuser.html:39
+#: apps/users/forms.py:48 apps/users/templates/createsuperuser.html:34
 msgid "Phone Number"
 msgstr "电话号码"
 
 #: apps/users/forms.py:49 apps/users/forms.py:56 apps/users/forms.py:70
-#: apps/users/templates/createsuperuser.html:46
-#: apps/users/templates/login.html:37 apps/users/templates/login.html:40
+#: apps/users/templates/createsuperuser.html:38
+#: apps/users/templates/login.html:28 apps/users/templates/login.html:31
 msgid "Password"
 msgstr "密码"
 
 #: apps/users/forms.py:50 apps/users/forms.py:57 apps/users/forms.py:76
-#: apps/users/templates/createsuperuser.html:53
+#: apps/users/templates/createsuperuser.html:45
 msgid "Confirm Password"
 msgstr "确认密码"
 
@@ -792,50 +1362,79 @@ msgstr "admin@company.com"
 msgid "+856 20..."
 msgstr "+856 20..."
 
-#: apps/users/templates/createsuperuser.html:13
-msgid "TOP VALUE SERVICE"
-msgstr "TOP VALUE SERVICE"
+#: apps/users/templates/createsuperuser.html:17
+#: apps/users/templates/login.html:14 templates/footer.html:8
+#: templates/general-nav.html:9 templates/navigation_top_loged-in.html:9
+msgid "Lao Product logo"
+msgstr "老挝特产标志"
 
-#: apps/users/templates/createsuperuser.html:15
+#: apps/users/templates/createsuperuser.html:19
+msgid "System setup"
+msgstr "系统设置"
+
+#: apps/users/templates/createsuperuser.html:20
+msgid "Create administrator"
+msgstr "创建管理员"
+
+#: apps/users/templates/createsuperuser.html:21
 msgid "Create your primary administrative identity."
 msgstr "创建您的主管理员身份。"
 
-#: apps/users/templates/createsuperuser.html:23
-msgid "Account Information"
-msgstr "账户信息"
-
-#: apps/users/templates/createsuperuser.html:32
+#: apps/users/templates/createsuperuser.html:30
 msgid "Email Address"
 msgstr "电子邮箱地址"
 
-#: apps/users/templates/createsuperuser.html:65
+#: apps/users/templates/createsuperuser.html:41
+#: apps/users/templates/createsuperuser.html:48
+#: apps/users/templates/createsuperuser.html:69
+msgid "Show password"
+msgstr "显示密码"
+
+#: apps/users/templates/createsuperuser.html:52
 msgid "Save & Initialize"
 msgstr "保存并初始化"
 
-#: apps/users/templates/createsuperuser.html:72
-msgid "Internal Utility"
-msgstr "内部工具"
+#: apps/users/templates/createsuperuser.html:54
+msgid "This setup is available only before the first administrator is created."
+msgstr "此设置仅在创建首个管理员之前可用。"
+
+#: apps/users/templates/createsuperuser.html:69
+msgid "Hide password"
+msgstr "隐藏密码"
 
 #: apps/users/templates/home.html:12 apps/users/views.py:75
 #: templates/general-nav.html:26 templates/navigation_top_loged-in.html:26
 msgid "Home"
 msgstr "首页"
 
-#: apps/users/templates/login.html:22 apps/users/templates/login.html:55
-msgid "LAO PRODUCT"
-msgstr "老挝特产"
+#: apps/users/templates/login.html:16
+msgid "Lao Product account"
+msgstr "老挝特产账户"
 
-#: apps/users/templates/login.html:25
+#: apps/users/templates/login.html:17
+msgid "Welcome back"
+msgstr "欢迎回来"
+
+#: apps/users/templates/login.html:18
 msgid "Please login to your account"
 msgstr "请登录您的账号"
 
-#: apps/users/templates/login.html:33
+#: apps/users/templates/login.html:26
 msgid "Username / Email / Phone"
 msgstr "用户名 / 电子邮箱 / 电话"
 
-#: apps/users/templates/login.html:46
+#: apps/users/templates/login.html:34
+msgid "Back"
+msgstr "返回"
+
+#: apps/users/templates/login.html:35
 msgid "Sign In"
 msgstr "登录"
+
+#: apps/users/templates/login.html:39 templates/footer.html:34
+#: templates/general-nav.html:12
+msgid "Lao Product"
+msgstr "老挝特产"
 
 #: apps/users/views.py:49 templates/general-nav.html:75
 msgid "Login"
@@ -893,43 +1492,6 @@ msgstr "查找您想要的内容。"
 msgid "Show All"
 msgstr "显示全部"
 
-#: templates/general-nav.html:12
-msgid "Lao Product"
-msgstr "老挝特产"
-
-#: templates/general-nav.html:30
-msgid "Demand Center"
-msgstr "需求中心"
-
-#: templates/general-nav.html:34
-msgid "Supply Center"
-msgstr "供应中心"
-
-#: templates/general-nav.html:42
-msgid "News"
-msgstr "新闻动态"
-
-#: templates/general-nav.html:46
-msgid "Talent Center"
-msgstr "人才中心"
-
-#: templates/general-nav.html:50
-msgid "Market Updates"
-msgstr "市场动态"
-
-#: templates/general-nav.html:54 templates/navigation_top_loged-in.html:31
-#: templates/general-nav.html:54 templates/navigation_top_loged-in.html:31
-msgid "Admin"
-msgstr "管理后台"
-
-#: templates/navigation_top_loged-in.html:12
-msgid "BACKEND STATE"
-msgstr "后台管理状态"
-
-#: templates/footer.html:8
-msgid "Lao Product logo"
-msgstr "老挝特产标志"
-
 #: templates/footer.html:10
 msgid "Discover useful products from Lao Product."
 msgstr "发现来自老挝特产的实用商品。"
@@ -961,3 +1523,26 @@ msgstr "简单购物，用心呈现。"
 #: templates/footer.html:35
 msgid "Built for everyday shopping in Laos."
 msgstr "为老挝的日常购物而打造。"
+
+#: templates/general-nav.html:54 templates/navigation_top_loged-in.html:31
+msgid "Admin"
+msgstr "管理后台"
+
+#: templates/navigation_top_loged-in.html:12
+msgid "BACKEND STATE"
+msgstr "后台管理状态"
+
+#~ msgid "Personal Information"
+#~ msgstr "个人信息"
+
+#~ msgid "TOP VALUE SERVICE"
+#~ msgstr "TOP VALUE SERVICE"
+
+#~ msgid "Account Information"
+#~ msgstr "账户信息"
+
+#~ msgid "Internal Utility"
+#~ msgstr "内部工具"
+
+#~ msgid "LAO PRODUCT"
+#~ msgstr "老挝特产"

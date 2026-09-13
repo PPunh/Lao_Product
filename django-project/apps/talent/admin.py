@@ -1,17 +1,18 @@
 from django.contrib import admin
+from modeltranslation.admin import TabbedTranslationAdmin
 
 from .models import TalentApplication, TalentOpportunity, TalentProfile
 
 
 @admin.register(TalentProfile)
-class TalentProfileAdmin(admin.ModelAdmin):
+class TalentProfileAdmin(TabbedTranslationAdmin):
     list_display = ('owner', 'headline', 'availability', 'is_active')
     list_filter = ('availability', 'is_active')
     search_fields = ('owner__username', 'owner__email', 'headline', 'skills')
 
 
 @admin.register(TalentOpportunity)
-class TalentOpportunityAdmin(admin.ModelAdmin):
+class TalentOpportunityAdmin(TabbedTranslationAdmin):
     list_display = ('code', 'title', 'organization_name', 'opportunity_type', 'status', 'deadline')
     list_filter = ('opportunity_type', 'status')
     search_fields = ('code', 'title', 'organization_name')

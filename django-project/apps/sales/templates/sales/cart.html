@@ -16,7 +16,9 @@
             <p class="eyebrow">{% trans "Your selection" %}</p>
             <h1 class="lao-noto">{% trans "Shopping Cart" %}</h1>
         </div>
-        <a href="{% url 'sales:sale_page' %}" class="text-link"><i class="bi bi-arrow-left"></i> {% trans "Continue Shopping" %}</a>
+        <a href="{% url 'sales:sale_page' %}" class="text-link">
+            <i class="fa fa-arrow-left"></i> {% trans "Continue Shopping" %}
+        </a>
     </div>
 
     {% if items %}
@@ -44,7 +46,7 @@
                             </div>
                             <form method="post" action="{% url 'sales:remove_from_cart' item.id %}">
                                 {% csrf_token %}
-                                <button type="submit" class="remove-link"><i class="bi bi-trash3"></i> {% trans "Remove" %}</button>
+                                <button type="submit" class="remove-link"><i class="fa fa-trash"></i> {% trans "Remove" %}</button>
                             </form>
                         </div>
                         <strong class="line-total">
@@ -55,7 +57,7 @@
             </div>
 
             <aside class="summary-panel">
-                    <div class="summary-heading"><span class="section-icon"><i class="bi bi-receipt"></i></span><h2>{% trans "Order Summary" %}</h2></div>
+                    <div class="summary-heading"><span class="section-icon"><i class="fa fa-receipt"></i></span><h2>{% trans "Order Summary" %}</h2></div>
                     <div class="summary-row">
                         <span>{% trans "Subtotal" %}</span>
                         <strong>{{ cart.subtotal|money_format:2 }}</strong>
@@ -86,15 +88,15 @@
                         </div>
                     </form>
 
-                    <a href="{% url 'sales:checkout' %}" class="primary-button">{% trans "Proceed to Checkout" %} <i class="bi bi-arrow-right"></i></a>
+                    <a href="{% url 'sales:checkout' %}" class="primary-button">{% trans "Proceed to Checkout" %} <i class="fa fa-arrow-right"></i></a>
             </aside>
         </div>
     {% else %}
         <div class="empty-state">
-            <span class="empty-icon"><i class="bi bi-bag"></i></span>
+            <span class="empty-icon"><i class="fa fa-shopping-bag"></i></span>
             <h2>{% trans "Your cart is empty." %}</h2>
             <p>{% trans "Discover something useful for your next order." %}</p>
-            <a href="{% url 'sales:sale_page' %}" class="primary-button">{% trans "Browse Products" %} <i class="bi bi-arrow-right"></i></a>
+            <a href="{% url 'sales:sale_page' %}" class="primary-button">{% trans "Browse Products" %} <i class="fa fa-arrow-right"></i></a>
         </div>
     {% endif %}
 </div>

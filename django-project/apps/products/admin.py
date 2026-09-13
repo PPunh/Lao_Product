@@ -8,9 +8,13 @@ from .models import (
     ProductsModel,
     StocksModel
 )
+
 @admin.register(CurrencyModel)
 class CurrencyAdmin(TabbedTranslationAdmin):
-    fields = ('code', 'currency_name', 'symbol')
+    list_display = ('code', 'currency_name', 'symbol', 'is_default')
+    search_fields = ('code', 'currency_name')
+    list_filter = ('is_default',)
+    fields = ('code', 'currency_name', 'symbol', 'is_default')
 
 @admin.register(StocksModel)
 class StocksAdmin(admin.ModelAdmin):
