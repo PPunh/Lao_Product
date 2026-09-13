@@ -23,6 +23,7 @@ urlpatterns = [
 # URL of project for Multilingual
 urlpatterns += i18n_patterns(
     path('admin12321/', admin.site.urls),  # admin path
+    path('captcha/', include('captcha.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),

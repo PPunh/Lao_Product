@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'django_select2',
     #'django_ratelimit', # rate limit, uncomment this line in production deployment
     'axes', # tracking user login fail attempts
+    'captcha', # captcha for login form
 
     # custom apps
     # usage: apps.app_name
@@ -397,3 +398,8 @@ USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
 PREFIX_DEFAULT_LANGUAGE = True
 NUMBER_GROUPING = 3
+
+# CAPTCHA OPTION 
+CAPTCHA_FONT_SIZE = 30
+CAPTCHA_LENGTH = 6
+CAPTCHA_IMAGE_SIZE = (120, 50)

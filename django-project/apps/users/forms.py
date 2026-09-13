@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 from .backends import MultiAuthBackend
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from captcha.fields import CaptchaField
 from . import models
 from .models import User
 
@@ -16,6 +17,7 @@ class LoginForm(AuthenticationForm):
         label=_("Username / Email / Phone number")
     )
     password = forms.CharField(widget=forms.PasswordInput)
+    captcha = CaptchaField()
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
