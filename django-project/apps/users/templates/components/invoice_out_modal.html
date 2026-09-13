@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load humanize %}
 <div id="invoiceOutModal" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width: 90%;">
@@ -15,8 +16,8 @@
                 {{form.as_p}}
                 
                 <div class="w3-padding-16 w3-center">
-                    <button type="button" class="w3-button w3-red w3-round-large w3-hover-shadow" onclick="closeModal('invoiceOutModal')">Cancel</button>
-                    <button type="submit" class="w3-button w3-green w3-round-large w3-margin-left">Save</button>
+                    <button type="button" class="w3-button w3-red w3-round-large w3-hover-shadow" onclick="closeModal('invoiceOutModal')">{% trans "Cancel" %}</button>
+                    <button type="submit" class="w3-button w3-green w3-round-large w3-margin-left">{% trans "Save" %}</button>
                 </div>
             </form>
     </div>

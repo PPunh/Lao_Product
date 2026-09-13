@@ -23,12 +23,12 @@
 
       <a href="{% url 'users:home' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-list-check w3-margin-right"></i>
-          <span>Home</span>
+          <span>{% trans "Home" %}</span>
       </a>
       {% if user.is_authenticated and user.is_superuser %}
           <a href="{% url 'admin:index' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
               <i class="fa-solid fa-list-check w3-margin-right"></i>
-              <span>Admin</span>
+              <span>{% trans "Admin" %}</span>
           </a>
       {% endif %}
       <!-- <div class="w3-dropdown-hover" style="background: none;" onclick="toggleNavDropdown(event, this)">

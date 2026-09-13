@@ -1,16 +1,17 @@
 {% load humanize %}
+{% load i18n %}
 <div id="licenseInfoModal" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px;">
         <div class="w3-container w3-blue">
-            <h3>Create New License</h3>
+            <h3>{% trans "Create New License" %}</h3>
             <span onclick="closeModal('licenseInfoModal')" class="w3-button w3-display-topright">&times;</span>
         </div>
         <form method="post" action="{% url 'license_info:create' %}">
             {% csrf_token %}
             <div class="w3-padding">
                 {{ license_info_form.as_p }}
-                <button type="submit" class="w3-button w3-blue w3-round">Create</button>
-                <button type="button" onclick="closeModal('licenseInfoModal')" class="w3-button w3-red w3-round">Cancel</button>
+                <button type="submit" class="w3-button w3-blue w3-round">{% trans "Create" %}</button>
+                <button type="button" onclick="closeModal('licenseInfoModal')" class="w3-button w3-red w3-round">{% trans "Cancel" %}</button>
             </div>
         </form>
     </div>

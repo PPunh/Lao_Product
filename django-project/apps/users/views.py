@@ -17,6 +17,7 @@ from django.views.decorators.cache import never_cache
 from django_ratelimit.decorators import ratelimit
 from django.conf import settings
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 from . import forms
 from . import models
@@ -45,7 +46,7 @@ class Login(LoginView):
     def get_context_data(self, **kwargs):
         # Get the default context provided by LoginView
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Login'  # Add custom context
+        context['title'] = _('Login')
         context['theme_color'] = 'w3-theme-blue.css'
         return context
 
@@ -55,11 +56,11 @@ class Login(LoginView):
 
     def form_valid(self, form):
         # Only show the welcome message on a real login submission
-        messages.success(self.request, 'You have successfully logged in')
+        messages.success(self.request, _('You have successfully logged in'))
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Username / Email / Phone number / Password is required')
+        messages.error(self.request, _('Username / Email / Phone number / Password is required'))
         return super().form_invalid(form)  # Re-render the form with errors message
 
 @method_decorator(
@@ -71,7 +72,7 @@ class Home(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Home"
+        context["title"] = _('Home')
         return context
 
 
@@ -80,7 +81,7 @@ class Home(LoginRequiredMixin, TemplateView):
 @ratelimit(key='header:X-Forwarded-For', rate=settings.RATE_LIMIT, block=True)
 def logout_view(request):
     logout(request)
-    messages.success(request, 'You have successfully logged out')
+    messages.success(request, _('You have successfully logged out'))
     return redirect('sales:sale_page')
 
 
@@ -97,7 +98,7 @@ class SuperUserCreation(FormView):
     def get_success_url(self):
         messages.success(
             self.request,
-            'Created SuperUser successfully.'
+            _('Created SuperUser successfully.')
         )
         return reverse_lazy(
             "users:login"
@@ -107,15 +108,14 @@ class SuperUserCreation(FormView):
         # Check if any super already exists
         if models.User.objects.filter(is_superuser = True).exists():
             return HttpResponse(
-                "<br><h2>The system already has an existing superuser \
-                and is not allowed to create another using this interface.</h2>"
+                f"<br><h2>{_('The system already has an existing superuser and is not allowed to create another using this interface.')}</h2>"
             )
 
         # Initialize both forms
         user_form = forms.SuperUserCreationForm()
 
         context = {
-            'title' : "Create First Superuser",
+            'title': _('Create First Superuser'),
             'user_form' : user_form,
         }
 
@@ -128,8 +128,7 @@ class SuperUserCreation(FormView):
         # Check if any superuser already exists (repeat for POST Request)
         if models.User.objects.filter(is_superuser = True).exists():
             return HttpResponse(
-                "<br><h2>The system already has an existing superuser \
-                and is not allowed to create another using this interface.</h2>"
+                f"<br><h2>{_('The system already has an existing superuser and is not allowed to create another using this interface.')}</h2>"
             )
 
         user_form = forms.SuperUserCreationForm(request.POST)

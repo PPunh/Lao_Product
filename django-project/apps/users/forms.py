@@ -6,13 +6,14 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from .backends import MultiAuthBackend
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from . import models
 from .models import User
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
         max_length=100,
-        label="Username / Email / Phone number"
+        label=_("Username / Email / Phone number")
     )
     password = forms.CharField(widget=forms.PasswordInput)
 
@@ -42,18 +43,18 @@ class CustomUserForm(UserCreationForm):
             'is_superuser',
         ]
         labels = {
-            'username': 'Username',
-            'email': 'Email',
-            'phone_number': 'Phone Number',
-            'password1': 'Password',
-            'password2': 'Confirm Password',
-            'is_active': 'Active',
-            'is_superuser': 'Superuser',
+            'username': _('Username'),
+            'email': _('Email'),
+            'phone_number': _('Phone Number'),
+            'password1': _('Password'),
+            'password2': _('Confirm Password'),
+            'is_active': _('Active'),
+            'is_superuser': _('Superuser'),
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['password1'].label = 'Password'
-        self.fields['password2'].label = 'Confirm Password'
+        self.fields['password1'].label = _('Password')
+        self.fields['password2'].label = _('Confirm Password')
         css_class = 'form-control w3-input w3-borderw3-margin-bottom'
 
         for field in self.fields.values():
@@ -66,13 +67,13 @@ class SuperUserCreationForm(forms.ModelForm):
         Form for creating SUPPERUSRE
     """
     password1 = forms.CharField(
-        label = 'Password',
+        label = _('Password'),
         strip = False,
         widget = forms.PasswordInput(attrs = {"autocomplete":'Password'}),
         validators = [validate_password]
     )
     password2 = forms.CharField(
-        label = 'Confirm Password',
+        label = _('Confirm Password'),
         strip = False,
         widget = forms.PasswordInput(attrs={"autocomplete":'Confirm Password'}),
     )
@@ -90,6 +91,6 @@ class SuperUserCreationForm(forms.ModelForm):
         # Check if user input password1, password2 and both match
         if password1 and password2 and password1 != password2:
             raise ValidationError(
-                'Passwords do not match.'
+                _('Passwords do not match.')
             )
         return cleaned_data

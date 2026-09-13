@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block navigation_top %} {% endblock %}
 
@@ -50,7 +51,7 @@
             style="border-top: 8px solid #ff5722; position: relative;">
 
             <span class="w3-tag w3-red w3-round w3-display-topright w3-margin" style="transform: rotate(15deg);">
-            Private Party!</span>
+            {% trans "Private Party!" %}</span>
 
             <div class="w3-margin-bottom">
                 <span style="font-size: 80px;" class="bounce-animation">
@@ -59,8 +60,8 @@
                 <span style="font-size: 40px; margin-left: -20px;">😜</span>
             </div>
 
-            <h1 class="w3-text-dark-grey" style="font-weight: 800; margin-top: 0;">Whoopsie! 403</h1>
-            <h3 class="w3-text-grey">Nice try, but you're not on the list!</h3>
+            <h1 class="w3-text-dark-grey" style="font-weight: 800; margin-top: 0;">{% trans "Whoopsie! 403" %}</h1>
+            <h3 class="w3-text-grey">{% trans "Nice try, but you're not on the list!" %}</h3>
 
             <div class="w3-panel w3-pale-red w3-leftbar w3-border-red w3-margin-top w3-margin-bottom"
                 style="display: inline-block; padding: 10px 24px; border-radius: 8px;">
@@ -68,7 +69,7 @@
                     {% if exception %}
                         "{{ exception }}"
                     {% else %}
-                        Access Denied! Your VIP pass seems to be missing.
+                        {% trans "Access Denied! Your VIP pass seems to be missing." %}
                     {% endif %}
                 </p>
             </div>

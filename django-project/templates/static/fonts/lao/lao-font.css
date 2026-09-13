@@ -49,7 +49,6 @@ font-style: normal;
 font-weight: 400;
 src: url(Lao_Handwriting11.woff) format('woff');
 }
-}
 .lao-hand11 {
 	font-family: 'Lao Hand Writing 11',  sans-serif  !important;
 }
@@ -126,7 +125,6 @@ font-family: 'Lao Luangpouchan 2';
 font-style: normal;
 font-weight: 400;
 src: url(Lao_Luangpouchan2.woff) format('woff');
-}
 }
 .lao-luangpouchan2 {
 	font-family: 'Lao Luangpouchan 2',  sans-serif  !important;

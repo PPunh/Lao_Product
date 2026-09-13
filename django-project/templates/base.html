@@ -38,6 +38,14 @@
 
         {% block extra_css %}{% endblock %}
     </head>
+    <style>
+        body {
+            font-family: "Noto Sans Lao", sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Noto Sans Lao", sans-serif !important;
+        }
+    </style>
     <body class="lao-noto" style="margin-top: 100px; height: 100vh;">
         {% comment %} Top Navigation {% endcomment %}
         {% block navigation_top %}
@@ -53,6 +61,7 @@
 
         {% comment %} page footer {% endcomment %}
         {% block footer %}
+            {% include 'footer.html' %}
         {% endblock %}
 
         {% comment %} Main JS libs {% endcomment %}

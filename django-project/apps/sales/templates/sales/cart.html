@@ -80,7 +80,7 @@
                         {% csrf_token %}
                         <label for="coupon-code">{% trans "Coupon Code" %}</label>
                         <div class="coupon-input">
-                            <input id="coupon-code" type="text" name="coupon_code" value="{{ cart.coupon_code|default:'' }}" placeholder="SAVE10 / WELCOME5">
+                            <input id="coupon-code" type="text" name="coupon_code" value="{{ cart.coupon_code|default:'' }}" placeholder="{% translate 'Enter coupon code' %}">
                             <button type="submit" class="soft-button">{% trans "Apply" %}</button>
                         </div>
                     </form>

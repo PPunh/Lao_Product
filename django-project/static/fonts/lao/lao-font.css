@@ -9,6 +9,9 @@ src: url(NotoSansLao-Regular.woff) format('woff');
 	font-family: 'Noto Sans Lao',  sans-serif  !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Noto Sans Lao", sans-serif !important;
+}
 /* Noto Sans Lao Looped */
 @font-face {
 font-family: 'Noto Sans Lao Looped';
