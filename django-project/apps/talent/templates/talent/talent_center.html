@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page portal-page">
+    <div class="portal-hero">
+        <div>
+            <p class="eyebrow">{% translate "For people and teams" %}</p>
+            <h1 class="lao-noto">{% translate "Talent Center" %}</h1>
+            <p>{% translate "Find meaningful ways to use your skills and connect with growing local opportunities." %}</p>
+        </div>
+        <div class="portal-hero-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
+    </div>
+    <div class="portal-grid">
+        {% for action in talent_actions %}
+        <article class="portal-card">
+            <span class="section-icon"><i class="fa-solid {{ action.icon }}" aria-hidden="true"></i></span>
+            <h2 class="lao">{{ action.title }}</h2>
+            <p>{{ action.text }}</p>
+            <a class="text-link" href="{% url 'users:login' %}">{% translate "Get started" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

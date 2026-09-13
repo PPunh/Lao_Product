@@ -33,6 +33,9 @@ urlpatterns += i18n_patterns(
     path('', include('apps.sales.urls', namespace='sales')),
     path('products/', include('apps.products.urls', namespace='products')),
     path('news/', include('apps.news.urls', namespace='news')),
+    path('supply/', include('apps.supply.urls', namespace='supply')),
+    path('talent/', include('apps.talent.urls', namespace='talent')),
+    path('market/', include('apps.market.urls', namespace='market')),
     # SET PREFIX_DEFAULT_LANG
     prefix_default_language=True,
 )

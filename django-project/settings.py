@@ -93,6 +93,9 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.sales',
     'apps.news',
+    'apps.supply',
+    'apps.talent',
+    'apps.market',
 ]
 
 AUTH_USER_MODEL = 'users.User'

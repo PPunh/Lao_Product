@@ -255,6 +255,19 @@ body{
 .product-detail-form{display:flex; align-items:center; gap:10px; margin:24px 0 14px;}
 .product-detail-form .qty-control{flex:0 0 118px; margin:0;}
 .product-detail-form .primary-button{width:auto; flex:1;}
+.portal-page{max-width:1200px;}
+.portal-hero{display:flex; align-items:center; justify-content:space-between; gap:28px; margin-bottom:22px; padding:32px; overflow:hidden; background:linear-gradient(120deg,#fff4ed 0%,#fffaf6 55%,#f7eedc 100%); border:1px solid var(--orange-line); border-radius:var(--radius);}
+.portal-hero h1{margin:0 0 8px; color:var(--text); font-size:clamp(28px,4vw,42px); line-height:1.2;}
+.portal-hero p:last-child{max-width:620px; margin:0; color:var(--muted); font-size:14px; line-height:1.8;}
+.portal-hero-icon{display:flex; align-items:center; justify-content:center; flex:0 0 76px; width:76px; height:76px; border-radius:20px; background:var(--orange); color:#fff; font-size:32px; box-shadow:0 10px 24px -14px rgba(255,107,0,.8);}
+.portal-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px;}
+.portal-card{padding:22px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;}
+.portal-card:hover{border-color:var(--orange-line); box-shadow:0 8px 20px -10px rgba(255,107,0,.25); transform:translateY(-3px);}
+.portal-card h2{margin:18px 0 8px; color:var(--text); font-size:17px;}
+.portal-card p{min-height:66px; margin:0 0 18px; color:var(--muted); font-size:13px; line-height:1.7;}
+.portal-card .text-link{display:inline-flex; align-items:center; gap:7px; font-size:12px;}
+@media (max-width:700px){.portal-hero{align-items:flex-start; padding:24px 20px;}.portal-grid{grid-template-columns:1fr;}.portal-card p{min-height:0;}}
+@media (max-width:450px){.portal-hero-icon{display:none;}}
 @media (max-width:800px){.product-detail{grid-template-columns:1fr; gap:20px; padding:18px;}.product-detail-image{min-height:300px;}.product-detail-content{padding:0;}}
 @media (max-width:520px){.product-detail-form{align-items:stretch; flex-direction:column;}.product-detail-form .qty-control{flex-basis:auto;}.product-detail-form .primary-button{width:100%;}}
 

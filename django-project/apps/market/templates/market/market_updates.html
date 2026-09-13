@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page portal-page">
+    <div class="portal-hero">
+        <div>
+            <p class="eyebrow">{% translate "Stay informed" %}</p>
+            <h1 class="lao-noto">{% translate "Market Updates" %}</h1>
+            <p>{% translate "A focused view of local signals, new opportunities, and updates from the Lao Product community." %}</p>
+        </div>
+        <div class="portal-hero-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+    </div>
+    <div class="portal-grid">
+        {% for section in market_sections %}
+        <article class="portal-card">
+            <span class="section-icon"><i class="fa-solid {{ section.icon }}" aria-hidden="true"></i></span>
+            <h2 class="lao">{{ section.title }}</h2>
+            <p>{{ section.text }}</p>
+            {% if section.url %}
+                <a class="text-link" href="{% url section.url %}">{% translate "Read latest news" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            {% else %}
+                <a class="text-link" href="{% url 'users:login' %}">{% translate "Get started" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

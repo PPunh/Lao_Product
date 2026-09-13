@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navigation_top %}{% include 'general-nav.html' %}{% endblock %}
+
+{% block main-content %}
+<main class="wrap commerce-page portal-page">
+    <div class="portal-hero">
+        <div>
+            <p class="eyebrow">{% translate "For local suppliers" %}</p>
+            <h1 class="lao-noto">{% translate "Supply Center" %}</h1>
+            <p>{% translate "Bring your products and services closer to the people and businesses that need them." %}</p>
+        </div>
+        <div class="portal-hero-icon"><i class="fa-solid fa-truck" aria-hidden="true"></i></div>
+    </div>
+    <div class="portal-grid">
+        {% for action in supply_actions %}
+        <article class="portal-card">
+            <span class="section-icon"><i class="fa-solid {{ action.icon }}" aria-hidden="true"></i></span>
+            <h2 class="lao">{{ action.title }}</h2>
+            <p>{{ action.text }}</p>
+            <a class="text-link" href="{% url 'users:login' %}">{% translate "Get started" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

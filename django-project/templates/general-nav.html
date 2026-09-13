@@ -29,7 +29,7 @@
           <i class="fa-solid fa-users"></i>
           <span>{% trans "Demand Center" %}</span>
       </a>
-      <a href="#" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'supply:center' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-truck"></i>
           <span>{% trans "Supply Center" %}</span>
       </a>
@@ -41,11 +41,11 @@
           <i class="fa-solid fa-info"></i>
           <span>{% trans "News" %}</span>
       </a>
-      <a href="#" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'talent:center' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-arrows-spin"></i>
           <span>{% trans "Talent Center" %}</span>
       </a>
-      <a href="#" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'market:updates' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
           <i class="fa-solid fa-arrows-spin"></i>
           <span>{% trans "Market Updates" %}</span>
       </a>
