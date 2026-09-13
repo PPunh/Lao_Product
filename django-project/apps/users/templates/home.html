@@ -8,7 +8,26 @@
 {% endblock %}
 
 {% block main-content %}
-<div class="w3-container w3-row">
-    <h1>{% trans "Home" %}</h1>
-</div>
+<main class="w3-content" style="max-width: 1200px; padding: 88px 24px 32px;">
+    <header class="w3-margin-bottom">
+        <p class="w3-text-grey" style="margin-bottom: 4px;">{% trans "Workspace" %}</p>
+        <h1 style="margin-top: 0;">{% trans "BACKEND STATE" %}</h1>
+        <p class="w3-text-grey">{% trans "Open a list view to review the latest information in each area." %}</p>
+    </header>
+
+    <section class="w3-row-padding" style="margin: 0 -12px;">
+        {% for backend_view in backend_views %}
+            <div class="w3-col l3 m6 w3-margin-bottom" style="padding: 0 12px;">
+                <a href="{{ backend_view.url }}" class="w3-card w3-white w3-round-large w3-padding-large w3-block w3-hover-shadow" style="min-height: 170px; text-decoration: none;">
+                    <i class="fa-solid {{ backend_view.icon }} w3-text-blue" aria-hidden="true"></i>
+                    <h2 class="w3-large">{{ backend_view.name }}</h2>
+                    <p class="w3-text-grey">{{ backend_view.description }}</p>
+                    <span class="w3-text-blue">{% trans "Open list" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
+            </div>
+        {% empty %}
+            <p>{% trans "No list views are available." %}</p>
+        {% endfor %}
+    </section>
+</main>
 {% endblock %}

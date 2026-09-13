@@ -72,7 +72,33 @@ class Home(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = _('Home')
+        context["title"] = _('BACKEND STATE')
+        context["backend_views"] = [
+            {
+                "name": _('News'),
+                "description": _('View and manage published news.'),
+                "url": reverse_lazy('news:news-list'),
+                "icon": 'fa-newspaper',
+            },
+            {
+                "name": _('Market'),
+                "description": _('Review the latest market updates.'),
+                "url": reverse_lazy('market:updates'),
+                "icon": 'fa-chart-line',
+            },
+            {
+                "name": _('Supply'),
+                "description": _('Browse supply listings and profiles.'),
+                "url": reverse_lazy('supply:center'),
+                "icon": 'fa-boxes-stacked',
+            },
+            {
+                "name": _('Talent'),
+                "description": _('Browse talent opportunities and profiles.'),
+                "url": reverse_lazy('talent:center'),
+                "icon": 'fa-users',
+            },
+        ]
         return context
 
 
