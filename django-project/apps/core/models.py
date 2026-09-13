@@ -1,4 +1,6 @@
 # coding=utf-8
+import os
+
 from django.db import models, transaction
 from django.utils import timezone
 from django.conf import settings

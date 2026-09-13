@@ -45,3 +45,27 @@ class SalesOrderFlowTests(TestCase):
 
         self.assertEqual(order.grand_total, Decimal('66500.00'))
         self.assertEqual(order.items.count(), 1)
+
+    def test_discount_cannot_make_cart_total_negative(self):
+        cart = Cart.objects.create(session_key='test-cart-discount', discount=Decimal('100.00'))
+        CartItem.objects.create(cart=cart, product=self.product, quantity=1, unit_price=self.product.price)
+
+        cart.discount = Decimal('100000.00')
+        cart.recalculate()
+
+        self.assertEqual(cart.discount, self.product.price)
+        self.assertGreaterEqual(cart.grand_total, Decimal('0.00'))
+
+    def test_completed_cart_is_not_reused(self):
+        request = self.client.get('/').wsgi_request
+        request.session.create()
+        completed_cart = Cart.objects.create(
+            session_key=request.session.session_key,
+            status=Cart.STATUS_COMPLETED,
+        )
+
+        from apps.sales.views import get_or_create_cart
+        active_cart = get_or_create_cart(request)
+
+        self.assertNotEqual(active_cart.pk, completed_cart.pk)
+        self.assertEqual(active_cart.status, Cart.STATUS_ACTIVE)

@@ -77,7 +77,7 @@ class Home(LoginRequiredMixin, TemplateView):
 
 
 @never_cache
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["POST"])
 @ratelimit(key='header:X-Forwarded-For', rate=settings.RATE_LIMIT, block=True)
 def logout_view(request):
     logout(request)

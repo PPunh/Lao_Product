@@ -31,4 +31,3 @@
 .setup-form .form-error{margin-top:-3px; color:var(--danger); font-size:11px;}
 @keyframes loginReveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media (max-width:600px){.login-page{padding:24px 14px 42px;}.login-card{padding:24px 18px;}.login-actions{flex-direction:column;}.login-actions .soft-button,.login-actions .primary-button{width:100%;}.setup-form{display:grid; grid-template-columns:1fr;}.setup-form label,.setup-form .setup-input,.setup-form .setup-password-wrap,.setup-form .form-error{grid-column:1;}}
-

@@ -3,6 +3,7 @@ from decimal import Decimal
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.db.models import Q
 from django.forms import modelform_factory
 from django.http import HttpResponseRedirect
@@ -26,7 +27,12 @@ def get_or_create_cart(request):
         request.session.create()
         session_key = request.session.session_key
 
-    cart, created = Cart.objects.get_or_create(session_key=session_key)
+    cart = Cart.objects.filter(
+        session_key=session_key,
+        status=Cart.STATUS_ACTIVE,
+    ).first()
+    if cart is None:
+        cart = Cart.objects.create(session_key=session_key, status=Cart.STATUS_ACTIVE)
     if request.user.is_authenticated and (cart.user is None or cart.user != request.user):
         cart.user = request.user
         cart.save(update_fields=['user'])
@@ -36,13 +42,16 @@ def get_or_create_cart(request):
 @require_POST
 def add_to_cart(request):
     product_id = request.POST.get('product_id')
-    quantity = int(request.POST.get('quantity', 1) or 1)
+    try:
+        quantity = int(request.POST.get('quantity', 1) or 1)
+    except (TypeError, ValueError):
+        quantity = 0
 
-    if not product_id:
+    if not product_id or quantity < 1:
         messages.error(request, _('Product was not selected.'))
         return redirect('sales:sale_page')
 
-    product = get_object_or_404(ProductsModel, pk=product_id)
+    product = get_object_or_404(ProductsModel, pk=product_id, is_sellable=True)
     cart = get_or_create_cart(request)
 
     item, created = CartItem.objects.get_or_create(
@@ -62,7 +71,10 @@ def add_to_cart(request):
 @require_POST
 def update_cart_item(request, item_id):
     item = get_object_or_404(CartItem, pk=item_id, cart=get_or_create_cart(request))
-    quantity = int(request.POST.get('quantity', 1) or 1)
+    try:
+        quantity = int(request.POST.get('quantity', 1) or 1)
+    except (TypeError, ValueError):
+        quantity = 0
     if quantity <= 0:
         item.delete()
         messages.info(request, _('Item removed from cart.'))
@@ -162,33 +174,35 @@ class CheckoutView(FormView):
 
     def form_valid(self, form):
         cart = get_or_create_cart(self.request)
-        if not cart.items.exists():
-            messages.error(self.request, _('Your cart is empty.'))
-            return redirect('sales:cart')
+        with transaction.atomic():
+            cart = Cart.objects.select_for_update().get(pk=cart.pk)
+            if cart.status != Cart.STATUS_ACTIVE or not cart.items.exists():
+                messages.error(self.request, _('Your cart is empty.'))
+                return redirect('sales:cart')
 
-        coupon_code = (form.cleaned_data.get('coupon_code') or '').strip()
-        if coupon_code:
-            cart.apply_coupon(coupon_code)
+            coupon_code = (form.cleaned_data.get('coupon_code') or '').strip()
+            if coupon_code:
+                cart.apply_coupon(coupon_code)
 
-        cart.shipping_fee = form.cleaned_data.get('shipping_fee') or Decimal('0.00')
-        cart.recalculate()
+            cart.shipping_fee = form.cleaned_data.get('shipping_fee') or Decimal('0.00')
+            cart.recalculate()
 
-        order = Order.create_from_cart(
-            cart,
-            customer_name=form.cleaned_data['customer_name'],
-            phone=form.cleaned_data.get('phone'),
-            email=form.cleaned_data.get('email'),
-            address=form.cleaned_data.get('address'),
-            tax_invoice_requested=form.cleaned_data.get('tax_invoice_requested', False),
-            tax_id=form.cleaned_data.get('tax_id'),
-            company_name=form.cleaned_data.get('company_name'),
-            company_address=form.cleaned_data.get('company_address'),
-            payment_method=form.cleaned_data.get('payment_method', Order.PaymentMethod.CASH),
-            notes=form.cleaned_data.get('notes'),
-        )
+            order = Order.create_from_cart(
+                cart,
+                customer_name=form.cleaned_data['customer_name'],
+                phone=form.cleaned_data.get('phone'),
+                email=form.cleaned_data.get('email'),
+                address=form.cleaned_data.get('address'),
+                tax_invoice_requested=form.cleaned_data.get('tax_invoice_requested', False),
+                tax_id=form.cleaned_data.get('tax_id'),
+                company_name=form.cleaned_data.get('company_name'),
+                company_address=form.cleaned_data.get('company_address'),
+                payment_method=form.cleaned_data.get('payment_method', Order.PaymentMethod.CASH),
+                notes=form.cleaned_data.get('notes'),
+            )
 
-        cart.status = Cart.STATUS_COMPLETED
-        cart.save(update_fields=['status', 'updated_at'])
+            cart.status = Cart.STATUS_COMPLETED
+            cart.save(update_fields=['status', 'updated_at'])
         messages.success(self.request, _('Order created successfully.'))
         return redirect('sales:order_success', order_code=order.code)
 

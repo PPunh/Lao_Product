@@ -6,108 +6,68 @@
 {% trans "admin@company.com" as email_placeholder %}
 {% trans "+856 20..." as phone_placeholder %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+
 {% block main-content %}
-<div class="w3-container" style="padding: 0 5%; margin-top:-60px;">
-    <div class="w3-panel w3-leftbar w3-border-theme w3-light-grey w3-padding-16 w3-round-right w3-card">
-        <h2 class="lao-noto" style="margin:0;">
-            <b><i class="fa fa-user-shield w3-text-theme"></i> {% trans "TOP VALUE SERVICE" %}</b>
-        </h2>
-        <p class="w3-text-grey" style="margin:5px 0 0 0;">{% trans "Create your primary administrative identity." %}</p>
-    </div>
+<main class="login-page setup-page">
+    <section class="login-card setup-card" aria-labelledby="setup-title">
+        <a class="login-logo-link" href="{% url 'sales:sale_page' %}">
+            <img class="login-logo" src="{% static 'images/logo-laoproduct.png' %}" alt="{% trans 'Lao Product logo' %}">
+        </a>
+        <p class="eyebrow">{% trans "System setup" %}</p>
+        <h1 id="setup-title" class="lao-noto">{% trans "Create administrator" %}</h1>
+        <p class="login-subtitle">{% trans "Create your primary administrative identity." %}</p>
 
-    <form method="post" class="w3-card-4 w3-white w3-round-large w3-margin-bottom" enctype="multipart/form-data">
-        {% csrf_token %}
+        <form method="post" class="login-form setup-form">
+            {% csrf_token %}
+            {% if user_form.non_field_errors %}<div class="login-error">{{ user_form.non_field_errors }}</div>{% endif %}
+            <label for="id_username"><i class="fa-solid fa-user" aria-hidden="true"></i> {% trans "Username" %}</label>
+            {% render_field user_form.username class="setup-input" placeholder=username_placeholder autocomplete="username" %}
+            {% for error in user_form.username.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
 
-        <div class="w3-container w3-padding-24">
-            <h3 class="w3-text-theme w3-border-bottom w3-padding-16" style="margin-top:0;">
-                <span class="w3-badge w3-theme">1</span> {% trans "Account Information" %}
-            </h3>
+            <label for="id_email"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {% trans "Email Address" %}</label>
+            {% render_field user_form.email class="setup-input" placeholder=email_placeholder autocomplete="email" %}
+            {% for error in user_form.email.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
 
-            <div class="w3-row-padding">
-                <div class="w3-col l6 m6 s12 w3-margin-bottom">
-                    <label class="w3-text-grey"><i class="fa fa-user"></i> {% trans "Username" %}</label>
-                    {% render_field user_form.username class="w3-input w3-border w3-round" placeholder=username_placeholder %}
-                </div>
-                <div class="w3-col l6 m6 s12 w3-margin-bottom">
-                    <label class="w3-text-grey"><i class="fa fa-envelope"></i> {% trans "Email Address" %}</label>
-                    {% render_field user_form.email class="w3-input w3-border w3-round" placeholder=email_placeholder %}
-                </div>
+            <label for="id_phone_number"><i class="fa-solid fa-phone" aria-hidden="true"></i> {% trans "Phone Number" %}</label>
+            {% render_field user_form.phone_number class="setup-input" placeholder=phone_placeholder autocomplete="tel" %}
+            {% for error in user_form.phone_number.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
+
+            <label for="id_password1"><i class="fa-solid fa-lock" aria-hidden="true"></i> {% trans "Password" %}</label>
+            <div class="setup-password-wrap">
+                {% render_field user_form.password1 class="setup-input" placeholder="********" autocomplete="new-password" id="id_password1" %}
+                <button type="button" class="password-toggle" data-password-toggle="id_password1" aria-label="{% trans 'Show password' %}"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
             </div>
+            {% for error in user_form.password1.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
 
-            <div class="w3-row-padding">
-                <div class="w3-col l12 m12 s12 w3-margin-bottom">
-                    <label class="w3-text-grey"><i class="fa fa-phone"></i> {% trans "Phone Number" %}</label>
-                    {% render_field user_form.phone_number class="w3-input w3-border w3-round" placeholder=phone_placeholder %}
-                </div>
+            <label for="id_password2"><i class="fa-solid fa-check-double" aria-hidden="true"></i> {% trans "Confirm Password" %}</label>
+            <div class="setup-password-wrap">
+                {% render_field user_form.password2 class="setup-input" placeholder="********" autocomplete="new-password" id="id_password2" %}
+                <button type="button" class="password-toggle" data-password-toggle="id_password2" aria-label="{% trans 'Show password' %}"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
             </div>
+            {% for error in user_form.password2.errors %}<span class="form-error">{{ error }}</span>{% endfor %}
 
-            <div class="w3-row-padding">
-                <div class="w3-col l6 m6 s12 w3-margin-bottom">
-                    <label class="w3-text-grey"><i class="fa fa-key"></i> {% trans "Password" %}</label>
-                    <div class="password-container">
-                        {% render_field user_form.password1 class="w3-input w3-border w3-round" placeholder="••••••••" type="password" id="id_password1" %}
-                        <i class="fa fa-eye toggle-password" onclick="togglePass('id_password1', this)"></i>
-                    </div>
-                </div>
-                <div class="w3-col l6 m6 s12 w3-margin-bottom">
-                    <label class="w3-text-grey"><i class="fa fa-redo"></i> {% trans "Confirm Password" %}</label>
-                    <div class="password-container">
-                        {% render_field user_form.password2 class="w3-input w3-border w3-round" placeholder="••••••••" type="password" id="id_password2" %}
-                        <i class="fa fa-eye toggle-password" onclick="togglePass('id_password2', this)"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <button class="primary-button setup-submit" type="submit"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> {% trans "Save & Initialize" %}</button>
+        </form>
+        <p class="login-footer">{% trans "This setup is available only before the first administrator is created." %}</p>
+    </section>
+</main>
+{% endblock %}
 
-        <div class="w3-container w3-padding-32 w3-center w3-border-top">
-            <div style="max-width: 400px; margin: auto;">
-                <button class="w3-button w3-block w3-theme-dark w3-xlarge w3-round-xlarge w3-hover-black lao-noto" type="submit">
-                    <i class="fa fa-save"></i> {% trans "Save & Initialize" %}
-                </button>
-            </div>
-        </div>
-    </form>
-
-    <div class="w3-center w3-padding-16">
-        <small class="w3-text-grey">{% trans "Internal Utility" %} v1.0 | 2026</small>
-    </div>
-</div>
-
-<style>
-    .w3-input:focus { border-bottom: 2px solid var(--theme-color) !important; outline: none; }
-    label { font-size: 0.9em; font-weight: bold; display: block; margin-top: 10px; }
-    .w3-badge { font-weight: normal; }
-
-    .password-container {
-        position: relative;
-    }
-    .toggle-password {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        color: #777;
-        z-index: 10;
-        padding: 5px;
-    }
-    .toggle-password:hover {
-        color: var(--theme-color, #2196F3);
-    }
-</style>
-
+{% block js %}
 <script>
-    function togglePass(fieldId, icon) {
-        const passInput = document.getElementById(fieldId);
-        if (passInput.type === "password") {
-            passInput.type = "text";
-            icon.classList.remove("fa-eye");
-            icon.classList.add("fa-eye-slash");
-        } else {
-            passInput.type = "password";
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye");
-        }
-    }
+  document.querySelectorAll('[data-password-toggle]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var input = document.getElementById(button.dataset.passwordToggle);
+      var icon = button.querySelector('i');
+      var visible = input.type === 'password';
+      input.type = visible ? 'text' : 'password';
+      icon.classList.toggle('fa-eye', !visible);
+      icon.classList.toggle('fa-eye-slash', visible);
+      button.setAttribute('aria-label', visible ? '{% translate "Hide password" %}' : '{% translate "Show password" %}');
+    });
+  });
 </script>
 {% endblock %}

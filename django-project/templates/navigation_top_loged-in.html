@@ -47,10 +47,13 @@
       </div> -->
 
       {% include 'components/language_switcher.html' %}
-      <a href="{% url 'users:logout' %}" class="w3-button w3-text-red w3-hover-red w3-hover-text-white"
-        style="padding: 8px 16px !important; margin-left: 8px; border-radius: 8px;">
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-      </a>
+      <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="w3-button w3-text-red w3-hover-red w3-hover-text-white"
+          style="padding: 8px 16px !important; margin-left: 8px; border-radius: 8px;">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+      </form>
     </div>
   </div>
 </div>

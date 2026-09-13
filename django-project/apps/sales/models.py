@@ -49,7 +49,8 @@ class Cart(models.Model):
 
     def recalculate(self):
         subtotal = sum((item.line_total for item in self.items.all()), Decimal('0.00'))
-        taxable_total = max(subtotal - self.discount, Decimal('0.00'))
+        self.discount = min(max(self.discount, Decimal('0.00')), subtotal)
+        taxable_total = subtotal - self.discount
         tax_amount = (taxable_total * self.tax_rate).quantize(Decimal('0.01'))
         self.subtotal = subtotal
         self.tax_amount = tax_amount
