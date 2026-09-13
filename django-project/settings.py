@@ -146,9 +146,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-DATABASES = {
-    'default': {
+# Use PostgreSQL when environment variables are configured, otherwise fall back to SQLite
+# so local development and tests work without a running database container.
+postgres_ready = all(
+    os.environ.get(key)
+    for key in ('POSTGRES_HOST', 'POSTGRES_DB', 'POSTGRES_USER', 'POSTGRES_PASSWORD')
+)
+
+if postgres_ready:
+    default_database = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get('POSTGRES_HOST'),
         'NAME': os.environ.get('POSTGRES_DB'),
@@ -159,7 +165,15 @@ DATABASES = {
             # tell django to use additional schema
             #'options': '-c search_path=public,fees',
         }
-    },
+    }
+else:
+    default_database = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'sqlite', 'db.sqlite3'),
+    }
+
+DATABASES = {
+    'default': default_database,
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'sqlite', 'db.sqlite3'),

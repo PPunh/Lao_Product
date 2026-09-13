@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-11 17:49+0700\n"
+"POT-Creation-Date: 2026-09-13 10:28+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,7 +106,7 @@ msgstr "ແຂວງ"
 msgid "Country"
 msgstr "ປະເທດ"
 
-#: apps/core/models.py:84 apps/products/models.py:34
+#: apps/core/models.py:84 apps/products/models.py:64
 msgid "Name"
 msgstr "ຊື່"
 
@@ -114,11 +114,11 @@ msgstr "ຊື່"
 msgid "Surname"
 msgstr "ນາມສະກຸນ"
 
-#: apps/core/models.py:86
+#: apps/core/models.py:86 apps/sales/models.py:118
 msgid "Phone"
 msgstr "ໂທລະສັບ"
 
-#: apps/core/models.py:87
+#: apps/core/models.py:87 apps/sales/models.py:119
 msgid "Email"
 msgstr "ອີເທວ"
 
@@ -146,12 +146,12 @@ msgstr ""
 msgid "Code"
 msgstr "ລະຫັດ"
 
-#: apps/products/models.py:8 apps/products/models.py:36
+#: apps/products/models.py:8 apps/products/models.py:66
 #: apps/sales/templates/sales/sale_product.html:16
 msgid "Category"
 msgstr "ຄຳອະທິບາຍ"
 
-#: apps/products/models.py:9 apps/products/models.py:35
+#: apps/products/models.py:9 apps/products/models.py:65
 msgid "Description"
 msgstr "ຄຳອະທິບາຍ"
 
@@ -163,7 +163,7 @@ msgstr "ຫມວດຫມູ່ສິນຄ້າ"
 msgid "Products Categories"
 msgstr "ຫມວດຫມູ່ສິນຄ້າ"
 
-#: apps/products/models.py:22 apps/products/models.py:37
+#: apps/products/models.py:22 apps/products/models.py:67
 msgid "Unit"
 msgstr "ຫົວຫນ່ວຍ"
 
@@ -175,41 +175,316 @@ msgstr "ຫົວຫນ່ວຍສິນຄ້າ"
 msgid "Products Units"
 msgstr "ຫົວຫນ່ວຍສິນຄ້າ"
 
-#: apps/products/models.py:38
-msgid "Start Price"
-msgstr "ລາຄາເລີ່ມຕົ້ນ"
+#: apps/products/models.py:36
+msgid "Currency Code"
+msgstr ""
 
-#: apps/products/models.py:39
-msgid "End Price"
+#: apps/products/models.py:37
+msgid "e.g. LAK, USD, CNY, THB"
+msgstr ""
+
+#: apps/products/models.py:42
+msgid "Currency Name"
+msgstr ""
+
+#: apps/products/models.py:47
+msgid "Symbol / Icon"
+msgstr ""
+
+#: apps/products/models.py:48
+msgid "e.g. ₭, $, ¥, ฿"
+msgstr ""
+
+#: apps/products/models.py:52
+msgid "Is Default Currency"
+msgstr ""
+
+#: apps/products/models.py:59 apps/products/models.py:73
+msgid "Currency"
+msgstr ""
+
+#: apps/products/models.py:60
+msgid "Currencies"
+msgstr ""
+
+#: apps/products/models.py:79
+#, fuzzy
+#| msgid "End Price"
+msgid "Price"
 msgstr "ລາຄາເຕັ່ມ"
 
-#: apps/products/models.py:40
+#: apps/products/models.py:81
 msgid "Is Sellable"
 msgstr "ເປີດໃຫ້ຂາຍ"
 
-#: apps/products/models.py:45 apps/sales/templates/sales/sale_product.html:65
+#: apps/products/models.py:86 apps/sales/templates/sales/sale_product.html:65
 msgid "Product Image"
 msgstr "ຮູບສິນຄ້າ"
 
-#: apps/products/models.py:54 apps/products/models.py:55 apps/sales/views.py:17
+#: apps/products/models.py:95 apps/products/models.py:96
+#: apps/sales/views.py:103
 msgid "Products"
 msgstr "ສິນຄ້າ"
 
-#: apps/products/models.py:69
+#: apps/products/models.py:110
 msgid "Product"
 msgstr "ສິນຄ້າ"
 
-#: apps/products/models.py:73
+#: apps/products/models.py:114 apps/sales/models.py:81 apps/sales/models.py:189
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-#: apps/products/models.py:81
+#: apps/products/models.py:122
 msgid "Stock"
 msgstr "ສາງ"
 
-#: apps/products/models.py:82
+#: apps/products/models.py:123
 msgid "Stocks"
 msgstr "ສາງ"
+
+#: apps/sales/models.py:17 apps/sales/models.py:210
+#, fuzzy
+#| msgid "Is Active"
+msgid "Active"
+msgstr "ໃຊ້ງານ"
+
+#: apps/sales/models.py:18 apps/sales/templates/sales/checkout.html:9
+msgid "Checkout"
+msgstr ""
+
+#: apps/sales/models.py:19 apps/sales/models.py:104
+msgid "Completed"
+msgstr ""
+
+#: apps/sales/models.py:43 templates/general-nav.html:38
+msgid "Cart"
+msgstr ""
+
+#: apps/sales/models.py:44
+msgid "Carts"
+msgstr ""
+
+#: apps/sales/models.py:80 apps/sales/models.py:188
+msgid "Variant"
+msgstr ""
+
+#: apps/sales/models.py:87
+msgid "Cart Item"
+msgstr ""
+
+#: apps/sales/models.py:88
+msgid "Cart Items"
+msgstr ""
+
+#: apps/sales/models.py:102
+msgid "Pending"
+msgstr ""
+
+#: apps/sales/models.py:103
+msgid "Paid"
+msgstr ""
+
+#: apps/sales/models.py:105
+msgid "Cancelled"
+msgstr ""
+
+#: apps/sales/models.py:108
+msgid "Cash"
+msgstr ""
+
+#: apps/sales/models.py:109
+msgid "PromptPay"
+msgstr ""
+
+#: apps/sales/models.py:110
+msgid "ICBC Bank (Laos)"
+msgstr ""
+
+#: apps/sales/models.py:111
+msgid "BCEL (Laos)"
+msgstr ""
+
+#: apps/sales/models.py:112
+msgid "Visa"
+msgstr ""
+
+#: apps/sales/models.py:113
+msgid "Mastercard"
+msgstr ""
+
+#: apps/sales/models.py:114
+msgid "SWIFT Transfer"
+msgstr ""
+
+#: apps/sales/models.py:115
+msgid "Cash on Delivery"
+msgstr ""
+
+#: apps/sales/models.py:117
+msgid "Customer Name"
+msgstr ""
+
+#: apps/sales/models.py:120
+msgid "Address"
+msgstr ""
+
+#: apps/sales/models.py:121
+msgid "Request Tax Invoice"
+msgstr ""
+
+#: apps/sales/models.py:122
+msgid "Tax ID"
+msgstr ""
+
+#: apps/sales/models.py:123
+msgid "Company Name"
+msgstr ""
+
+#: apps/sales/models.py:124
+msgid "Company Address"
+msgstr ""
+
+#: apps/sales/models.py:126
+msgid "Payment Status"
+msgstr ""
+
+#: apps/sales/models.py:133
+msgid "Notes"
+msgstr ""
+
+#: apps/sales/models.py:139
+msgid "Order"
+msgstr ""
+
+#: apps/sales/models.py:140
+msgid "Orders"
+msgstr ""
+
+#: apps/sales/models.py:194
+msgid "Order Item"
+msgstr ""
+
+#: apps/sales/models.py:195
+msgid "Order Items"
+msgstr ""
+
+#: apps/sales/models.py:211
+msgid "Released"
+msgstr ""
+
+#: apps/sales/models.py:212
+msgid "Consumed"
+msgstr ""
+
+#: apps/sales/models.py:223
+msgid "Inventory Reservation"
+msgstr ""
+
+#: apps/sales/models.py:224
+msgid "Inventory Reservations"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:8 apps/sales/views.py:128
+msgid "Shopping Cart"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:20
+#, fuzzy
+#| msgid "End Price"
+msgid "Unit Price"
+msgstr "ລາຄາເຕັ່ມ"
+
+#: apps/sales/templates/sales/cart.html:33
+msgid "Remove"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:44
+#: apps/sales/templates/sales/checkout.html:78
+msgid "Order Summary"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:46
+#: apps/sales/templates/sales/checkout.html:90
+#, fuzzy
+#| msgid "Subtitle"
+msgid "Subtotal"
+msgstr "ຄຳອະທິບາຍ"
+
+#: apps/sales/templates/sales/cart.html:50
+#: apps/sales/templates/sales/checkout.html:91
+msgid "Discount"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:54
+#: apps/sales/templates/sales/checkout.html:92
+msgid "Shipping"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:58
+#: apps/sales/templates/sales/checkout.html:93
+msgid "Tax"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:63
+#: apps/sales/templates/sales/checkout.html:95
+msgid "Grand Total"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:69
+msgid "Coupon Code"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:72
+msgid "Apply"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:76
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: apps/sales/templates/sales/cart.html:81 apps/sales/views.py:147
+msgid "Your cart is empty."
+msgstr ""
+
+#: apps/sales/templates/sales/checkout.html:45
+msgid ""
+"Payment processing is not connected yet. Select your preferred payment "
+"method."
+msgstr ""
+
+#: apps/sales/templates/sales/checkout.html:50
+msgid "Tax Invoice"
+msgstr ""
+
+#: apps/sales/templates/sales/checkout.html:53
+msgid "Request tax invoice"
+msgstr ""
+
+#: apps/sales/templates/sales/checkout.html:72
+#, fuzzy
+#| msgid "Display Order"
+msgid "Place Order"
+msgstr "ລຳດັບການສະແດງ"
+
+#: apps/sales/templates/sales/order_success.html:9
+msgid "Order Placed Successfully"
+msgstr ""
+
+#: apps/sales/templates/sales/order_success.html:10
+msgid "Your order has been created."
+msgstr ""
+
+#: apps/sales/templates/sales/order_success.html:13
+msgid "Order Code"
+msgstr ""
+
+#: apps/sales/templates/sales/order_success.html:14
+msgid "Total"
+msgstr ""
+
+#: apps/sales/templates/sales/order_success.html:17
+msgid "Continue Shopping"
+msgstr ""
 
 #: apps/sales/templates/sales/sale_product.html:19
 msgid "All Category"
@@ -219,21 +494,58 @@ msgstr "ຫມວດຫມູ່ທັ່ງຫມົດ"
 msgid "General"
 msgstr ""
 
-#: apps/sales/templates/sales/sale_product.html:83
+#: apps/sales/templates/sales/sale_product.html:86
 msgid "Decrease Quantity"
 msgstr "ຫລຸດຈຳນວນ"
 
-#: apps/sales/templates/sales/sale_product.html:85
+#: apps/sales/templates/sales/sale_product.html:88
 msgid "Increase Quantity"
 msgstr "ເພີ່ມຈຳນວນ"
 
-#: apps/sales/templates/sales/sale_product.html:90
+#: apps/sales/templates/sales/sale_product.html:93
 msgid "Add to Cart"
 msgstr "ເພີ່ມເຂົ້າກະຕ່າ"
 
-#: apps/sales/templates/sales/sale_product.html:96
+#: apps/sales/templates/sales/sale_product.html:100
 msgid "Not found."
 msgstr "ບໍ່ມີຂໍ້ມູນ"
+
+#: apps/sales/views.py:42
+#, fuzzy
+#| msgid "Products Units"
+msgid "Product was not selected."
+msgstr "ຫົວຫນ່ວຍສິນຄ້າ"
+
+#: apps/sales/views.py:58
+#, python-format
+msgid "%(product)s added to cart."
+msgstr ""
+
+#: apps/sales/views.py:68 apps/sales/views.py:80
+msgid "Item removed from cart."
+msgstr ""
+
+#: apps/sales/views.py:72
+#, fuzzy
+#| msgid "Market Updates"
+msgid "Cart updated."
+msgstr "ຂໍ້ມູນການຕະຫລາດ"
+
+#: apps/sales/views.py:90
+msgid "Coupon applied successfully."
+msgstr ""
+
+#: apps/sales/views.py:92
+msgid "Coupon code was not recognized."
+msgstr ""
+
+#: apps/sales/views.py:173
+msgid "Order created successfully."
+msgstr ""
+
+#: apps/sales/views.py:184
+msgid "Order Confirmed"
+msgstr ""
 
 #: apps/users/templates/login.html:22 apps/users/templates/login.html:55
 msgid "LAO PRODUCT"
@@ -281,10 +593,6 @@ msgstr "ສູນລວມຄວາມຕ້ອງການ"
 msgid "Supply Center"
 msgstr "ຜູ້ສະຫນອງ"
 
-#: templates/general-nav.html:38
-msgid "Store Imformation"
-msgstr "ຂໍ້ມູນຮ້ານຄ້າ"
-
 #: templates/general-nav.html:42
 msgid "News"
 msgstr "ຂ່າວສານ"
@@ -304,3 +612,9 @@ msgstr "ເຂົ້າສູ່ລະບົບ"
 #: templates/navigation_top_loged-in.html:12
 msgid "BACKEND STATE"
 msgstr "ລະບົບຫລັງບ້ານ"
+
+#~ msgid "Start Price"
+#~ msgstr "ລາຄາເລີ່ມຕົ້ນ"
+
+#~ msgid "Store Imformation"
+#~ msgstr "ຂໍ້ມູນຮ້ານຄ້າ"

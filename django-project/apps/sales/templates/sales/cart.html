@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% load humanize %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<div class="wrap commerce-page">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">{% trans "Your selection" %}</p>
+            <h1 class="lao-noto">{% trans "Shopping Cart" %}</h1>
+        </div>
+        <a href="{% url 'sales:sale_page' %}" class="text-link"><i class="bi bi-arrow-left"></i> {% trans "Continue Shopping" %}</a>
+    </div>
+
+    {% if items %}
+        <div class="commerce-grid cart-grid">
+            <div class="cart-items">
+                {% for item in items %}
+                    <article class="cart-item">
+                        <div class="cart-item-info">
+                            <p class="item-category">{% trans "Product" %}</p>
+                            <h3>{{ item.product.name }}</h3>
+                            {% if item.variant_name %}<p class="item-variant">{{ item.variant_name }}</p>{% endif %}
+                            <p class="item-price">{% trans "Unit Price" %}: {{ item.unit_price|floatformat:2|intcomma }}</p>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-control">
+                                <form method="post" action="{% url 'sales:update_cart_item' item.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" name="quantity" value="{{ item.quantity|add:'-1' }}" aria-label="{% trans 'Decrease quantity' %}">-</button>
+                                </form>
+                                <span>{{ item.quantity }}</span>
+                                <form method="post" action="{% url 'sales:update_cart_item' item.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" name="quantity" value="{{ item.quantity|add:'1' }}" aria-label="{% trans 'Increase quantity' %}">+</button>
+                                </form>
+                            </div>
+                            <form method="post" action="{% url 'sales:remove_from_cart' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="remove-link"><i class="bi bi-trash3"></i> {% trans "Remove" %}</button>
+                            </form>
+                        </div>
+                        <strong class="line-total">
+                                {{ item.line_total|floatformat:2|intcomma }}
+                        </strong>
+                    </article>
+                {% endfor %}
+            </div>
+
+            <aside class="summary-panel">
+                    <div class="summary-heading"><span class="section-icon"><i class="bi bi-receipt"></i></span><h2>{% trans "Order Summary" %}</h2></div>
+                    <div class="summary-row">
+                        <span>{% trans "Subtotal" %}</span>
+                        <strong>{{ cart.subtotal|floatformat:2|intcomma }}</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>{% trans "Discount" %}</span>
+                        <strong>{{ cart.discount|floatformat:2|intcomma }}</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>{% trans "Shipping" %}</span>
+                        <strong>{{ cart.shipping_fee|floatformat:2|intcomma }}</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>{% trans "Tax" %}</span>
+                        <strong>{{ cart.tax_amount|floatformat:2|intcomma }}</strong>
+                    </div>
+                    <div class="summary-total">
+                        <span>{% trans "Grand Total" %}</span>
+                        <strong>{{ cart.grand_total|floatformat:2|intcomma }}</strong>
+                    </div>
+
+                    <form method="post" action="{% url 'sales:apply_coupon' %}" class="coupon-form">
+                        {% csrf_token %}
+                        <label for="coupon-code">{% trans "Coupon Code" %}</label>
+                        <div class="coupon-input">
+                            <input id="coupon-code" type="text" name="coupon_code" value="{{ cart.coupon_code|default:'' }}" placeholder="SAVE10 / WELCOME5">
+                            <button type="submit" class="soft-button">{% trans "Apply" %}</button>
+                        </div>
+                    </form>
+
+                    <a href="{% url 'sales:checkout' %}" class="primary-button">{% trans "Proceed to Checkout" %} <i class="bi bi-arrow-right"></i></a>
+            </aside>
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <span class="empty-icon"><i class="bi bi-bag"></i></span>
+            <h2>{% trans "Your cart is empty." %}</h2>
+            <p>{% trans "Discover something useful for your next order." %}</p>
+            <a href="{% url 'sales:sale_page' %}" class="primary-button">{% trans "Browse Products" %} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

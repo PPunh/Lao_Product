@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% load humanize %}
+
+{% block navigation_top %}
+    {% include 'general-nav.html' %}
+{% endblock %}
+
+{% block main-content %}
+<div class="wrap commerce-page">
+    <div class="page-heading">
+        <div><p class="eyebrow">{% trans "Almost there" %}</p><h1 class="lao-noto">{% trans "Checkout" %}</h1></div>
+        <a href="{% url 'sales:cart' %}" class="text-link"><i class="bi bi-arrow-left"></i> {% trans "Back to Cart" %}</a>
+    </div>
+    <div class="commerce-grid checkout-grid">
+        <div class="form-panel">
+            <div class="panel-title"><span class="section-icon"><i class="bi bi-person"></i></span><div><h2>{% trans "Customer Details" %}</h2><p>{% trans "Tell us where to send your order." %}</p></div></div>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-fields">
+                    <div>
+                        <label>{{ form.customer_name.label }}</label>
+                        {{ form.customer_name }}
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label>{{ form.phone.label }}</label>
+                            {{ form.phone }}
+                        </div>
+                        <div>
+                            <label>{{ form.email.label }}</label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div>
+                        <label>{{ form.address.label }}</label>
+                        {{ form.address }}
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label>{{ form.coupon_code.label }}</label>
+                            {{ form.coupon_code }}
+                        </div>
+                        <div>
+                            <label>{{ form.shipping_fee.label }}</label>
+                            {{ form.shipping_fee }}
+                        </div>
+                    </div>
+                    <div>
+                        <label>{{ form.payment_method.label }}</label>
+                        {{ form.payment_method }}
+                            <small class="field-help">{% trans "Payment processing is not connected yet. Select your preferred payment method." %}</small>
+                    </div>
+                </div>
+
+                <div class="invoice-section">
+                    <h3>{% trans "Tax Invoice" %}</h3>
+                    <div class="checkbox-field">
+                        {{ form.tax_invoice_requested }}
+                        <label for="id_tax_invoice_requested">{% trans "Request tax invoice" %}</label>
+                    </div>
+                    <div class="form-fields">
+                        <div>
+                            <label>{{ form.tax_id.label }}</label>
+                            {{ form.tax_id }}
+                        </div>
+                        <div>
+                            <label>{{ form.company_name.label }}</label>
+                            {{ form.company_name }}
+                        </div>
+                        <div>
+                            <label>{{ form.company_address.label }}</label>
+                            {{ form.company_address }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" class="primary-button">{% trans "Place Order" %} <i class="bi bi-check2"></i></button>
+                </div>
+            </form>
+        </div>
+
+        <aside class="summary-panel checkout-summary">
+            <div class="summary-heading"><span class="section-icon"><i class="bi bi-receipt"></i></span><h2>{% trans "Order Summary" %}</h2></div>
+            {% for item in items %}
+                <div class="summary-item">
+                    <div>
+                        <div>{{ item.product.name }}</div>
+                        <small>{{ item.quantity }} x {{ item.unit_price|floatformat:2|intcomma }}</small>
+                    </div>
+                    <strong>{{ item.line_total|floatformat:2|intcomma }}</strong>
+                </div>
+            {% endfor %}
+
+            <div class="summary-totals">
+                <div class="summary-row"><span>{% trans "Subtotal" %}</span><strong>{{ cart.subtotal|floatformat:2|intcomma }}</strong></div>
+                <div class="summary-row"><span>{% trans "Discount" %}</span><strong>{{ cart.discount|floatformat:2|intcomma }}</strong></div>
+                <div class="summary-row"><span>{% trans "Shipping" %}</span><strong>{{ cart.shipping_fee|floatformat:2|intcomma }}</strong></div>
+                <div class="summary-row"><span>{% trans "Tax" %}</span><strong>{{ cart.tax_amount|floatformat:2|intcomma }}</strong></div>
+                <div class="summary-total"><span>{% trans "Grand Total" %}</span><strong>{{ cart.grand_total|floatformat:2|intcomma }}</strong></div>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}

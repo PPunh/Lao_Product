@@ -78,17 +78,21 @@
                 <span class="price"> {{ product.currency.symbol }} {{ product.price|floatformat:0|intcomma }}</span>
               </div>
 
-              <!-- Quantity Selector -->
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="decreaseQty(this)" aria-label="{% translate 'Decrease Quantity' %}">-</button>
-                <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
-                <button type="button" class="qty-btn" onclick="increaseQty(this)" aria-label="{% translate 'Increase Quantity' %}">+</button>
-              </div>
+              <form method="post" action="{% url 'sales:add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
 
-              <button type="button" class="btn-add-cart lao">
-                <i class="bi bi-cart-plus"></i>
-                {% translate "Add to Cart" %}
-              </button>
+                {% comment %} <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="decreaseQty(this)" aria-label="{% translate 'Decrease Quantity' %}">-</button>
+                  <input type="number" class="qty-input" name="quantity" value="1" min="1" max="99" readonly>
+                  <button type="button" class="qty-btn" onclick="increaseQty(this)" aria-label="{% translate 'Increase Quantity' %}">+</button>
+                </div> {% endcomment %}
+
+                <button type="submit" class="btn-add-cart lao">
+                  <i class="bi bi-cart-plus"></i>
+                  {% translate "Add to Cart" %}
+                </button>
+              </form>
             </div>
           </div>
         {% empty %}
