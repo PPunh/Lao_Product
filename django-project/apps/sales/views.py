@@ -109,6 +109,10 @@ class SalePage(SearchFilterMixin, TemplateView):
         if selected_category:
             products = products.filter(category_id=selected_category)
 
+        search_query = self.request.GET.get(self.search_param, '').strip()
+        if search_query:
+            products = products.filter(name__icontains=search_query)
+
         context['products'] = products
         context['selected_category'] = selected_category
         cart = get_or_create_cart(self.request)
