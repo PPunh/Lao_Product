@@ -40,26 +40,33 @@ if not SECRET_KEY:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
 # "10.8.61.22"  [Server VM IP]
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "laoproduct-china.com.la",
+    "10.8.61.14",
+]
 
 # CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
-    # "https://tvs.alotechnologygroup.com",
-    # "http://tvs.alotechnologygroup.com",
-    # "https://*.alotechnologygroup.com",
+    "https://laoproduct-china.com.la",
+    "http://laoproduct-china.com.la",
+    "https://*.laoproduct-china.com.la",
 
     # HTTPS
     "https://localhost:8000",
     "https://127.0.0.1:8000",
+    "https://10.8.61.14:8000",
 
     # HTTP
     "http://localhost:8001",
     "http://127.0.0.1:8001",
+    "http://10.8.61.14:8001",
 ]
 
 
