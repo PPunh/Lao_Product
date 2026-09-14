@@ -1,19 +1,30 @@
 /* ========================================
    Fonts (Google Fonts)
    ======================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons+Outlined');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons+Round');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons+Sharp');
-@import url('https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone'); */
 
 /* ========================================
    Icon Libraries
    ======================================== */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css'); */
 
 /* ========================================
    3rd-party Plugin CSS (Select2)
    ======================================== */
-@import url('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+/* @import url('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'); */
+
+
+/* China Mirror for Google Fonts and FontAwesome */
+@import url('https://fonts.loli.net/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.loli.net/css2?family=Material+Icons');
+
+/* Font cdn bootcdn for access in china */
+@import url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+
+/* Select2 CSS */
+@import url('https://cdn.bootcdn.net/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css');
