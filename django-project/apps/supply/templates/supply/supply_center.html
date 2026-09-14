@@ -22,6 +22,7 @@
         {% for listing in listings %}
         <article class="portal-card">
             <p class="eyebrow">{{ listing.get_listing_type_display }}</p>
+            <img src="{{listing.product.product_img.url}}" alt="product-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px;">
             <h2 class="lao"><a href="{% url 'supply:listing-detail' listing.pk %}">{{ listing.title }}</a></h2>
             <p>{{ listing.description|truncatewords:22 }}</p>
             <div class="supply-card-meta"><span>{{ listing.supplier.business_name }}</span>{% if listing.price %}<strong>{{ listing.price }}{% if listing.unit %} / {{ listing.unit }}{% endif %}</strong>{% endif %}</div>

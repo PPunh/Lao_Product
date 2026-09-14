@@ -143,6 +143,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.products.context_processors.default_currency',
             ],
         },
     },
@@ -400,6 +401,6 @@ PREFIX_DEFAULT_LANGUAGE = True
 NUMBER_GROUPING = 3
 
 # CAPTCHA OPTION 
-CAPTCHA_FONT_SIZE = 30
+CAPTCHA_FONT_SIZE = 25
 CAPTCHA_LENGTH = 4
-CAPTCHA_IMAGE_SIZE = (120, 50)
+CAPTCHA_IMAGE_SIZE = (120, 40)

@@ -52,6 +52,13 @@ class CurrencyModel(models.Model):
         verbose_name=_("Is Default Currency")
     )
 
+    def get_currency_symbol(self):
+        if self.symbol and self.symbol.strip():
+            return self.symbol
+        if self.code and self.code.strip():
+            return self.code.upper()
+        return ""
+
     def __str__(self):
         return f"{self.code} ({self.symbol})"
 

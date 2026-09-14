@@ -13,6 +13,7 @@ class SupplierProfile(AuditModel):
         related_name='supplier_profile',
         verbose_name=_('Owner'),
     )
+    logo = models.ImageField(upload_to='supplier_logos/', blank=True, null=True, verbose_name=_('Supply Logo'))
     business_name = models.CharField(max_length=200, verbose_name=_('Business Name'))
     description = models.TextField(blank=True, verbose_name=_('Description'))
     phone = models.CharField(max_length=30, blank=True, verbose_name=_('Phone'))

@@ -21,6 +21,7 @@
         {% for update in updates %}
         <article class="portal-card">
             {% if update.is_featured %}<p class="eyebrow">{% translate "Featured" %}</p>{% endif %}
+            {% if update.image %}<img src="{{ update.image.url }}" alt="{{ update.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px;">{% endif %}
             <h2 class="lao"><a href="{% url 'market:update-detail' update.pk %}">{{ update.title }}</a></h2>
             <p>{{ update.summary|truncatewords:24 }}</p>
             {% if update.category %}<small class="market-card-category">{{ update.category.name }}</small>{% endif %}

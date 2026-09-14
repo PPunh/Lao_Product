@@ -10,7 +10,7 @@ from apps.products.models import ProductsModel
 
 class MarketCategory(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name=_('Name'))
-    slug = models.SlugField(max_length=120, unique=True, blank=True, verbose_name=_('Slug'))
+    slug = models.SlugField(max_length=120, unique=True, blank=True, verbose_name=_('Slug'), help_text=_("Automatically generated from the name if left blank."))
     description = models.TextField(blank=True, verbose_name=_('Description'))
     is_active = models.BooleanField(default=True, verbose_name=_('Active'))
 
@@ -65,7 +65,7 @@ class MarketUpdate(AuditModel):
     summary = models.TextField(verbose_name=_('Summary'))
     content = models.TextField(verbose_name=_('Content'))
     image = models.ImageField(upload_to='market_updates/', blank=True, null=True, verbose_name=_('Image'))
-    source_url = models.URLField(blank=True, verbose_name=_('Source URL'))
+    source_url = models.URLField(blank=True, verbose_name=_('Source URL', ), help_text=_('Optional link to the original source of the update.'))
     is_featured = models.BooleanField(default=False, verbose_name=_('Featured'))
     is_published = models.BooleanField(default=False, verbose_name=_('Published'))
     published_at = models.DateTimeField(blank=True, null=True, verbose_name=_('Published At'))
