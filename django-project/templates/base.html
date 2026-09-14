@@ -9,12 +9,11 @@
         <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
 
         {% comment %} Preconnect need write in the head (can't move to CSS base_vendor.css) {% endcomment %}
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-        <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-        <link rel="preconnect" href="https://fonts.loli.net">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 
         {% comment %} Vendor CSS: fonts + icons {% endcomment %}
-        <link rel="stylesheet" href="{% static 'css/base_vendor.css' %}">
+        <link rel="stylesheet" href="{% static 'fontawesome-free-6/css/all.min.css' %}">
 
         {% comment %} a lightweight Google Material Design CSS libs {% endcomment %}
         <link href="{% static 'css/w3/w3.css' %}" rel="stylesheet">
@@ -41,10 +40,10 @@
     </head>
     <style>
         body {
-            font-family: "Noto Sans Lao", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: "Noto Sans Lao", sans-serif;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: "Noto Sans Lao", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: "Noto Sans Lao", sans-serif !important;
         }
     </style>
     <body class="lao-noto" style="margin-top: 50px; height: 100vh;">
@@ -67,8 +66,7 @@
 
         {% comment %} Main JS libs {% endcomment %}
         <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
-         <script src="{% static 'js/select2.min.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="{% static 'js/navigation_top.js' %}"></script>
         <script src="{% static 'js/root_js.js' %}"></script>
         <script src="{% static 'sales/js/custom.js' %}"></script>
