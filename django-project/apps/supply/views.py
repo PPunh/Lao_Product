@@ -30,16 +30,23 @@ class SupplyCenterView(ListView):
 
 
 class SupplyListingDetailView(DetailView):
-    model = SupplyListing
+    model = SupplierProfile
     template_name = 'supply/supply_listing_detail.html'
-    context_object_name = 'listing'
+    context_object_name = 'supplier'
 
     def get_queryset(self):
         return super().get_queryset().filter(
-            status=SupplyListing.Status.PUBLISHED,
             is_active=True,
-            supplier__is_active=True,
-        ).select_related('supplier', 'product')
+            is_verified=True, 
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['listings'] = self.object.listings.filter(
+            status=SupplyListing.Status.PUBLISHED,
+            is_active=True
+        ).select_related('product')
+        return context
 
 
 class SupplierProfileCreateView(LoginRequiredMixin, CreateView):

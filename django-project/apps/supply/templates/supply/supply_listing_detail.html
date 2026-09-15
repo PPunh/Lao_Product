@@ -6,16 +6,60 @@
 {% block main-content %}
 <main class="wrap commerce-page portal-page">
     <a class="text-link news-back-link" href="{% url 'supply:center' %}"><i class="fa-solid fa-arrow-left"></i> {% translate "Back to supply center" %}</a>
-    <article class="portal-detail">
-        <p class="eyebrow">{{ listing.get_listing_type_display }}</p>
-        <h1 class="lao-noto">{{ listing.title }}</h1>
-        <p class="portal-detail-owner">{{ listing.supplier.business_name }}</p>
-        <div class="portal-detail-copy">{{ listing.description|linebreaks }}</div>
-        <div class="product-meta">
-            {% if listing.price %}<span><i class="fa-solid fa-tag"></i> {{ listing.price }}{% if listing.unit %} / {{ listing.unit }}{% endif %}</span>{% endif %}
-            <span><i class="fa-solid fa-boxes-stacked"></i> {% translate "Minimum" %}: {{ listing.minimum_quantity }}</span>
+    
+    <article class="portal-detail supplier-profile-detail">
+        {% if supplier.logo %}
+            <div class="supplier-logo-wrap">
+                <img src="{{ supplier.logo.url }}" alt="{{ supplier.business_name }}" class="supplier-logo" style="width:250px;">
+            </div>
+        {% endif %}
+
+        <p class="eyebrow">
+            {% translate "Supplier Profile" %}
+            {% if supplier.is_verified %}
+                <span class="badge-verified"><i class="fa-solid fa-circle-check"></i> {% translate "Verified" %}</span>
+            {% endif %}
+        </p>
+        
+        <h1 class="lao-noto">{{ supplier.business_name }}</h1>
+        
+        <div class="portal-detail-copy">
+            {{ supplier.description|linebreaks }}
         </div>
-        <div class="portal-contact"><strong>{% translate "Contact supplier" %}</strong><span>{{ listing.supplier.email }}</span><span>{{ listing.supplier.phone }}</span><span>{{ listing.supplier.address }}</span></div>
+
+        <div class="portal-contact">
+            <strong>{% translate "Contact information" %}</strong>
+            {% if supplier.email %}
+                <span><i class="fa-solid fa-envelope"></i> {{ supplier.email }}</span>
+            {% endif %}
+            {% if supplier.phone %}
+                <span><i class="fa-solid fa-phone"></i> {{ supplier.phone }}</span>
+            {% endif %}
+            {% if supplier.address %}
+                <span><i class="fa-solid fa-location-dot"></i> {{ supplier.address }}{% if supplier.province %}, {{ supplier.province }}{% endif %}</span>
+            {% endif %}
+        </div>
+
+        <div class="supplier-listings-section">
+            <h3>{% translate "Products & Services by this Supplier" %}</h3>
+            {% if listings %}
+                <div class="listings-grid">
+                    {% for item in listings %}
+                        <div class="listing-card">
+                            <h4><a href="#">{{ item.title }}</a></h4>
+                            <p class="listing-type">{{ item.get_listing_type_display }}</p>
+                            {% if item.price %}
+                                <p class="listing-price">
+                                    <i class="fa-solid fa-tag"></i> {{ item.price }}{% if item.unit %} / {{ item.unit }}{% endif %}
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted">{% translate "No active listings available at the moment." %}</p>
+            {% endif %}
+        </div>
     </article>
 </main>
 {% endblock %}
