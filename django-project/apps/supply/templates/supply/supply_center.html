@@ -22,7 +22,11 @@
     <div class="supply-grid">
         {% for listing in listings %}
         <article class="portal-card w30-center">
+            {% if listing.supplier.logo %}
             <img src="{{listing.supplier.logo.url}}" alt="product-image" style="width: 200px; object-fit: cover; border-radius: 4px;">
+            {% else %}
+                <p>Logo Not Found</p>
+            {% endif %}
             <p class="">
                 <strong><i class="fa-solid fa-building w3-margin-right"></i>{{ listing.supplier.business_name }}</strong> <br>
                 <i class="fa-solid fa-location-dot w3-margin-right"></i>{{ listing.supplier.address }}
