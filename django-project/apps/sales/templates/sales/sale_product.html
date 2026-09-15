@@ -10,6 +10,87 @@
 {% endblock %}
 
 {% block main-content %}
+<style>
+  /* ===== Responsive overrides for sale_product page ===== */
+
+  .wrap { max-width: 100%; overflow-x: hidden; }
+
+  @media (max-width: 900px) {
+    /* Rail + grid: stop being a fixed 2-column layout, stack instead */
+    .layout {
+      display: block !important;
+      grid-template-columns: none !important;
+    }
+
+    /* Category rail becomes a horizontal scrollable chip strip on top */
+    .rail {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 8px;
+      padding: 8px 4px;
+      margin-bottom: 12px;
+      white-space: nowrap;
+    }
+    .rail::-webkit-scrollbar { display: none; }
+    .rail h4 { display: none; } /* redundant heading once it's a chip strip */
+    .rail a {
+      flex-shrink: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Hero */
+  .hero-container { width: 100%; }
+  .hero-content h2 { font-size: clamp(1.1rem, 4vw, 1.8rem); }
+  .hero-content p { font-size: clamp(0.85rem, 2.5vw, 1rem); }
+  @media (max-width: 600px) {
+    .hero-container { height: 160px !important; }
+    .hero-content { padding: 12px !important; }
+  }
+
+  /* Product grid: 5 -> 4 -> 3 -> 2 columns as screen narrows */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 1200px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 992px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px)  { .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+  @media (max-width: 380px)  { .grid { grid-template-columns: 1fr; } }
+
+  /* Card content: scale down on small screens */
+  @media (max-width: 700px) {
+    .card .title { font-size: 0.9rem; }
+    .card .price { font-size: 0.95rem; }
+    .cardbody { padding: 10px !important; }
+  }
+
+  /* Quantity control + add to cart: full-width, touch-friendly on mobile */
+  @media (max-width: 700px) {
+    .qty-control { width: 100%; justify-content: space-between; }
+    .qty-btn { min-width: 36px; min-height: 36px; }
+    .qty-input { width: 48px; text-align: center; }
+    .btn-add-cart { width: 100%; justify-content: center; margin-top: 8px; }
+  }
+
+  /* Floating cart bar: stack on very narrow screens instead of overflowing */
+  @media (max-width: 480px) {
+    .sale-cart-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .go-cart-btn { align-self: stretch; text-align: center; }
+  }
+</style>
+
 <div class="wrap">
   <div class="layout">
     <!-- Category Rail -->
@@ -64,7 +145,7 @@
         </div>
       {% endif %}
 
-      <!-- Product Grid (5 Items Per Row) -->
+      <!-- Product Grid -->
       <div class="grid">
         {% for product in products %}
           <div class="card">
