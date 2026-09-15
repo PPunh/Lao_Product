@@ -4,72 +4,142 @@
 <div class="w3-top w3-center" style="z-index:99999 !important;">
   <div class="w3-bar glass" id="myNavbar">
     <a href="{% url 'sales:sale_page' %}"
-      class="w3-bar-item w3-button w3-hover-none w3-hover-text-primary w3-padding-small"
-      style="display: flex; align-items: center; height: 50px;">
+      class="w3-bar-item w3-button w3-hover-none w3-hover-text-primary w3-padding-small nav-logo"
+      style="display: flex; align-items: center; height: 50px; flex-shrink: 0;">
       <img src="{% static 'images/logo-laoproduct.png' %}" alt="{% trans 'Lao Product logo' %}" style="height:45px; border-radius: 8px;" class="w3-white">
-      <!-- <span class="lao-noto w3-margin-left w3-hide-small"
-        style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em;">
-        {% trans "Lao Product" %}
-      </span> -->
     </a>
 
-    <button class="w3-bar-item w3-button w3-right w3-hide-medium w3-hide-large nav-hamburger w3-button-outline w3-round-large"
-      onclick="w3_open()" style="height: 44px; margin-left: auto; border-radius: 10px;">
+    <button type="button" class="w3-bar-item w3-button w3-right nav-hamburger w3-button-outline w3-round-large"
+      onclick="toggleMobileNav(event)" aria-label="{% trans 'Open menu' %}" aria-controls="navMobile" aria-expanded="false"
+      style="height: 44px; width: 44px; margin-left: auto; border-radius: 10px; flex-shrink: 0;">
       <i class="fa fa-bars"></i>
     </button>
 
-    <div class="w3-right w3-hide-small"
-      style="display: flex; align-items: center; height: 50px; gap: 4px; margin-left: auto;">
+    <!-- Desktop / Tablet nav -->
+    <div class="w3-right nav-desktop"
+      style="display: flex; align-items: center; height: 50px; gap: 4px; margin-left: auto;
+             overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
+             scrollbar-width: none; max-width: 100%;">
 
-      <a href="{% url 'sales:sale_page' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'sales:sale_page' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-home"></i>
           <span>{% trans "Home" %}</span>
       </a>
-        <a href="{% url 'news:demand-center' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'news:demand-center' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-users"></i>
           <span>{% trans "Demand Center" %}</span>
       </a>
-      <a href="{% url 'supply:center' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'supply:center' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-truck"></i>
           <span>{% trans "Supply Center" %}</span>
       </a>
-      <a href="{% url 'sales:cart' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'sales:cart' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-shopping-cart"></i>
           <span>{% trans "Cart" %}</span>
       </a>
-        <a href="{% url 'news:news-list' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'news:news-list' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-info"></i>
           <span>{% trans "News" %}</span>
       </a>
-      <a href="{% url 'talent:center' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'talent:center' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-arrows-spin"></i>
           <span>{% trans "Talent Center" %}</span>
       </a>
-      <a href="{% url 'market:updates' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+      <a href="{% url 'market:updates' %}" class="w3-button w3-button-outline w3-round-large nav-item" style="font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
           <i class="fa-solid fa-arrows-spin"></i>
           <span>{% trans "Market Updates" %}</span>
       </a>
-      <!-- <div class="w3-dropdown-hover" style="background: none;" onclick="toggleNavDropdown(event, this)">
-        <button class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
-          <i class="fa-solid fa-layer-group w3-margin-right"></i>
-          <span>Services</span>
-          <i class="fa fa-chevron-down dropdown-arrow" style="font-size: 10px; margin-left: 6px;"></i>
-        </button>
-        <div class="w3-dropdown-content w3-bar-block w3-card-4"
-          style="min-width: 220px; border: 1px solid #e2e8f0;">
-          <a href="#" class="w3-bar-item w3-button"
-            style="padding: 12px 20px;">
-            <i class="fa fa-file-text w3-text-green w3-margin-right"></i> Dropdown 1
-          </a>
-        </div>
-      </div> -->
 
       {% include 'components/language_switcher.html' %}
-      <a href="{% url 'users:login' %}" class="w3-button w3-green w3-hover-deep-orange w3-hover-text-white"
-        style="padding: 8px 16px !important; margin-left: 8px; border-radius: 8px;">
+      <a href="{% url 'users:login' %}" class="w3-button w3-green w3-hover-deep-orange w3-hover-text-white nav-item"
+        style="padding: 8px 16px !important; margin-left: 8px; border-radius: 8px; flex-shrink: 0; white-space: nowrap;">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
           {% trans "Login" %}
       </a>
     </div>
   </div>
+
+  <!-- Mobile dropdown panel -->
+  <div id="navMobile" class="w3-bar-block nav-mobile-panel w3-white"
+       style="text-align: left; border-top: 1px solid rgba(0,0,0,0.08); max-height: 80vh; overflow-y: auto; display: none;">
+    <a href="{% url 'sales:sale_page' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-home w3-margin-right"></i>{% trans "Home" %}
+    </a>
+    <a href="{% url 'news:demand-center' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-users w3-margin-right"></i>{% trans "Demand Center" %}
+    </a>
+    <a href="{% url 'supply:center' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-truck w3-margin-right"></i>{% trans "Supply Center" %}
+    </a>
+    <a href="{% url 'sales:cart' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-shopping-cart w3-margin-right"></i>{% trans "Cart" %}
+    </a>
+    <a href="{% url 'news:news-list' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-info w3-margin-right"></i>{% trans "News" %}
+    </a>
+    <a href="{% url 'talent:center' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-arrows-spin w3-margin-right"></i>{% trans "Talent Center" %}
+    </a>
+    <a href="{% url 'market:updates' %}" class="w3-bar-item w3-button" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-arrows-spin w3-margin-right"></i>{% trans "Market Updates" %}
+    </a>
+    <div class="w3-bar-item" style="padding: 10px 20px;">
+      {% include 'components/language_switcher.html' %}
+    </div>
+    <a href="{% url 'users:login' %}" class="w3-bar-item w3-button w3-green" style="padding: 14px 20px; font-size: 0.95rem;">
+      <i class="fa-solid fa-arrow-right-from-bracket w3-margin-right"></i>{% trans "Login" %}
+    </a>
+  </div>
 </div>
+
+<style>
+  .nav-desktop::-webkit-scrollbar { display: none; }
+  .nav-hamburger { display: none; }
+  .nav-desktop { display: flex !important; }
+
+  @media (max-width: 992px) {
+    .nav-item { font-size: 0.8rem !important; padding: 6px 10px !important; }
+    .nav-item span { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-desktop { display: none !important; }
+    .nav-hamburger { display: flex !important; align-items: center; justify-content: center; }
+    .nav-logo img { height: 36px !important; }
+    #myNavbar { padding-right: 8px; }
+  }
+
+  #myNavbar {
+    padding-left: max(8px, env(safe-area-inset-left));
+    padding-right: max(8px, env(safe-area-inset-right));
+  }
+  #navMobile a, #navMobile button {
+    padding-left: max(20px, env(safe-area-inset-left)) !important;
+  }
+</style>
+
+<script>
+(function () {
+  // Unique name on purpose — avoids clashing with any w3_open() already
+  // defined in base.html (common in W3.CSS demo templates), which was
+  // the reason the hamburger click did nothing before.
+  window.toggleMobileNav = function (e) {
+    if (e) e.stopPropagation();
+    var menu = document.getElementById('navMobile');
+    var btn = document.querySelector('.nav-hamburger');
+    var isOpen = menu.style.display === 'block';
+    menu.style.display = isOpen ? 'none' : 'block';
+    if (btn) btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  };
+
+  // Close the panel when tapping outside it
+  document.addEventListener('click', function (e) {
+    var menu = document.getElementById('navMobile');
+    var btn = document.querySelector('.nav-hamburger');
+    if (!menu || menu.style.display !== 'block') return;
+    if (menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    menu.style.display = 'none';
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  });
+})();
+</script>
