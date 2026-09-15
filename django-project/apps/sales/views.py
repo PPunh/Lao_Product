@@ -107,7 +107,7 @@ def apply_coupon(request):
 
 class SalePage(SearchFilterMixin, TemplateView):
     template_name = 'sales/sale_product.html'
-    pagination = 20
+    paginate_by = 20
     search_fields = ['name']
 
     def get_context_data(self, **kwargs):
