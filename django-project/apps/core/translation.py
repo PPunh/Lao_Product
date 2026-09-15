@@ -4,7 +4,7 @@ from .models import HeroModel, PersonalInfoModel
 
 @register(HeroModel)
 class HeroTranslationOptions(TranslationOptions):
-    fields = ('title', 'subtitle', 'button_text')
+    fields = ('title', 'image', 'subtitle', 'button_text')
 
 
 @register(PersonalInfoModel)
