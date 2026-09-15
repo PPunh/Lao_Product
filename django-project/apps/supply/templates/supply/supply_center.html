@@ -23,7 +23,10 @@
         {% for listing in listings %}
         <article class="portal-card w30-center">
             <img src="{{listing.supplier.logo.url}}" alt="product-image" style="width: 200px; object-fit: cover; border-radius: 4px;">
-            <p class="eyebrow">{{ listing.supplier.business_name }}</p>
+            <p class="">
+                <strong><i class="fa-solid fa-building w3-margin-right"></i>{{ listing.supplier.business_name }}</strong> <br>
+                <i class="fa-solid fa-location-dot w3-margin-right"></i>{{ listing.supplier.address }}
+            </p>
             <a class="text-link" href="{% url 'supply:listing-detail' listing.pk %}">{% translate "View Center" %} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </article>
         {% empty %}
