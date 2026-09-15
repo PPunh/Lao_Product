@@ -1,6 +1,5 @@
 # coding=utf-8
 from decimal import Decimal
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -12,7 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_POST
 from django.views.generic import DetailView, TemplateView
 from django.views.generic.edit import FormView
-
+from django.core.paginator import Paginator
 from apps.core.mixins import SearchFilterMixin
 from apps.core.models import HeroModel
 from apps.products.models import ProductsCategoryModel, ProductsModel
@@ -107,7 +106,7 @@ def apply_coupon(request):
 
 class SalePage(SearchFilterMixin, TemplateView):
     template_name = 'sales/sale_product.html'
-    paginate_by = 20
+    pagination = 20
     search_fields = ['name']
 
     def get_context_data(self, **kwargs):
@@ -125,8 +124,16 @@ class SalePage(SearchFilterMixin, TemplateView):
         if search_query:
             products = products.filter(name__icontains=search_query)
 
-        context['products'] = products
+        paginator = Paginator(products, self.pagination)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        context['products'] = page_obj.object_list
+        context['page_obj'] = page_obj
+        context['paginator'] = paginator
+        context['is_paginated'] = page_obj.has_other_pages()
         context['selected_category'] = selected_category
+
         cart = get_or_create_cart(self.request)
         context['cart_count'] = cart.item_count
         return context
